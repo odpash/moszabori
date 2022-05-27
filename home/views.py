@@ -37,6 +37,30 @@ def viezdZamershika(request):
     return render(request, template)
 
 
+def delivery(request):
+    template = 'home/delivery.html'
+    return render(request, template)
+
+
+def demontash(request):
+    template = 'home/demontash.html'
+    return render(request, template)
+
+
+def montash(request):
+    template = 'home/montash.html'
+    return render(request, template)
+
+
+def guarantee(request):
+    template = 'home/guarantee.html'
+    return render(request, template)
+
+
+def sales(request):
+    template = 'home/sales.html'
+    return render(request, template)
+
 
 def contacts(request):
 

@@ -11,6 +11,11 @@ urlpatterns = [
     path('', views.homePage, name='homePage'), 
     path('about-us', views.aboutUs, name="aboutUs"),
     path('viezd-zamershika', views.viezdZamershika, name="viezd-zamershika"),
+    path('delivery', views.delivery, name="delivery"),
+    path('demontash', views.demontash, name="demontash"),
+    path('montash', views.montash, name="montash"),
+    path('guarantee', views.guarantee, name="guarantee"),
+    path('sales', views.sales, name="sales"),
 
     path('zabory/', views.zaborCategoryList, name="zaborCategoryList"),
     path('zabory/category/<slug:Slug>', views.zaborCategory, name='zaborCategory'),
