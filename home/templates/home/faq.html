@@ -1,0 +1,75 @@
+﻿{% extends 'base.html' %}{% load static %}
+    {%block mainWrapper %}
+    <!-- Start of breadcrumb section
+       ============================================= -->
+    <section id="breadcrumb" class="breadcrumb-section position-relative" data-background="/static/img/banner/banner-bg.jpg">
+        <span class="breadcrumb-overlay position-absolute"></span>
+        <div class="container">
+            <div class="breadcrumb-content text-center headline">
+                <h2>Frequently Asked Questions</h2>
+                <div class="breadcrumb-item ul-li">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">FAQ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of breadcrumb section
+       ============================================= -->
+    <!--====== Start Faq section ======-->
+    <section class="faq-v2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title  headline title-style-two position-relative">
+                        <p class="title-watermark">FAQ</p>
+                        <span>Client’s questions</span>
+                        <h2>You can find answers to all your questions in this section. </h2>
+                    </div>
+                    <div class="faq-wrapper">
+                        <div class="accordion" id="accordionone">
+                            
+                            {%for faq in FAQs %}
+                            {% if forloop.first %}
+                            <div class="card mb-30">
+                                <a class="collapsed card-header" id="heading{{faq.id}}" href="#" data-toggle="collapse" data-target="#collapse{{faq.id}}" aria-expanded="true" aria-controls="collapse{{faq.id}}">
+                                    {{faq.Title}}   <span class="toggle_btn"></span>
+                                </a>
+                                <div id="collapse{{faq.id}}" class="collapse show" aria-labelledby="heading{{faq.id}}" data-parent="#accordionone">
+                                    <div class="card-body">
+                                        {% autoescape off %}
+                                            {{page.Content}}
+                                        {% endautoescape %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="card mb-30">
+                                <a class="collapsed card-header" id="heading{{faq.id}}" href="#" data-toggle="collapse" data-target="#collapse{{faq.id}}" aria-expanded="false" aria-controls="collapse{{faq.id}}">
+                                    {{faq.Title}}   <span class="toggle_btn"></span>
+                                </a>
+                                <div id="collapse{{faq.id}}" class="collapse" aria-labelledby="heading{{faq.id}}" data-parent="#accordionone">
+                                    <div class="card-body">
+                                        {% autoescape off %}
+                                            {{page.Content}}
+                                        {% endautoescape %}
+                                    </div>
+                                </div>
+                            </div>
+                            {%endif%}
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="faq-img float-right">
+                        <img src="/static/img/faq-1.png" alt="Trekking in Pamir">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====== End Faq section ======-->
+    {% endblock %}

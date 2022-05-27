@@ -1,0 +1,378 @@
+﻿{% extends 'base.html' %}{% load static %}
+{% block Title %}{{ SEO.Title }}{% endblock %}
+{% block mainWrapper %}
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <div class="breatcumb-area d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>Калькулятор</h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Калькулятор</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+
+    <!--Start dreamit contact form Area -->
+    <div class="contact-form-area pt-100 pb-90">
+        <div class="container">
+            <div class="col-lg-12 col-sm-12">
+                <div class="contact-form-box">
+                    <div class="dreamit-section-title section-b text-center">
+                        <!-- <h5>Посчитайте сами</h5> -->
+
+                        <h2>Калькулятор стоимости забора из профнастила</h2>
+                        <!-- <h2>до гвозди</h2> -->
+                        <!-- <div class="mt-20"></div> -->
+                        <div class="row" style="padding-top: 30px;">
+                            <div class="col-md-12">
+                                <div class="portfolio_nav">
+                                    <div class="portfolio_menu">
+                                        <ul class="menu-filtering">
+                                            <a href="#" style="color: #000000">
+                                                <li class="current_menu_item">Профнастил</li>
+                                            </a>
+
+                                            <a href="/calculator/calc-metal" style="color: #000000">
+                                                <li>Метал штакетник</li>
+                                            </a>
+                                            <a href="/calculator/calc-rabitsa" style="color: #000000">
+                                                <li>Рабица</li>
+                                            </a>
+                                            <a href="/calculator/calc-boarder" style="color: #000000">
+                                                <li>Ограждение 3D</li>
+                                            </a>
+                                            <a href="/calculator/calc-navesi" style="color: #000000">
+                                                <li>Навесы</li>
+                                            </a>
+
+
+                                            <!-- <li data-filter=".cemes" >Plumbing</li>
+                                            <li data-filter=".math" > Repair</li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+
+
+                <div>
+                    <br class="contact-form-box">
+                        <form action="{% url 'calc:profnastil' %}">
+                            <div class="form-group row">
+                                <label for="dlinaZabora" class="col-md-3 col-sm-12 col-form-label">Длина забора </label>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="input-group">
+                                        <input id="dlinaZabora" name="dlinaZabora" onchange="doubleValidate(this)"
+                                               onkeypress="doubleValidate(this)" placeholder="Длина забора"
+                                               type="number" step="0.01"
+                                               value="{% if dlinaZabora %}{{ dlinaZabora }}{% else %}100.0{% endif %}"
+                                               class="form-control" required="required">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">м</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <label for="visotaZabora" onkeypress="doubleValidate(this)"
+                                       class="col-md-3 col-sm-12 col-form-label">Высота забора</label>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="input-group">
+                                        <input id="visotaZabora" name="visotaZabora" placeholder="Введите в метрах"
+                                               type="number" step="0.01"
+                                               value="{% if visotaZabora %}{{ visotaZabora }}{% else %}2.0{% endif %}"
+                                               class="form-control" required="required">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">м</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="sechenieStolbcov" class="col-md-3 col-sm-12  col-form-label">Сечение
+                                    столбов, мм</label>
+                                <div class="col-md-3 col-sm-12">
+                                    <select id="sechenieStolbcov" name="sechenieStolbcov" class="custom-select">
+                                        <option value="">Выбрать</option>
+                                    </select>
+                                </div>
+                                <label for="tolshinaStolbcov" class="col-md-3 col-sm-12 col-form-label">Толщина столбов,
+                                    мм:</label>
+                                <div class="col-md-3 col-sm-12">
+                                    <select id="tolshinaStolbcov" name="tolshinaStolbcov" class="custom-select">
+                                        <option value="">Выберите</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Заглубление столба -->
+                            <div class="form-group row">
+                                <label for="zaglublenieStolba" class="col-md-3 col-sm-12 col-form-label">Заглубление
+                                    столба, м</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="zaglublenieStolba" name="zaglublenieStolba" class="custom-select">
+                                        <option value="1.2">1.2</option>
+                                        <option value="1.4">1.4</option>
+                                        <option value="1.5">1.5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="shagStolbcov" class="col-sm-12 col-md-3 col-form-label">Шаг столбов,
+                                    м: </label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="shagStolbcov" name="shagStolbcov" class="custom-select">
+                                        <option value="2.5">2.5</option>
+                                        <option value="3.0">3.0</option>
+                                    </select>
+                                </div>
+                                <label for="lag" class="col-sm-12 col-md-3 col-form-label">Количество горизонталей
+                                    (лаги):</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="lag" name="lag" class="custom-select">
+                                        <option value="2">лаги в два ряда</option>
+                                        <option value="3">лаги в три ряда</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <!-- <label class="col-sm-10 col-md-4">Бетонирование столба</label>  -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input name="betonirovanie" id="betonirovanie_0" type="checkbox"
+                                               class="custom-control-input" value="1">
+                                        <label for="betonirovanie_0" class="custom-control-label">Бетонирование
+                                            столба</label>
+                                    </div>
+                                </div>
+                                <!-- <label class="col-sm-10 col-md-4">Утрамбовка столбов гравием</label>  -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input name="utrambovka" id="utrambovka_0" type="checkbox"
+                                               class="custom-control-input" value="1">
+                                        <label for="utrambovka_0" class="custom-control-label">Утрамбовка столбов
+                                            гравием</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="gruntovka" class="col-sm-12 col-md-3 col-form-label">Грунтовка:</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="gruntovka" name="gruntovka" class="custom-select">
+                                        <option value="0">Без грунтовки</option>
+                                        <option value="1">карсно-коричневая</option>
+                                        <option value="2">светло-серая</option>
+                                    </select>
+                                </div>
+                                <label for="kraska" class="col-sm-12 col-md-2 col-form-label">Краска:</label>
+                                <div class="col-sm-12 col-md-4">
+                                    <select id="kraska" name="kraska" class="custom-select">
+                                        <option value="no">Без краски</option>
+                                        {% for kraska in kraski %}
+                                            <option value="{{ kraska.id }}">{{ kraska.Title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!-- Тип покрытия и её толщина  -->
+                            <div class="form-group row">
+                                <label for="tipPokritiya" class="col-sm-12 col-md-4 col-form-label">Тип покрытия</label>
+                                <div class="col-sm-12 col-md-8">
+                                    <select id="tipPokritiya" name="tipPokritiya" class="custom-select">
+                                        {% for pokr in pokritiya %}
+                                            <option value="{{ pokr.id }}">{{ pokr.Title }}
+                                                <!-- {{pokr.get_marka_display}}{{pokr.get_kolVolna_display}} {{pokr.get_kraska_display}} {{pokr.get_tolshina_display}}мм  -->
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            <!--  Ворот  -->
+                            <div class="form-group row">
+                                <label for="kolVorot" class="col-sm-12 col-md-3 col-form-label">Количество ворот</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="kolVorot" name="kolVorot" class="custom-select">
+                                        <option value="0">Без ворот</option>
+                                        <option value="1">1 шт</option>
+                                        <option value="2">2 шт</option>
+                                        <option value="3">3 шт</option>
+                                        <option value="4">4 шт</option>
+                                        <option value="5">5 шт</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="shirinaVorot" name="shirinaVorot" class="custom-select">
+                                        <option value="0">Ширина ворот</option>
+                                        {% for w in shirinaVorot %}
+                                            <option value="{{ w }}">{{ w }} мм</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="visotaVorot" name="visotaVorot" class="custom-select">
+                                        <option value="0">Высота ворот</option>
+                                        {% for visVorot in visotaVorot %}
+                                            <option value="{{ visVorot }}">{{ visVorot }} мм</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!--  Калитки  -->
+                            <div class="form-group row">
+                                <label for="kolKalitok" class="col-sm-12 col-md-3 col-form-label">Количество
+                                    колиток</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="kolKalitok" name="kolKalitok" class="custom-select">
+                                        <option value="0">Без калитки</option>
+                                        <option value="1">1 шт</option>
+                                        <option value="2">2 шт</option>
+                                        <option value="3">3 шт</option>
+                                        <option value="4">4 шт</option>
+                                        <option value="5">5 шт</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="shirinaKolitok" name="shirinaKolitok" class="custom-select">
+                                        <option value="0">Ширина колиток</option>
+                                        {% for w in shirinaKalitok %}
+                                            <option value="{{ w }}">{{ w }} мм</option>
+                                        {% endfor %}
+                                        <!-- <option value="1180">1.18 м</option> -->
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="visotaKolitok" name="visotaKolitok" class="custom-select">
+                                        <option value="0">Высота колиток</option>
+                                        {% for h in visotaKalitok %}
+                                            <option value="{{ h }}">{{ h }} мм</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <p style="font-size: 12px;">
+                                        *Все расчёты носят ознакомительный характер, окончательный расчёт производит
+                                        менеджер с учётом всех данных.
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="submit" onclick="raschitat()" class="btn btn-success">Рассчитать</button>
+                        </form>
+                    </br>
+
+                        <script>
+                            function doubleValidate(input) {
+                                input.value = input.value.replace(/[,]/g, ".");
+                            }
+                        </script>
+
+
+
+                        <div class="wrapper_table_result" style="overflow-x:auto;">
+                            <table class="calcResultMaterial table-bordered"
+                                   style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                                   cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        Наименование
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        Сумма
+                                    </th>
+
+                                </tr>
+                                {% for v in result_items %}
+                                    <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                                        {% endfor %}
+
+                                </thead>
+                                <tbody>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="finish-total-price"
+                             style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%;">
+                            <span style="display: table-cell; width: 80%; padding-left: 2px;">Итоговая стоимость договора:</span>
+                            <span class="stoimost"
+                                  style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ totalCost }} руб.</span>
+                        </div>
+
+
+                        <div class="col-sm-12"
+                             style="font-size: 20px; text-align: center; font-weight: bold;  font-family: 'Oswald', sans-serif !important;;">
+                            <br>
+                            <p style="font-weight: bold;">
+                                Обязательно позвоните нам, Вы будете приятно удивлены!
+                            </p>
+                            <span style="color:#049644; font-size: 30px;">+7 (925) 221-34-10</span>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $("body").append("<script async src='/bitrix/js/concept.quiz/scripts.js'><\/script><link rel='stylesheet' href='/bitrix/css/concept.quiz/template_styles.css'>");
+                            });
+                        </script>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End dreamit contact form Area -->
+
+    <script src="/static/moszabor/calc.js"></script>
+{% endblock mainWrapper %}
+
+{% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}

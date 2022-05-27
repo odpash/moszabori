@@ -1,0 +1,478 @@
+{% extends 'base.html' %}{% load static %}
+{%block Title %}{{SEO.Title}}{% endblock%}
+{%block mainWrapper %}
+   
+    <!--==================================================-->
+    <!-- Start dreamit slider Area -->
+    <!--==================================================-->
+    <div class="slider_list owl-carousel">
+        <div class="slider-area slider1 d-flex align-items-center" 
+        style="background: linear-gradient(to right, #292929,#292929a2), url(/static/assets/images/moszabori/Slider-1.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="slider-content">
+                            <!-- <h4> Добро пожаловать </h4> -->
+                            <h1>Изготовление, монтаж заборов и навесов под ключ 
+                                в Москве и Московской области
+                            </h1>
+                            <!-- <h1>под ключ в Москве и Московской области</h1> -->
+                            <p>
+                                Гарантия на забор до 3 лет.
+                                Гарантия на навес до 20 лет.
+                                
+                            </p>
+                            <div class="hero-text">
+                                <i class="fas fa-phone"></i> <span> +7 925 221 3410 </span>
+                            </div>
+                            <div class="slider-button">
+                                <a href="{% url 'home:pricelist' %}">Расценки</a>
+                            </div>
+                            <div class="slider-button1">
+                                <a href="{% url 'home:contacts' %}">Контакты</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-area slider2 d-flex align-items-center" style="background: linear-gradient(to right, #292929,#292929a2), url(/static/assets/images/moszabori/Slider-2.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-12">
+                        <div class="slider-content">
+                            <h4> Заборы и навесы </h4>
+                            <h1> Сделаем качественно,  </h1>
+                            <h1>красиво и доступно </h1>
+                            <p>Звоните в любое удобное вам время! </p>
+                            <div class="hero-text">
+                                <i class="fas fa-phone"></i> <span> +7 925 221 3410 </span>
+                            </div>
+                            <div class="slider-button">
+                                <a href="{% url 'home:pricelist' %}">Расценки</a>
+                            </div>
+                            <div class="slider-button1">
+                                <a href="{% url 'calc:calculator' %}">Калкульятор</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End dreamit slider Area  / -->
+
+    <!-- Start dreamit about Area -->
+    <div class="about-area pt-65 pb-95" id="aboutus">
+        <div class="container">
+            <div class="row">		
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dreamit-section-title text-left">
+                                <h5>О нас</h5>
+                                <h2>Более 7 лет опыт создания</h2>
+                                <h2>заборов <span>и навесов</span></h2>
+                                <div class="mt-20"></div>
+                                <p>
+                                    Современные виды заборов для частного дома: 
+                                    кованные, из профнастила, из дерева, камня 
+                                    и кирпича, комбинированные и т.д.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="elementor-widget-icon-box">
+                                <i class="flaticon-electrician-6"></i>
+                                <div class="elementor-widget-title">
+                                    <h2>Выезд замерщика в любой день</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="elementor-widget-icon-box">
+                                <i class="flaticon-electrician-4"></i>
+                                <div class="elementor-widget-title">
+                                    <h2>Гарантия до 20 лет</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="about-content-text pt-3">
+                                <p><i class="far fa-check-circle"></i> 
+                                    <span>Высокое качество за счёт надёжных материалов</span>
+                                </p>
+                            </div>
+                            <div class="about-content-text">
+                                <p><i class="far fa-check-circle"></i> <span>Озвученная стоимость зафиксирована в договоре</span></p>
+                            </div>
+                            <div class="about-content-text">
+                                <p><i class="far fa-check-circle"></i> <span>Навесы соответствуют всем стандартам ГОСТ</span></p>
+                            </div>
+                            <div class="dreamit-button">
+                                <!-- <a href="#">Читать дальше</a> -->
+                            </div>
+                        </div>	
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="dreamit-about-thumb">
+                        <!-- <img src="/static/assets/images/about/about.png" alt=""> -->
+                        <img src="/static/moszabor/Moshin.png" alt="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================-->
+    <!-- End dreamit about Area -->
+    <!--==================================================-->
+
+
+    <style>
+        #zabory .dreamit-service-icon {
+            float: none;  
+            margin-right: 0;
+        }
+        #zabory .dreamit-service-icon img {
+            width: 100%;
+        }
+        #zabory .service-area:before {
+            background-image: none;
+        }
+
+        #zabory .service-area {
+            background: none;
+        }
+    </style>
+
+    <div class="service-area style-four pt-50" id="zabory">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="dreamit-section-title white text-center pb-30">
+                        <!-- <h5>НАШИ УСЛУГИ</h5>
+                        <h2>Изготовление, монтаж заборов и навесов под ключ <span>в Москве и Московской области</span></h2> -->
+                        <h2>Наши <span>услуги</span></h2>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" >
+                {% for zabor in zaborCategories %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="dreamit-service-box">
+                        <div class="dreamit-service-box-inner">
+                            <div class="dreamit-service-content">
+                                <div class="dreamit-service-icon">
+                                    <a href="{{zabor.get_absolute_url}}">
+                                        <img src="{{zabor.image_thumbnail.url}}" alt="{{zabor.Title }}">
+                                    </a>
+                                </div>
+                                <div class="dreamit-service-title">
+                                    <a href="{{zabor.get_absolute_url}}">
+                                        <h2>{{zabor.Title }}</h2>
+                                    </a>
+                                    <p>{{zabor.ShortDesc}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for naves in zaborCategories %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="dreamit-service-box">
+                        <div class="dreamit-service-box-inner">
+                            <div class="dreamit-service-content">
+                                <div class="dreamit-service-icon">
+                                    <a href="{{naves.get_absolute_url}}">
+                                        <img src="{{naves.image_thumbnail.url}}" alt="{{naves.Title }}">
+                                    </a>
+                                </div>
+                                <div class="dreamit-service-title">
+                                    <a href="{{naves.get_absolute_url}}">
+                                        <h2>{{naves.Title }}</h2>
+                                    </a>
+                                    <p>{{naves.ShortDesc}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="why-choose-us-area pb-95">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="why-choose-us-thumb">
+                        <img src="/static/moszabor/moszabor-worker.jpg" alt="">
+                        <!-- <img src="/static/logo/colors.png" alt=""> -->
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 left-why-choose-us">
+                    <div class="dreamit-section-title text-left">
+                        <h5>ПОЧЕМУ ВЫБРАТЬ НАС?</h5>
+                        <h2>Мы - опытные специалисты и </h2>
+                        <h2>сделаем <span>качественно</span></h2>
+                        <div class="mt-20"></div>
+                        <p>
+                            Заказывая навес у нас, вы получаете качество, 
+                            которое служит годами. Наши навесы выдерживают 
+                            нагрузку 200 кг на м2, что соответствует требованиям ГОСТа
+                        </p>
+                    </div>
+                    <div class="stat-levels">
+                        <h6>Опыт создания заборов</h6>
+                    <div class="stat-1 stat-bar" id="#bar1">
+                        <div class="stat-bar-rating" style="width: 96%;"><span class="percent"></span></div>
+                    </div>
+                    <h6>Опыт создания навесов</h6>
+                    <div class="stat-1 stat-bar" id="#bar2">
+                        <div class="stat-bar-rating" style="width: 91%;"><span class="percent"></span></div>
+                    </div>
+                    <h6>Опыт создания ворот </h6>
+                    <div class="stat-1 stat-bar">
+                        <div class="stat-bar-rating" style="width: 85%;"><span class="percent"></span></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End dreamit process Area -->
+<!-- 
+    <div class="team-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="dreamit-section-title-text white text-left">
+                        <h5>НАША КОМАНДА</h5>
+                        <h3>У нас работают только </h3>
+                        <h3>опытные специалисты</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="dreamit-button-two button-right">
+                        <a href="#">Все специалисты </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-area">
+        <div class="container">
+            <div class="row team-top">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="dreamit-single-team-box">
+                        <div class="dreamit-single-team-thumb">
+                            <a href="#"><img src="/static/assets/images/team/team1.jpg" alt=""></a>
+                        </div>
+                        <div class="team-content">
+                            <div class="team-title">
+                                <h3><a href="#">Владимир Путин</a></h3>
+                                <p>Работник</p>
+                            </div>
+                            <div class="dreamit-social-icons">
+                                <div class="socail-icon">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="dreamit-single-team-box">
+                        <div class="dreamit-single-team-thumb">
+                            <a href="#"><img src="/static/assets/images/team/team2.jpg" alt=""></a>
+                        </div>
+                        <div class="team-content">
+                            <div class="team-title">
+                                <h3><a href="#">Сафар Бурхонов</a></h3>
+                                <p>Главный инженер</p>
+                            </div>
+                            <div class="dreamit-social-icons">
+                                <div class="socail-icon">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="dreamit-single-team-box">
+                        <div class="dreamit-single-team-thumb">
+                            <a href="#"><img src="/static/assets/images/team/team3.jpg" alt=""></a>
+                        </div>
+                        <div class="team-content">
+                            <div class="team-title">
+                                <h3><a href="#">Анна Ивановна</a></h3>
+                                <p>Менеджер</p>
+                            </div>
+                            <div class="dreamit-social-icons">
+                                <div class="socail-icon">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-area pt-90 pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="dreamit-section-title pb-40 text-center">
+                        <h5>ОТЗЫВЫ НАШИХ КЛИЕНТОВ </h5>
+                        <h2>Что говорят наши </h2>
+                        <h2>Счастливые клиенты</h2>
+                        <div class="mt-20"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="testimonial_list owl-carousel">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="dreamit-single-testimonial-box">
+                            <div class="testimonial-content">
+                                <div class="testi-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum dolor sit amet saresw consectetur adipis cing elit sed do eiusmod tempor incidi dunt ut labore etolore magna aliqua ipsum suspen disse ultrices ida commodo.</div>
+                            </div>
+                            <div class="testimonial-thumb">
+                                <img src="/static/assets/images/resource/testi1.jpg" alt="">
+                            </div>
+                            <div class="testi-titile">
+                                <h2>Вера Иванова </h2>
+                                <span>Заборы </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="dreamit-single-testimonial-box">
+                            <div class="testimonial-content">
+                                <div class="testi-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum dolor sit amet saresw consectetur adipis cing elit sed do eiusmod tempor incidi dunt ut labore etolore magna aliqua ipsum suspen disse ultrices ida commodo.</div>
+                            </div>
+                            <div class="testimonial-thumb">
+                                <img src="/static/assets/images/resource/testi2.jpg" alt="">
+                            </div>
+                            <div class="testi-titile text-center">
+                                <h2>Вера Иванова </h2>
+                                <span>Заборы </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="dreamit-single-testimonial-box">
+                            <div class="testimonial-content">
+                                <div class="testi-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum dolor sit amet saresw consectetur adipis cing elit sed do eiusmod tempor incidi dunt ut labore etolore magna aliqua ipsum suspen disse ultrices ida commodo.</div>
+                            </div>
+                            <div class="testimonial-thumb">
+                                <img src="/static/assets/images/resource/testi3.jpg" alt="">
+                            </div>
+                            <div class="testi-titile text-center">
+                                <h2>Вера Иванова </h2>
+                                <span>Заборы </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="dreamit-single-testimonial-box">
+                            <div class="testimonial-content">
+                                <div class="testi-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-text">Lorem ipsum dolor sit amet saresw consectetur adipis cing elit sed do eiusmod tempor incidi dunt ut labore etolore magna aliqua ipsum suspen disse ultrices ida commodo.</div>
+                            </div>
+                            <div class="testimonial-thumb">
+                                <img src="/static/assets/images/resource/testi3.jpg" alt="">
+                            </div>
+                            <div class="testi-titile text-center">
+                                <h2>Вера Иванова </h2>
+                                <span>Заборы </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  -->
+
+
+    <!--==================================================-->
+    <!-- Start Techno Portfolio Area -->
+    <!--==================================================-->
+    <div class="portfolio_area pt-100 pb-80" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="dreamit-section-title text-center pb-30">
+                        <h2>Примеры наших работ по</h2>
+                        <h2>созданию <span>заборов и навесов</span></h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row image_load">
+                {% for portfolio in portfolioList %}
+                <div class="col-lg-4 col-md-6 col-sm-12 grid-item {{portfolio.Category.Slug}}">
+                    <div class="single_portfolio">
+                        <div class="single_portfolio_inner">
+                            <div class="single_portfolio_thumb">
+                                <img src="{{portfolio.image_thumbnail.url}}" alt="" />
+                                <div class="single_portfolio_content">
+                                    <h3><a href="{{portfolio.get_absolute_url}}">{{portfolio.ShortTitle}}</a></h3>
+                                    <span>{{portfolio.Category.Title}}</span>	
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portfolio_nav">
+                        <div class="portfolio_menu">
+                            <ul class="menu-filtering">
+                                <li class="current_menu_item" data-filter="*">
+                                    <a href="{% url 'home:portfolio' %}" onMouseOver="this.style.textDecoration='none'"  >Все работы</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================-->
+    <!--End datatech Portfolio Area -->
+    <!--==================================================-->
+
+
+{% endblock %}
+{% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}

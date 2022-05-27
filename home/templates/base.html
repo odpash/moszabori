@@ -1,0 +1,271 @@
+
+<!DOCTYPE HTML>
+<html lang="ru-RU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block Title %}Мосзаборы{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css" type="text/css" media="all" />
+    <!-- carousel CSS -->
+    <link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css" type="text/css" media="all" />	
+    <!-- nivo-slider CSS --> 
+    <link rel="stylesheet" href="/static/assets/css/nivo-slider.css" type="text/css" media="all" />
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/static/assets/css/animate.css" type="text/css" media="all" />	
+    <!-- animated-text CSS -->
+    <link rel="stylesheet" href="/static/assets/css/animated-text.css" type="text/css" media="all" />	
+    <!-- font-awesome CSS -->
+    <link rel="stylesheet" href="/static/assets/css/all.min.css" type="text/css" media="all" />	
+    <!-- font-flaticon CSS -->
+    <link rel="stylesheet" href="/static/assets/css/flaticon.css" type="text/css" media="all" />	
+    <!-- theme-default CSS -->
+    <link rel="stylesheet" href="/static/assets/css/theme-default.css" type="text/css" media="all" />	
+    <!-- meanmenu CSS -->
+    <link rel="stylesheet" href="/static/assets/css/meanmenu.min.css" type="text/css" media="all" />	
+    <!-- Main Style CSS -->
+    <link rel="stylesheet"  href="/static/assets/css/style.css?v=4" type="text/css" media="all" />
+    <!-- transitions CSS -->
+    <link rel="stylesheet" href="/static/assets/css/owl.transitions.css" type="text/css" media="all" />
+    <!-- venobox CSS -->
+    <link rel="stylesheet" href="/static/venobox/venobox.css" type="text/css" media="all" />
+    <!-- widget CSS -->
+    <link rel="stylesheet" href="/static/assets/css/widget.css" type="text/css" media="all" />
+    <!-- responsive CSS -->
+    <link rel="stylesheet" href="/static/assets/css/responsive.css" type="text/css" media="all" />
+    <!-- modernizr js -->	
+    <script src="/static/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/slick.css">
+	<link rel="stylesheet" type="text/css" href="/static/assets/css/slick-theme.css">
+	
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/static/favicon/site.webmanifest">
+	<link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
+    {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		.breatcumb-title h2, .breatcumb-content-text ul li a {
+			font-family: 'Oswald', sans-serif !important;
+		}
+
+	</style>
+	{% block addToHead %}{% endblock %}
+</head>
+<body>
+    
+
+    {% include 'header-top-area.html' %}
+
+    {% include 'main-menu.html' %}
+    {% include 'mobile-menu.html' %}
+
+    {%block mainWrapper %}
+    {%endblock%}
+
+<div class="footer-middle style_two pt-80 pb-3"> 
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="widget widgets-company-info">
+					<div class="dreamit-logo">
+						<a class="logo_img" href="/" title="Московские Заборы и Навесы лого">
+							<img src="/static/logo/logo-moszabor-green-white.png" alt="" />
+						</a>
+					</div>
+					<div class="company-info-desc pr-2">
+						<p>
+							Мы создаём заборы и навесы для вашего дома
+							 качественно, красиво и по доступным ценам. 
+						</p>
+					</div>
+					<!-- <div class="company_icon">
+						<a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+						<a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+						<a class="pinterest" href="#"><i class="fab fa-pinterest-p"></i></a>
+						<a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
+					</div> -->
+				</div>					
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="widget widget-nav-menu pl-2">
+					<h4 class="widget-title">Ссылки</h4>
+					<div class="menu-quick-link-content">
+						<ul class="menu">
+							<li><a href="{% url 'home:zaborCategoryList' %}">Заборы</a></li>
+							<li><a href="{% url 'home:navesy' %}">Навесы</a></li>
+							<li><a href="{% url 'home:portfolio' %}">Фото работы</a></li>
+							<li><a href="{% url 'home:pricelist' %}">Расценки</a></li>
+							<li><a href="{% url 'calc:calculator' %}">Калькулятор</a></li>
+							<li><a href="{% url 'home:contacts' %}">Контакты</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>	
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="widget widget-nav-menu pl-2">
+					<h4 class="widget-title">Наши услуги</h4>
+					<div class="menu-quick-link-content">
+						<ul class="menu">
+							<!-- <li><a href="#">Каменные заборы</a></li>
+							<li><a href="#">Навесы к дому</a></li>
+							<li><a href="#">Односкатные навесы</a></li>
+							<li><a href="#">Заборы из евроштакетника</a></li>
+							<li><a href="#">Арочные навесы</a></li>
+							<li><a href="#">Заборы из профнастила</a></li> -->
+							<li><a href="/zabory/category/zabory-iz-profnastila">Заборы из профнастила</a></li>
+							<li><a href="/navesy/category/odnoskatnye-navesy">Односкатные навесы</a></li>
+							<li><a href="/zabory/category/zabory-iz-setki-rabitsa">Заборы из сетки рабица</a></li>
+							<li><a href="/navesy/category/arochnye-navesy">Арочные навесы</a></li>
+							<li><a href="/zabory/category/zabory-iz-panelnyh-ograzhdenij-3d">3D заборы</a></li>
+							<li><a href="/zabory/category/svarnye-zabory-iz-profilya">Сварные заборы из профиля</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div id="footer-widget-address">
+					<div class="footer-widget-address-inner">
+						<h4 class="widget-title">Контакт</h4>
+						<div class="footer-inner pr-2">
+							<div class="footer-socail-icon">
+								<i class="fa fa-home"></i>
+							</div>
+							<div class="footer-socail-info">
+								<p>
+									<span>Адрес:</span>
+									<br>Москва 
+								</p>
+							</div>
+						</div>
+						<div class="footer-inner pr-2">
+							<div class="footer-socail-icon">
+								<i class="fa fa-phone"></i>
+							</div>
+							<div class="footer-socail-info">
+								<p>
+									<span>Телефон:</span>
+									<br>+7 925 221 3410
+								</p>
+							</div>
+						</div>
+						<div class="footer-inner pr-2">
+							<div class="footer-socail-icon">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="footer-socail-info">
+								<p>
+									<span>Email:</span>
+									<br>info@moszn.ru
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="row footer-bottom mt-50">
+			<div class="col-lg-6 col-md-6">
+				<div class="footer-bottom-content">
+					<div class="footer-bottom-content-copy">
+						<p> &copy; 2022 | Московские Заборы и Навесы. Все права защищены.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<p>Разработано в Barchidif Digital Solutions</p>
+			</div>
+		</div>
+	</div>
+</div>		
+<!-- End dreamit Footer Middle Area -->
+
+<!-- Start Search Popup Area -->
+<div class="search-popup">
+	<button class="close-search style-two"><span class="flaticon-multiply"></span></button>
+	<button class="close-search"><span class="flaticon-up-arrow-1"></span></button>
+	<form method="post" action="#">
+		<div class="form-group">
+			<input type="search" name="search-field" value="" placeholder="Search Here" required="">
+			<button type="submit"><i class="fa fa-search"></i></button>
+		</div>
+	</form>
+</div>
+<!-- Start Search Popup Area -->
+{% include 'home/zvonok-modal-forma.html' %}
+	
+
+	<!-- jquery js -->	
+	<script src="/static/assets/js/vendor/jquery-3.2.1.min.js"></script>
+	<!-- bootstrap js -->	
+	<script src="/static/assets/js/bootstrap.min.js"></script>
+	<!-- carousel js -->
+	<script src="/static/assets/js/owl.carousel.min.js"></script>
+	<!-- counterup js -->
+	<script src="/static/assets/js/jquery.counterup.min.js"></script>
+	<!-- waypoints js -->
+	<script src="/static/assets/js/waypoints.min.js"></script>
+	<!-- wow js -->
+	<script src="/static/assets/js/wow.js"></script>
+	<!-- imagesloaded js -->
+	<script src="/static/assets/js/imagesloaded.pkgd.min.js"></script>
+	<!-- venobox js -->
+	<script src="/static/venobox/venobox.js"></script>
+	<!-- ajax mail js -->
+	<!-- <script src="/static/assets/js/ajax-mail.js"></script> -->
+	<!--  animated-text js -->	
+	<script src="/static/assets/js/animated-text.js"></script>
+	<!-- venobox min js -->
+	<script src="/static/venobox/venobox.min.js"></script>
+	<!-- isotope js -->
+	<script src="/static/assets/js/isotope.pkgd.min.js"></script>
+	<!-- jquery nivo slider pack js -->
+	<script src="/static/assets/js/jquery.nivo.slider.pack.js"></script>
+	<!-- jquery meanmenu js -->	
+	<script src="/static/assets/js/jquery.meanmenu.js"></script>
+	<script src="/static/assets/js/popper.min.js"></script>
+	<!-- jquery revolation js -->	
+	<script src="/static/assets/js/rs6.min.js"></script>
+	<script src="/static/assets/js/rbtools.min.js"></script>
+	<!-- jquery scrollup js -->	
+	<script src="/static/assets/js/jquery.scrollUp.js"></script> 
+	<!-- theme js -->	
+	<script src="/static/assets/js/theme.js"></script>
+	<!-- jquery js -->
+	<!-- <script src="/static/assets/js/jquery.barfiller.html"></script>
+	<script>
+    $(document).ready(function(){
+	$('#bar1').barfiller({ duration: 7000 });
+	$('#bar2').barfiller({ duration: 7000 });});
+	</script> -->
+	<!--Start of Tawk.to Script-->
+	<script type="text/javascript">
+		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+		(function(){
+		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+		s1.async=true;
+		s1.src='https://embed.tawk.to/622cb45c1ffac05b1d7e3ef7/1ftva12st';
+		s1.charset='UTF-8';
+		s1.setAttribute('crossorigin','*');
+		s0.parentNode.insertBefore(s1,s0);
+		})();
+		
+	</script>
+	<!--End of Tawk.to Script-->
+
+	{% block addToFooter %}{% endblock %}
+</body>
+
+</html>    

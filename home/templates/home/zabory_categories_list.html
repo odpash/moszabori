@@ -1,0 +1,122 @@
+﻿{% extends 'base.html' %}{% load static %}
+{%block Title%}{{SEO.Title}}{%endblock%}
+    {%block mainWrapper %}
+    <style>
+        .dreamit_blog_meta a {
+            color: #049644;
+        }
+        .post-categories a {
+            display: inline-block;
+            color: #049644;
+        }
+        .blog_page_title h4 {
+            background-position: 0;
+
+        }
+        .card-btn {
+            color: #fff !important; width: 100%
+        }
+        .card-title {
+            font-size: 16px;
+        }
+        .card-body {
+            padding: 1rem;
+        }
+        
+    </style>
+    <div class="breatcumb-area d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>Заборы</h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Заборы</span></li>
+                            </ul>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+    
+    <div class="blog_area blog-details-area rs pt-115 pb-90" id="blog">
+        <div class="container">		
+            <div class="row">	
+                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dreamit-single-blog-box">
+                                <div class="dreamit-sigle-tmumb">
+                                    <img src="{{page.Image.url }}" alt="{{page.Title}}" class="img-fluid" >
+                                </div>
+                                <div class="em-blog-content">
+                                    <div class="blog-page-title pt-3">
+                                        {% autoescape off %}
+                                        {{page.Content}}
+                                        {% endautoescape %}
+                                    </div>
+                                    <div class="blog-page-title pt-3">
+                                        <div class="row pb-3">
+                                            <div class="col-sm-12 pb-3">
+                                                <h3 class="theme-color">Типы забора</h3>
+                                            </div>
+                                            {% for zc in zaborCategories %}
+                                            <div class="col-sm-4">
+                                                <div class="card">
+                                                    <img class="card-img-top" src="{{zc.image_thumbnail.url}}" alt="{{zc.Title}}" style="width:100%">
+                                                    <div class="card-body">
+                                                      <h4 class="card-title" style="font-size: 16px;" >{{zc.Title}}</h4>
+                                                      <!-- <p class="card-text">{{zc.ShortDesc}}</p> -->
+                                                      <a href="{{zc.get_absolute_url}}" class="btn btn-success card-btn full-width">Смотреть</a>
+                                                    </div>
+                                                </div>
+                                                <!-- <h1><a href="#">{{zc.Title}}</a></h1> -->
+                                            </div>
+                                            {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                                            </div>
+                                            <div class="row pb-3">
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Comments  -->
+                        </div>
+                    </div>	
+                </div>
+                <div class=" col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar-right content-widget pdsr">
+                    <div class="blog-left-side widget">
+                        
+                        <div class="widget-sidebar-box-two">
+                            <div class="widget-sidebar-title text-left pb-20">
+                                <h2>Тип забора</h2>
+                                <!-- <div class="em_bar_bg text-left1"></div> -->
+                            </div>
+                            <div class="categories-content">
+                                <ul>
+                                    {% for zc in zaborCategories %}
+                                    <li><a href="{{zc.get_absolute_url }}">{{zc.Title}}</a></li>
+                                    {% endfor %}
+                                </ul>					
+                            </div>
+                        </div>						
+                        
+                        	
+                    </div>
+                </div>	
+            </div>
+        </div>
+    </div>
+
+
+
+    <br><br><br><br>
+    {% endblock mainWrapper %}
+    {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}
+

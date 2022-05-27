@@ -1,0 +1,77 @@
+<div id="sticky-header" class="dreamit_nav_manu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <div class="logo">
+                    <a class="logo_img" href="/" title="Мосзаборы">
+                        <img src="/static/logo/logo-moszabor.png" alt="Мосзаборы лого" />
+                    </a>
+                    <a class="main_sticky" href="/" title="Мосзаборы">
+                        <img src="/static/logo/logo-moszabor.png" alt="Мосзаборы лого" />
+                        <!-- #059643 -->
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav class="dreamit_menu">
+                    <ul class="nav_scroll">
+                        <li><a href="{% url 'home:homePage' %}">Услуги<span><i class="fas fa-angle-down"></i></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="{% url 'home:aboutUs' %}">О нас</a></li>
+                                <li><a href="{% url 'home:viezd-zamershika' %}">Выезд замерщика</a></li>
+                                <li><a href="{% url 'home:aboutUs' %}">Доставка</a></li>
+                                <li><a href="{% url 'home:aboutUs' %}">Монтаж заборов и навесов</a></li>
+                                <li><a href="{% url 'home:aboutUs' %}">Демонтаж заборов и навесов</a></li>
+                                <li><a href="{% url 'home:aboutUs' %}">Вопрос / Ответ</a></li>
+                                <li><a href="{% url 'home:aboutUs' %}">Акции</a></li>
+                                <li><a href="{% url 'home:aboutUs' %}">Гарантия</a></li>
+                                <!-- <li><a href="#">Наша команда</a></li> -->
+                            </ul>
+                        </li>
+                        <!-- <li><a href="{% url 'calc:calculator' %}">Калькулятор</a></li> -->
+
+                        <li><a href="{% url 'home:zaborCategoryList' %}">Заборы<span><i class="fas fa-angle-down"></i></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="/zabory/category/zabory-iz-profnastila">Из профнастила</a></li>
+                                <li><a href="/zabory/category/zabory-iz-setki-rabitsa">Из сетки рабица</a></li>
+                                <li><a href="/zabory/category/zabory-iz-metallicheskogo-shtaketnika">Из металлического штакетника</a></li>
+                                <li><a href="/zabory/category/zabory-iz-setki-rabica-v-sekciyah">Из сетки рабица в секциях</a></li>
+                                <li><a href="/zabory/category/zabory-iz-panelnyh-ograzhdenij-3d">Из панельных ограждений — 3D</a></li>
+                                <li><a href="/zabory/category/svarnye-zabory-iz-profilya">Сварные из профиля</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="{% url 'home:navesy' %}">Навесы<span><i class="fas fa-angle-down"></i></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="/navesy/category/arochnye-navesy">Арочные навесы</a></li>
+                                <li><a href="/navesy/category/odnoskatnye-navesy">Односкатные навесы</a></li>
+                                <li><a href="/navesy/category/poluarochnye-navesy">Полуарочные навесы</a></li>
+                                <li><a href="/navesy/category/dvuskatnye-navesy">Двускатные навесы</a></li>
+
+                            </ul>
+                        </li>
+
+                        <!-- <li><a href="{% url 'home:navesy' %}">Навесы</a></li> -->
+
+                        <li><a href="{% url 'home:portfolio' %}">Фото работы<span><i class="fas fa-angle-down"></i></span></a></li>
+                        <li><a href="{% url 'home:pricelist' %}">Цены<span><i class="fas fa-angle-down"></i></span></a>
+                            <!-- <ul class="sub-menu">
+                                <li><a href="blog-grid.html">Blog Gird</a></li>
+                                <li><a href="blog-list.html">Blog List</a></li>
+                                <li><a href="blog-2column.html">Blog-2Column</a></li>
+                                <li><a href="blog-details.html">Blog-Details</a></li>
+                            </ul> -->
+                        </li>
+                        <li><a href="{% url 'home:contacts' %}">Контакты</a></li>
+
+                    </ul>
+
+                    <div class="header-button">
+                        <a class="dtbtn" style="padding: 12px 20px;" href="{% url 'calc:calculator' %}">Калькулятор</a>	
+                    </div>			
+                    <!-- <i class="fa fa-calculator"></i> -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

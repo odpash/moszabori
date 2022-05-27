@@ -1,0 +1,81 @@
+﻿{% extends 'base.html' %}{% load static %}
+{%block Title%}{{SEO.Title}}{%endblock%}
+    {%block mainWrapper %}
+    <div class="breatcumb-area d-flex align-items-center" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>Фото работы </h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Фото работы</span></li>
+                            </ul>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+
+    <!--==================================================-->
+    <!-- Start Techno Portfolio Area -->
+    <!--==================================================-->
+    <div class="portfolio_area pt-100 pb-80" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="dreamit-section-title text-center pb-30">
+                        <h2>Фото наших работ по</h2>
+                        <h2>созданию <span>заборов и навесов</span></h2>
+                        <!-- <div class="mt-20"></div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portfolio_nav">
+                        <div class="portfolio_menu">
+                            <ul class="menu-filtering">
+                                <li class="current_menu_item" data-filter="*">Все работы</li>
+                                {% for category in portfolioCategories %}
+                                <li data-filter=".{{category.Slug}}" >{{category.Title}}</li>
+                                {% endfor %}
+                                <!-- <li data-filter=".cemes" >Plumbing</li>
+                                <li data-filter=".math" > Repair</li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row image_load">
+                {% for portfolio in portfolioList %}
+                <div class="col-lg-4 col-md-6 col-sm-12 grid-item {{portfolio.Category.Slug}}">
+                    <div class="single_portfolio">
+                        <div class="single_portfolio_inner">
+                            <div class="single_portfolio_thumb">
+                                <img src="{{portfolio.image_thumbnail.url}}" alt="" />
+                                <div class="single_portfolio_content">
+                                    <h3><a href="{{portfolio.get_absolute_url}}">{{portfolio.ShortTitle}}</a></h3>
+                                    <span>{{portfolio.Category.Title}}</span>	
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <!--==================================================-->
+    <!--End datatech Portfolio Area -->
+    <!--==================================================-->
+
+    {% endblock mainWrapper %}
+
+    {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}
+

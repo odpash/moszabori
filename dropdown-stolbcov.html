@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+var sechTolshStolbValues = {
+    "60x60": ['1.5м',    '1.8м', '2м', '3м'],
+    "80x80": ['2м', '2.5м', '3м']
+}
+window.onload = function() {
+  var sechenie = document.getElementById("sechenie");
+  var zaglublenie = document.getElementById("zaglublenie");
+
+  for (var x in sechTolshStolbValues) {
+    sechenie.options[sechenie.options.length] = new Option(x, x);
+  }
+  
+  sechenie.onchange = function() {
+    //empty zaglublenie- dropdowns
+
+    zaglublenie.length = 1;
+    //display correct values
+    var z = sechTolshStolbValues[this.value];
+    for (var i = 0; i < z.length; i++) {
+        zaglublenie.options[zaglublenie.options.length] = new Option(z[i], z[i]);
+    }
+    // zaglublenie.options[0] select the first option 
+  }
+}
+</script>
+</head>   
+<body>
+
+<h1>Cascading Dropdown Example</h1>
+
+<form name="form1" id="form1" action="/action_page.php">
+sechenies: 
+    <select name="sechenie" id="sechenie">
+  </select>
+  <br><br>
+zaglublenies: <select name="zaglublenie" id="zaglublenie">
+    <option value="" selected="selected">Сначала выберите сечение</option>
+  </select>
+  <br><br>
+
+  <input type="submit" value="Submit">  
+</form>
+
+</body>
+</html>

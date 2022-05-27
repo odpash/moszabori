@@ -1,0 +1,60 @@
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#zakazModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#zakazModal" data-whatever="@fat">Open modal for @fat</button> -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#zakazModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+
+<div class="modal fade"  id="zakazModal" tabindex="-1" role="dialog" aria-labelledby="zakazModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="zakazModalLabel">Сделать заказ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'home:navesDetails' Slug=obj.Slug %}" onsubmit="thankyou()" method="POST" novalidate id="zakaz" >{% csrf_token %}
+            <div class="form-group">
+                <label for="recipient-email" class="col-form-label">Email:</label>
+                <input type="email" name="recipient-email" class="form-control" id="recipient-email">
+            </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Ваше имя:</label>
+            <input type="text" name="recipient-name" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-phone" class="col-form-label">Телефон:</label>
+            <input type="text" name="recipient-phone" class="form-control" id="recipient-phone">
+          </div>
+          <input type="text" name="zakaz-id"   class="form-control" value="{{obj.id}}" hidden >
+          <input type="text" class="form-control" name="csrfmiddlewaretoken" value="{{ csrf_token }}" hidden >
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button type="submit" form="zakaz" class="btn btn-success mzn-btn">Заказать</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade"   id="sumittedZakaz" tabindex="-1" role="dialog" aria-labelledby="sumittedZakazLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sumittedZakazLabel">Заявка принята</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Спасибо! Ваше сообщение отправлено! Мы вам скоро позвоним! </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success mzn-color" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>

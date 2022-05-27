@@ -1,0 +1,172 @@
+﻿{% extends 'base.html' %}{% load static %}
+{%block Title%}{{naves.Title}}{%endblock%}
+
+    {% block addToHead %}
+    <link rel="stylesheet"  href="/static/assets/css/mzn-styles.css" type="text/css" media="all" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <style>
+        .card-btn {
+            color: #fff !important; width: 100%
+        }
+        .card-title {
+            font-size: 16px;
+        }
+        .card-body {
+            padding: 1rem;
+        }
+    </style>
+
+    {% endblock %}
+    {%block mainWrapper %}
+    
+    <div class="breatcumb-area d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>{{naves.Title}}</h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i>  <span>Навесы</span></li>
+                            </ul>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+    
+    <div class="blog_area blog-details-area rs pt-115 pb-90" id="blog">
+        <div class="container">		
+            <div class="row">	
+                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dreamit-single-blog-box">
+                                <div class="dreamit-sigle-tmumb">
+                                    <div class="row" style="padding:30px 20px 5px 20px;">
+                                        <div class="col-sm-6">
+                                            <img src="{{naves.Image.url }}" alt="{{naves.Title}}" class="img-fluid" >
+                                        </div>
+                                        <div class="col-sm-6">
+                                            {{naves.ShortDesc}}
+                                            <div class="cena">
+                                                <p>
+                                                    Цена: 
+                                                    <span class="discountedPrice">от {{naves.discountedPrice}} руб.</span>
+                                                    <span class="actualPrice" >от {{naves.actualPrice}} руб.</span>
+                                                </p>
+                                            </div> 
+                                            <a class="btn btn-success" id="zakazSubmitBtn" href="#" data-toggle="modal"  data-target="#zakazModal"  >Заказать навес</a>
+                                            
+    
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="em-blog-content">
+                                    <div class="blog-page-title pt-3">
+                                        {% autoescape off %}
+                                        {{naves.Content}}
+                                        {% endautoescape %}
+                                    </div>
+
+                                    <!-- Другие навесы, если имеются -->
+                                    <div class="blog-page-title pt-3"> 
+                                        <div class="row">
+                                            {% if navesy %}
+                                            <div class="col-sm-12">
+                                                <h3 class="">{{navesCategory.Title}}</h3>
+                                            </div>
+                                            {% for naves in navesy %}
+                                            <div class="col-sm-4">
+                                                <div class="card">
+                                                    <img class="card-img-top" src="{{naves.image_thumbnail.url}}" alt="{{naves.Title}}" style="width:100%">
+                                                    <div class="card-body">
+                                                      <h4 class="card-title"><a href="{{naves.get_absolute_url}}">{{nc.Title}}</a></h4>
+                                                      <!-- <p class="card-text">{{nc.ShortDesc}}</p> -->
+                                                      <!-- <a href="#" class="btn btn-primary stretched-link">Смотреть</a> -->
+                                                    </div>
+                                                </div>
+                                                <!-- <h1><a href="#">{{nc.Title}}</a></h1> -->
+                                            </div>
+                                            {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                                            </div>
+                                            <div class="row">
+                                            {% endif %}
+
+                                            {% endfor %}
+                                            {% endif %} <!-- navesy -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Comments 								 -->
+                        </div>
+                    </div>	
+                </div>
+                <div class=" col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar-right content-widget pdsr">
+                    <div class="blog-left-side widget">
+                        
+                        <div class="widget-sidebar-box-two">
+                            <div class="widget-sidebar-title text-left pb-20">
+                                <h2>Другие {{navesCategory.Title}}</h2>
+                                <!-- <div class="em_bar_bg text-left1"></div> -->
+                            </div>
+                            <div class="categories-content">
+                                <ul>
+                                    <li><a href="#" >{{nc.Title}}</a></li>
+
+                                </ul>					
+                            </div>
+                        </div>						
+                        
+                        	
+                    </div>
+                </div>	
+            </div>
+        </div>
+    </div>
+    {% include 'home/zakaz-forma.html' %}
+    {% endblock mainWrapper %}
+    {% block SMMMetaTags %}{% include 'home/obj-SEO.html' %}{% endblock SMMMetaTags %}
+
+    {% block addToFooter %}
+    <script>
+      
+    //   trigger when form is submitted
+    
+        // $('#zakazSubmitBtn').submit(function(e){
+        //     // $('#sumittedZakaz').modal('show');
+        //     // $('#zakaz').submit();
+        //     $('#sumittedZakaz').modal('show');
+        //     // return false;
+        // });
+
+        // $("zakazModal").onclick('submit', function(){
+        //     $('sumittedZakaz').show();
+        // })
+
+        // $(document).ready(function() {
+        //     $('#zakazSubmitBtn').on('submit', function(e){
+        //         // $('#sumittedZakaz').modal('show');
+        //         // $('#sumittedZakaz').modal('show');
+        //         thankyou();
+        //         e.preventDefault();
+        //     });
+        // });
+
+        function thankyou() {
+            $('#zakaz').modal('hide');
+            // $('#sumittedZakaz').modal('show');
+            $('#sumittedZakaz').modal({backdrop: 'static', keyboard: false}) 
+            // $('#sumittedZakaz').modal({backdrop: 'static', keyboard: false});
+            // $('#myModal').modal({backdrop: 'static', keyboard: false}) 
+            // e.preventDefault();
+        }
+    </script>
+    {% endblock %}

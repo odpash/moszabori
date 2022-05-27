@@ -1,0 +1,21 @@
+{% load static %} {% load i18n %}
+    <meta name="title" content="{{SEO.Title }}">
+    <meta name="keywords" content="{{SEO.Keywords }}" />
+    <meta name="description" content="{{SEO.Content }}">
+    <link rel="canonical" href="https://{{ request.META.HTTP_HOST }}{{ request.path }}"/>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{SEO.Title }}" />
+    <meta property="og:description" content="{{SEO.Content }}" />
+    <meta property="og:image" content="https://{{ request.META.HTTP_HOST }}{% if SEO.Image %}{{SEO.Image.url}}{% else %}{%static 'img/about/about-3.jpg' %}{% endif %}" />
+    <meta property="og:image:alt" content="{{SEO.Title}}" />
+    <meta property="og:image:type" content="image/jpg" />
+    <meta property="og:url" content="https://{{ request.META.HTTP_HOST }}{{ request.path }}" />
+    <meta property="og:site_name" content="moszn.ru" />
+    <!-- Twitter Cards -->
+    <meta name="twitter:title" content="{{SEO.Title }}">
+    <meta name="twitter:description" content="{{SEO.Content }}">
+    <meta name="twitter:image" content="https://{{ request.META.HTTP_HOST }}{% if SEO.Image %}{{SEO.Image.url}}{% else %}{%static 'img/about/about-3.jpg' %}{% endif %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@moszn">
+    <meta name="twitter:creator" content="@SaidmamadG">

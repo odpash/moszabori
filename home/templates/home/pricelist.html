@@ -1,0 +1,70 @@
+﻿{% extends 'base.html' %}{% load static %}
+{%block Title%}{{SEO.Title}}{%endblock%}
+    {%block mainWrapper %}
+
+    <div class="breatcumb-area d-flex align-items-center" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>Расценки</h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Расценки</span></li>
+                            </ul>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+    
+    <!--Start dreamit contact form Area -->
+    <div class="contact-form-area pt-100 pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-sm-12"></div>
+
+                <div class="col-lg-8 col-sm-12">
+                   
+<!--                     
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Наименование услуги</th>
+                            <th scope="col">Единица</th>   
+                            <th scope="col">Стоимость</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for service in pricelist %}
+                            <tr>
+                                <th scope="row">{{service.id}}</th>
+                                <td>{{service.Title}}</td>
+                                <td>{{service.Measurement}}</td>
+                                <td>{{service.Price}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> -->
+                    
+                    {% autoescape off %}
+                        {{page.Content}}
+                    {% endautoescape %}
+
+                    <div class="col-lg-2 col-sm-12"></div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End dreamit contact form Area -->
+
+    {% endblock mainWrapper %}
+    {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}

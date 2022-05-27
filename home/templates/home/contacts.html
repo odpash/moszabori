@@ -1,0 +1,139 @@
+﻿{% extends 'base.html' %}{% load static %}
+{%block Title%}{{SEO.Title}}{%endblock%}
+    {%block mainWrapper %}
+
+    <div class="breatcumb-area d-flex align-items-center" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>{{ page.Title }}</h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Контакты</span></li>
+                            </ul>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+    
+    <!--Start dreamit contact form Area -->
+    <div class="contact-form-area pt-100 pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-lg-2"></div>
+                <div class="col-sm-8 col-lg-8">
+                    {% autoescape off %}
+                        {{page.Content}}
+                    {% endautoescape %}
+                    
+                    <div class="row pb-20">
+                        <div class="col-sm-6">
+                            <p style="float:right; font-weight:bold">Обратная связь</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <a  class="btn btn-success" href="#" data-toggle="modal"  data-target="#zakazModal"  >Написать нам</a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col-sm-2 col-lg-2"></div>
+
+
+                <br><br><br>
+
+
+                
+            </div>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a href="https://yandex.ru/maps/20728/korolev/house/burkovskiy_proyezd_36k3/Z04Yfg9jSUAGQFtvfXVzeHxlYg==/?ll=37.882140%2C55.927662&utm_medium=mapframe&utm_source=maps&z=15.49" style="color:#eee;font-size:12px;position:absolute;top:14px;">
+                        Burkovskiy Drive, 36к3 — Yandex Maps
+                        </a><iframe src="https://yandex.ru/map-widget/v1/-/CCUBq0AP3D?lang=ru_RU" width="100%" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div> 
+                        
+                </div>
+                <div class="col-sm-2"></div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End dreamit contact form Area -->
+
+
+    
+
+    <div class="modal fade"  id="zakazModal" tabindex="-1" role="dialog" aria-labelledby="zakazModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="zakazModalLabel">Напишите нам</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+
+                <div  class="col-lg-12 col-sm-12">
+                    <div class="contact-form-box">
+                        
+                        
+                        <form action="" method="POST" id="moszn-contact-form">{% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="from-box">
+                                        <input type="text" name="name" placeholder="Имя">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="from-box">
+                                        <input type="text" name="email" placeholder="Электронная почта">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="from-box">
+                                        <input type="text" name="phone" placeholder="Телефон *" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="from-box">
+                                        <input type="text" name="subject" placeholder="Тема">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="from-box">
+                                        <textarea name="massage" id="massage" cols="30" rows="10" placeholder="Текст сообщения"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="contact-button text-center">
+                                        <button type="submit">Отправить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="status"></div>
+                    </div>
+                </div>
+
+                <!-- <a class="btn btn-success" href="#" data-toggle="modal"  data-target="#zakazModal"  >Напишите нам</a> -->
+
+
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+              <button type="submit" form="zakaz" class="btn btn-success mzn-btn">Отправить</button>
+            </div> -->
+          </div>
+        </div>
+    </div>
+
+    {% endblock mainWrapper %}
+    {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}{% load static %}
+{%block Title%}Спасибо! Ваш заказ принят!{%endblock%}
+
+    <style>
+        div#obratniyZvonok {
+            border:1px solid green;
+            text-align: center;
+            background-color: grey;
+        }
+        #obratniyZvonok h2 {
+            font-size: 24px;
+            text-align: center;
+            color: green;
+        }
+    </style>
+    {%block mainWrapper %}
+
+    <div class="breatcumb-area d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>Заказ успешно</h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Заказ</span></li>
+                            </ul>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+    
+    <!--Start dreamit contact form Area -->
+    <div class="contact-form-area pt-100 pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                   
+                    <div id="obratniyZvonok">
+                        <h2>Спасибо! Ваш заказ принят!</h2>
+                        <p>Мы вам перезвоним. </p>
+                    </div>
+
+                </div>
+                <div class="col-sm-2"></div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End dreamit contact form Area -->
+    {% endblock mainWrapper %}
+    {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}

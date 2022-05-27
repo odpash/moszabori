@@ -1,0 +1,62 @@
+ /* Zabor details List  */
+ .mz-list li {
+    list-style-type: none;
+    line-height: 14px;
+    font-style: italic;
+    /* text-decoration: dotted; */
+    border-bottom: 1px dotted #049644;
+    padding: 8px 5px;
+}
+.mz-list li::before {
+    content:"\1F5F9";
+    padding-right: 8px;
+    color: #049644;
+    font-size: 24px;
+    font-style: normal;
+}
+
+.mzn-color {
+    color: #049644 !important;
+}
+
+
+ /* Zabor i Naves Price   */
+ .mz-btn {
+    /* margin: 10px 5px; */
+    font-size: 16px;
+    color: #fff;
+    background: #049644;
+    padding: 10px 30px;
+    transition: .3s;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    border-radius: 0;
+    display: inline-block;
+    border: 0;
+}
+.mz-btn:hover {
+    color: #fff;
+    border-bottom: 5px inset #252525;
+    border-right: 5px inset #252525;
+}
+.cena p {
+    /* margin-top: 10px; */
+    padding: 10px 5px 0px 5px;
+    font-size: 14px;
+}
+.cena span.discountedPrice {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color:black;
+}
+
+span.actualPrice {
+    display: inline;
+    font-size: 14px;
+    font-weight: normal;
+    color:#ccc;
+    text-decoration: line-through;
+}
+

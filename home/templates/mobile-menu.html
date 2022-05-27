@@ -1,0 +1,46 @@
+<div class="mobile-menu-area d-sm-block d-md-block d-lg-none ">
+    <div class="mobile-menu">
+        <!-- <img src="/static/assets/images/logo-MZ-yellow-and-black.png"
+            style="display: flex; height: 50px; float: left; text-align: center; position:relative; top: 0; left: 0; z-index: 10000000;"> -->
+        <nav class="dreamit_menu">
+            <ul class="nav_scroll">
+                <li><a href="{% url 'home:homePage' %}">Главная<span><i class="fas fa-angle-down"></i></span></a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'home:aboutUs' %}">О нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'calc:calculator' %}">Калькулятор</a></li>
+                <li><a href="{% url 'home:zaborCategoryList' %}">Заборы<span><i class="fas fa-angle-down"></i></span></a>
+                    <ul class="sub-menu">
+                        <!-- <li><a href="#">Из профнастила</a></li>
+                        <li><a href="#">Из сетки рабица</a></li>
+                        <li><a href="#">Из металлического штакетника</a></li>
+                        <li><a href="#">Из сетки рабица в секциях</a></li>
+                        <li><a href="#">Из панельных ограждений — 3D</a></li>
+                        <li><a href="#">Сварные из профиля</a></li> -->
+                        <li><a href="/zabory/category/zabory-iz-profnastila">Из профнастила</a></li>
+                        <li><a href="/zabory/category/zabory-iz-setki-rabitsa">Из сетки рабица</a></li>
+                        <li><a href="/zabory/category/zabory-iz-metallicheskogo-shtaketnika">Из металлического штакетника</a></li>
+                        <li><a href="/zabory/category/zabory-iz-setki-rabica-v-sekciyah">Из сетки рабица в секциях</a></li>
+                        <li><a href="/zabory/category/zabory-iz-panelnyh-ograzhdenij-3d">Из панельных ограждений — 3D</a></li>
+                        <li><a href="/zabory/category/svarnye-zabory-iz-profilya">Сварные из профиля</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'home:navesy' %}">Навесы<span><i class="fas fa-angle-down"></i></span></a>
+                    <ul class="sub-menu">
+                        <li><a href="/navesy/category/arochnye-navesy">Арочные навесы</a></li>
+                        <li><a href="/navesy/category/odnoskatnye-navesy">Односкатные навесы</a></li>
+                        <li><a href="/navesy/category/poluarochnye-navesy">Полуарочные навесы</a></li>
+                        <li><a href="/navesy/category/dvuskatnye-navesy">Двускатные навесы</a></li>
+                    </ul>
+                </li>
+                <!-- <li><a href="{% url 'home:navesy' %}">Навесы</a></li> -->
+                <li><a href="{% url 'home:portfolio' %}">Фото работы</a></li>
+                <li><a href="{% url 'home:pricelist' %}">Цены</a></li>
+                <li><a href="{% url 'home:contacts' %}">Контакты</a></li>
+                <!-- <li><a href="{% url 'calc:calculator' %}"><i class="fa fa-calculator"></i> Калькулятор</a></li> -->
+
+            </ul>
+        </nav>
+    </div>
+</div>

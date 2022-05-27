@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+var subjectObject = {
+  "Front-end": ["HTML",    "CSS",    "JavaScript"],
+  "Back-end": ["PHP", "SQL"]
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("topic");
+
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+
+    topicSel.length = 1;
+    //display correct values
+    var z = subjectObject[this.value];
+    for (var i = 0; i < z.length; i++) {
+        topicSel.options[topicSel.options.length] = new Option(z[i], z[i]);
+    }
+
+
+
+
+
+  }
+
+}
+</script>
+</head>   
+<body>
+
+<h1>Cascading Dropdown Example</h1>
+
+<form name="form1" id="form1" action="/action_page.php">
+Subjects: <select name="subject" id="subject">
+    <option value="" selected="selected">Select subject</option>
+  </select>
+  <br><br>
+Topics: <select name="topic" id="topic">
+    <option value="" selected="selected">Please select subject first</option>
+  </select>
+  <br><br>
+
+  <input type="submit" value="Submit">  
+</form>
+
+</body>
+</html>

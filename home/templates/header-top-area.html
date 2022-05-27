@@ -1,0 +1,101 @@
+
+    <style>
+        .header-top-area {
+            background-color: #fff;
+            /* I added below */
+            border:1px solid #ddd;
+            padding:20px; 
+            line-height: 18px;
+        }
+
+        .dreamit-header-menu-address ul li a {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            color: #000;
+        }
+
+        .dreamit-header-menu-address ul li span {
+            color: #000;
+            font-size: 14px;
+            display: inline-block;
+        }
+        .dreamit-header-top-socail a {
+            display: inline-block;
+            color: #000;
+            font-size: 15px;
+        }
+        .callback-btn {
+            padding: 12px 19px 13px;
+            margin: 0;
+            font-size: 0.933em;
+            line-height: 0.85em;
+            font-weight: normal;
+            border: 1px solid green;
+        }
+        .dreamit-header-top-socail a i {
+            margin-left: unset;
+        }
+        .dreamit-header-top-socail .address {
+            margin-right: 50px;
+            /* max-width: 160px; */
+            float: left;
+            /* line-height: 14px; */
+        }
+        .dreamit-header-top-socail .address span, .dreamit-header-menu-address span.left-span {
+            font-size:12px;
+            line-height: 5px;
+            color: #888;
+            /* padding-left:10px; */
+            flex-direction: column;
+            align-items:center;
+        }
+        .whatsapp{
+            background: url(/static/moszabor/whatsapp.svg) no-repeat;
+            width: 18px;
+            height: 18px;
+            margin-right: 5px;
+            padding-left: 20px;
+            display: inline-block;
+        }
+    </style>
+    <div class="header-top-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-lg-8">
+                    <div class="dreamit-header-menu-address">
+                        <ul>
+                            <!-- <li>
+                                <a href="#"> Напишите нам</a>   <br>
+                                <a href="#"><i class="far fa-envelope"></i> info@moszn.ru</a>  
+                            </li> -->
+                            <li><span><i class="fas fa-map-marker-alt"></i> Москва </span>  <br>
+                                <span class="left-span">Московская область</span>
+                            </li>
+                            <li><a href="tel:+79252213410"><i class="fas fa-phone"></i> +7 925 221 3410</a>
+                                <br>
+                                <!-- <i class="fa fa-whatsapp"></i> -->
+                                <a href="https://wa.me/79252213410"  rel="nofollow" >
+                                    <img class="whatsapp" src="/static/moszabor/whatsapp.svg" alt=""> 
+                                   <span class="left-span">whatsapp</span> 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="dreamit-header-top-socail">
+                        <a href="#" class="address" ><i class="fa fa-clock"></i> 
+                            Пн - Вс <br>
+                            <span>
+                                09:00–19:00 
+                            </span>
+                    
+                        </a> 
+
+                        <a href="#" data-toggle="modal" data-target="#zvonokModalForm" class="callback-btn" ><i class="fa fa-phone"></i> Заказать звонок</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

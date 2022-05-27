@@ -1,0 +1,301 @@
+{% extends 'base.html' %}{% load static %}
+{% block Title %}{{ SEO.Title }}{% endblock %}
+{% block mainWrapper %}
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <div class="breatcumb-area d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breatcumb-content text-center">
+                        <div class="breatcumb-title">
+                            <h2>Калькулятор</h2>
+                        </div>
+                        <div class="breatcumb-content-text">
+                            <ul>
+                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Калькулятор</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End	softech slider Area -->
+
+    <!--Start dreamit contact form Area -->
+    <div class="contact-form-area pt-100 pb-90">
+        <div class="container">
+            <div class="col-lg-12 col-sm-12">
+                <div class="contact-form-box">
+                    <div class="dreamit-section-title section-b text-center">
+                        <!-- <h5>Посчитайте сами</h5> -->
+
+                        <h2>Калькулятор стоимости забора из рабицы</h2>
+                        <!-- <h2>до гвозди</h2> -->
+                        <!-- <div class="mt-20"></div> -->
+                        <div class="row" style="padding-top: 30px;">
+                            <div class="col-md-12">
+                                <div class="portfolio_nav">
+                                    <div class="portfolio_menu">
+                                        <ul class="menu-filtering">
+                                            <a href="/calculator/calc-profnastil" style="color: #000000">
+                                                <li>Профнастил</li>
+                                            </a>
+
+                                            <a href="/calculator/calc-metal" style="color: #000000">
+                                                <li>Метал штакетник</li>
+                                            </a>
+                                            <a href="#" style="color: #000000">
+                                                <li class="current_menu_item">Рабица</li>
+                                            </a>
+                                            <a href="/calculator/calc-boarder" style="color: #000000">
+                                                <li>Ограждение 3D</li>
+                                            </a>
+                                            <a href="/calculator/calc-navesi" style="color: #000000">
+                                                <li>Навесы</li>
+                                            </a>
+
+
+                                            <!-- <li data-filter=".cemes" >Plumbing</li>
+                                            <li data-filter=".math" > Repair</li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+{% if messages %}
+                <div class="messages" style="alignment: center">
+                    {% for message in messages %}
+                        <h6{% if message.tags %} class="{{ message.tags }}" style="color: darkred" {% endif %}>{{ message }}</h6>
+
+                    {% endfor %}
+                </div>
+            {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+
+
+                <div>
+                    <br class="contact-form-box">
+                        <form action="{% url 'calc:rabitsa' %}" method="GET">
+                            <div class="form-group row">
+                                <label for="dlinaZabora" class="col-md-3 col-sm-12 col-form-label">Общая длина забора,
+                                    включая ворота и калитки, м</label>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="input-group">
+                                        <input id="dlinaZabora" name="dlinaZabora" onchange="doubleValidate(this)"
+                                               onkeypress="doubleValidate(this)" placeholder="Длина забора"
+                                               type="number" step="0.01"
+                                               value="{% if dlinaZabora %}{{ dlinaZabora }}{% else %}100.0{% endif %}"
+                                               class="form-control" required="required">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">м</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <label for="visotaZabora" class="col-md-3 col-sm-12  col-form-label">Высота
+                                    забора</label>
+                                <div class="col-md-3 col-sm-12">
+                                    <select id="visotaZabora" name="visotaZabora"
+                                            class="custom-select" required="required">
+                                        {% for v in Rabizavisotazabora %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="methodYstanovkiStolbov" class="col-md-3 col-sm-12  col-form-label">Метод
+                                    установки столбов</label>
+                                <div class="col-md-3 col-sm-12">
+                                    <select id="methodYstanovkiStolbov" name="methodYstanovkiStolbov"
+                                            class="custom-select" required="required">
+                                        {% for v in Rabizamethodystanovkistolbov %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <label for="razmerTolshinaStolb" class="col-md-3 col-sm-12 col-form-label">Размер и
+                                    толщина столбов</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="razmerTolshinaStolb" name="razmerTolshinaStolb" class="custom-select" required="required">
+                                        {% for v in Rabizarazmertolshinastolb %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Заглубление столба -->
+                            <div class="form-group row">
+                                <label for="pokraskaStolb" class="col-sm-12 col-md-3 col-form-label">Покраска столбов и
+                                    секций </label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="pokraskaStolb" name="pokraskaStolb" class="custom-select" required="required">
+                                        {% for v in Rabizapokraskastolb %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <label for="raspashnieVorota" class="col-sm-12 col-md-3 col-form-label">Распашные
+                                    ворота:</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="raspashnieVorota" name="raspashnieVorota" class="custom-select" required="required">
+                                        {% for v in Rabizaraspashnievorota %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="kalitkaStandart" class="col-sm-12 col-md-3 col-form-label">Калитка
+                                    "Стандарт"</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="kalitkaStandart" name="kalitkaStandart" class="custom-select" required="required">
+                                        {% for v in Rabizakalitkastandart %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <label for="shirinaVorot" class="col-sm-12 col-md-3 col-form-label">Ширина ворот</label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="shirinaVorot" name="shirinaVorot" class="custom-select" required="required">
+                                        {% for v in Rabizashirinavorot %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="demontashVorot" class="col-sm-12 col-md-3 col-form-label">Демонтаж старого
+                                    забора: </label>
+                                <div class="col-sm-12 col-md-3">
+                                    <select id="demontashVorot" name="demontashVorot" class="custom-select" required="required">
+                                        {% for v in Rabizademontashvorot %}
+                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+
+                                <label for="kmMkad" onkeypress="doubleValidate(this)"
+                                       class="col-md-3 col-sm-12 col-form-label">Количество км от МКАД: </label>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="input-group">
+                                        <input id="kmMkad" name="kmMkad"
+                                               type="number" step="0.01"
+                                               value="{% if visotaZabora %}{{ visotaZabora }}{% else %}2.0{% endif %}"
+                                               class="form-control" required="required">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">м</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <p style="font-size: 12px;">
+                                        *Все расчёты носят ознакомительный характер, окончательный расчёт производит
+                                        менеджер с учётом всех данных.
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="submit" method="post" action="/calculator/calc-rabitsa"
+                                    class="btn btn-success">Рассчитать
+                            </button>
+                        </form>
+                    </br>
+
+                        <script>
+                            function doubleValidate(input) {
+                                input.value = input.value.replace(/[,]/g, ".");
+                            }
+                        </script>
+
+
+                        <div class="wrapper_table_result" style="overflow-x:auto;">
+                            <table class="calcResultMaterial table-bordered"
+                                   style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                                   cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        Наименование
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        Сумма
+                                    </th>
+
+                                </tr>
+                                {% for v in result_items %}
+                                    <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                                        {% endfor %}
+
+                                </thead>
+                                <tbody>
+
+
+                                <tr class="calcMaterial__summ">
+                                    <td style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;"></td>
+                                    <td class="result-summ"
+                                        style="text-align: right; position: relative; border: solid 1px black; border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;white-space: nowrap;">
+                                        <strong>{{ totalLaborCost|floatformat:0 }}</strong>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="finish-total-price"
+                             style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%;">
+                            <span style="display: table-cell; width: 80%; padding-left: 2px;">Итоговая стоимость договора:</span>
+                            <span class="stoimost"
+                                  style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }} руб.</span>
+                        </div>
+                        <div class="col-sm-12"
+                             style="font-size: 20px; text-align: center; font-weight: bold;  font-family: 'Oswald', sans-serif !important;;">
+                            <br>
+                            <p style="font-weight: bold;">
+                                Обязательно позвоните нам, Вы будете приятно удивлены!
+                            </p>
+                            <span style="color:#049644; font-size: 30px;">+7 (925) 221-34-10</span>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $("body").append("<script async src='/bitrix/js/concept.quiz/scripts.js'><\/script><link rel='stylesheet' href='/bitrix/css/concept.quiz/template_styles.css'>");
+                            });
+                        </script>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End dreamit contact form Area -->
+
+    <script src="/static/moszabor/calc.js"></script>
+{% endblock mainWrapper %}
+
+{% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}
