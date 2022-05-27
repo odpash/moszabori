@@ -1,53 +1,171 @@
 {% extends 'base.html' %}{% load static %}
-{%block title%}{{SEO.Title}}{%endblock%}
-    {%block mainWrapper %}
-    
-    <div class="breatcumb-area d-flex align-items-center" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breatcumb-content text-center">
-                        <div class="breatcumb-title">
-                            <h2>Выезд замерщика</h2>
-                        </div>
-                        <div class="breatcumb-content-text">
-                            <ul>
-                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>Выезд замерщика</span></li>
-                            </ul>
-                        </div>	
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End	softech slider Area -->
+{% block title %}{{ SEO.Title }}{% endblock %}
+{% block mainWrapper %}
+    <link rel="stylesheet" href="static/assets/css/main.css">
 
-    <div class="about-area style-two pt-90 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="dreamit-about-thumb">
-                        <img src="{{page.Image.url}}" alt="{{page.Title}}">
-                    </div>
-                </div>	
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="dreamit-section-title text-left">
-                                <h5>О нас</h5>
-                                <h2>Более 7 лет опыт создания заборов <span> и навесов</span></h2>
-                                <!-- <h2> <span> и навесов</span></h2> -->
-                                <div class="mt-20"></div>
-                                {% autoescape off %}
-                                    {{page.Content}}
-                                {% endautoescape %}
+
+
+
+    <div id="app" class="main-grid"><!---->
+
+        <main class="site-main">
+            <div class="canvas default">
+                <div class="container">
+                    <div class="">
+                        <article>
+                            <header>
+                                <div class="content-caption"><h1>Выезд замерщика</h1></div>
+                                <figure class="image-block"><img
+                                        src="/static/moszabor/p642423v1920x1080s0.jpg" alt="Выезд замерщика" class="image">
+                                </figure>
+                            </header>
+                            <div class="mb-5">
+                                <div class="h2">Преимущества</div>
                             </div>
-                        </div>
-  
+                            <div class="row mb-5 advantages">
+                                <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                    <div class="cardAdvant"><img
+                                            src="static/moszabor/index.png">
+                                        <div>Быстрое выполнение работ</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                    <div class="cardAdvant"><img
+                                            src="static/moszabor/index2.png">
+                                        <div>Все работы под ключ</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                    <div class="cardAdvant"><img src="static/moszabor/index3.png">
+                                        <div>Гарантия 5 лет</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                    <div class="cardAdvant"><img
+                                            src="static/moszabor/index4.png">
+                                        <div>Качественная сварка конструкции</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                    <div class="cardAdvant"><img src="static/moszabor/index5.png">
+                                        <div>Низкие цены</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                    <div class="cardAdvant"><img
+                                            src="static/moszabor/index6.png">
+                                        <div>Поликарбонат премиум класса 10мм</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="transform: translateY(-50px);"></div>
+                            <p>Выезд замерщика входит в стоимость производства и монтажа любой металлоконструкции в
+                                случае если клиент подписывает контракт на производство изделия.</p>
+                            <p>Если контракт не подписывается, стоимость выезда замерщика составляет 2,500 руб. Эта цена
+                                покрывает время, потраченное замерщиком на выезд, а также накладные расходы в виде
+                                бензина, амортизации транспортного средства.</p>
+                            <p>Мы очень ценим время наших клиентов и ждем от клиентов такого же отношения к нашему
+                                труду.</p></article>
+                        <aside>
+                        </aside>
                     </div>
                 </div>
             </div>
+        </main>
+        <script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"name": "Выезд замерщика",
+	"@type": "Service",
+	"description": "Выезд замерщика входит в стоимость производства и монтажа любой металлоконструкции в случае если клиент подписывает контракт на производство изделия.",
+	"image": "/images/p642423v1920x1080s0.jpg",
+	"offers": {
+		"@type": "AggregateOffer",
+		"lowPrice": "900",
+		"priceCurrency": "RUB"
+	}
+}
+</script>
+        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+            <div class="slides"></div>
+            <span class="prev"><svg width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg" class="bi bi-arrow-left"><path
+                    fill-rule="evenodd"
+                    d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"></path> <path
+                    fill-rule="evenodd"
+                    d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path></svg></span> <span
+                class="next"><svg width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+                                  xmlns="http://www.w3.org/2000/svg" class="bi bi-arrow-right"><path fill-rule="evenodd"
+                                                                                                     d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"></path> <path
+                fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"></path></svg></span>
+            <span class="close">×</span> <span class="play-pause"></span>
+            <ol class="indicator"></ol>
         </div>
+        <button type="button" class="btn-to-top"><i class="fas fa-chevron-up"></i></button> <!----> <!----> <!---->
     </div>
-    
-    {% endblock mainWrapper %}
+
+    <div id="btn-to-top" class="btn-to-top">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="#ffffff"
+                  d="M4.465 263.536l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L207 92.113V468c0 6.627 5.373 12 12 12h10c6.627 0 12-5.373 12-12V92.113l178.494 178.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.05c-4.686-4.686-12.284-4.686-16.971 0L4.465 246.566c-4.687 4.686-4.687 12.284 0 16.97z"></path>
+        </svg>
+    </div>
+
+    <script src="/scripts/all-scripts.js" rel="preload" as="script"></script>
+
+
+    <script src="/scripts/cms-vue-lib.js?v=13" rel="preload" as="script"></script>
+    <script src="/Scripts/services.js?nocache=true?v=4"></script>
+    <script src="/Scripts/mixins/onlineShop.js?v=5"></script>
+    <script src="/Scripts/mixins/view.js?v=1"></script>
+    <script src="/scripts/init.js?v=6" rel="preload" as="script"></script>
+
+
+
+
+
+
+
+    <script src="/scripts/libs/blueimp/js/jquery.blueimp-gallery.min.js"></script>
+
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        function initCounters() {
+            (function (m, e, t, r, i, k, a) {
+                m[i] = m[i] || function () {
+                    (m[i].a = m[i].a || []).push(arguments)
+                };
+                m[i].l = 1 * new Date();
+                k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+            })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(67222159, "init", {
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                webvisor: true
+            });
+        }
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/67222159" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+    <script>
+        $(document).ready(function () {
+
+            $(document).one('scroll mousemove keydown', initCounters);
+            setTimeout(initCounters, 3000)
+
+        });
+    </script>
+
+
+
+
+
+
+{% endblock mainWrapper %}

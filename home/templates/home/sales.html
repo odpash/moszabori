@@ -1,53 +1,67 @@
 {% extends 'base.html' %}{% load static %}
-{%block title%}{{SEO.Title}}{%endblock%}
-    {%block mainWrapper %}
-    
-    <div class="breatcumb-area d-flex align-items-center" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breatcumb-content text-center">
-                        <div class="breatcumb-title">
-                            <h2>О нас</h2>
-                        </div>
-                        <div class="breatcumb-content-text">
-                            <ul>
-                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>О нас</span></li>
-                            </ul>
-                        </div>	
-                    </div>
-                </div>
+{% block title %}{{ SEO.Title }}{% endblock %}
+{% block mainWrapper %}
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <main class="site-main">
+        <div class="canvas darken">
+            <nav class="container">
+            </nav>
+        </div>
+        <div class="canvas-header">
+            <div class="container">
+                <div class="title"><h1>
+                    Акции
+                </h1></div>
             </div>
         </div>
-    </div>
-    <!-- End	softech slider Area -->
-
-    <div class="about-area style-two pt-90 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="dreamit-about-thumb">
-                        <img src="{{page.Image.url}}" alt="{{page.Title}}">
-                    </div>
-                </div>	
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="dreamit-section-title text-left">
-                                <h5>О нас</h5>
-                                <h2>Более 7 лет опыт создания заборов <span> и навесов</span></h2>
-                                <!-- <h2> <span> и навесов</span></h2> -->
-                                <div class="mt-20"></div>
-                                {% autoescape off %}
-                                    {{page.Content}}
-                                {% endautoescape %}
+        <div class="canvas">
+            <div class="container">
+                <div class="content">
+                    <div id="promoactionsList" data-load-url="/promoactions/Home/GetHelperHtml/"
+                         data-template-name="_object-list" data-helper-name="LinkedComponents"
+                         data-component-name="all-actions" data-component-class-name="PromoactionFolder"
+                         data-page-index="1" data-page-size="12" data-field-name="COMPONENT_ID" data-direction="ASC"
+                         data-total="2" data-list-type="grid" data-list-item-view="image-top" data-picture-type="img"
+                         data-show-comment="True" data-base-url="/promoactions/" data-list-column="2"
+                         data-show-meta="True" data-show-date="True" data-show-details="True"
+                         data-show-details-title="Подробнее" class="object-list grid column-2 image-top">
+                        <div class="item">
+                            <div data-href="/promoactions/skidka-15-na-zakaz-navesov-do-1-iyunya/"
+                                 class="item-img clickable">
+                                <picture>
+                                    <source srcset="/images/ci1130896v600x375s0.jpg 2x, /images/ci1130896v400x250s0.jpg 1x">
+                                    <img src="/images/ci1130896v400x250s0.jpg 1x"
+                                         srcset="/images/ci1130896v600x375s0.jpg 2x"></picture>
+                                <div class="item-more">
+                                    <div class="more-title">Подробнее</div>
+                                </div>
                             </div>
+                            <div class="item-content">
+                                <div class="item-meta"></div>
+                                <a title="Скидка 15% на заказ навесов до 1 июня!"
+                                   href="/promoactions/skidka-15-na-zakaz-navesov-do-1-iyunya/" class="item-caption">Скидка
+                                    15% на заказ навесов до 1 июня!</a></div>
                         </div>
-  
+                        <div class="item">
+                            <div data-href="/promoactions/skidka-20-na-zakaz-navesov/" class="item-img clickable">
+                                <picture>
+                                    <source srcset="/images/ci1109105v600x375s0.jpg 2x, /images/ci1109105v400x250s0.jpg 1x">
+                                    <img src="/images/ci1109105v400x250s0.jpg 1x"
+                                         srcset="/images/ci1109105v600x375s0.jpg 2x"></picture>
+                                <div class="item-more">
+                                    <div class="more-title">Подробнее</div>
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <div class="item-meta"></div>
+                                <a title="Скидка 20% на заказ навесов до 1 марта!"
+                                   href="/promoactions/skidka-20-na-zakaz-navesov/" class="item-caption">Скидка 20% на
+                                    заказ навесов до 1 марта!</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    {% endblock mainWrapper %}
+    </main>
+
+{% endblock mainWrapper %}

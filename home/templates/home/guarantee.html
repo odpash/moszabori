@@ -1,53 +1,56 @@
 {% extends 'base.html' %}{% load static %}
-{%block title%}{{SEO.Title}}{%endblock%}
-    {%block mainWrapper %}
-    
-    <div class="breatcumb-area d-flex align-items-center" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breatcumb-content text-center">
-                        <div class="breatcumb-title">
-                            <h2>О нас</h2>
-                        </div>
-                        <div class="breatcumb-content-text">
-                            <ul>
-                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>О нас</span></li>
-                            </ul>
-                        </div>	
-                    </div>
-                </div>
-            </div>
+{% block title %}{{ SEO.Title }}{% endblock %}
+{% block mainWrapper %}
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <main class="site-main">
+        <div class="canvas darken">
+            <nav class="container">
+            </nav>
         </div>
-    </div>
-    <!-- End	softech slider Area -->
+        <div class="container">
+            <artcile>
+                <header><h1>Гарантии и сертификаты</h1></header>
+                <p>На все металлические конструкции компания "Моснавесы" дает гарантию 5 лет.</p>
+                <p>В гарантию включена:</p>
+                <ol>
+                    <li>Гарантия на металлический каркас навеса</li>
+                    <li>Гарантия на обшивку из поликарбоната</li>
+                    <li>Гарантия на обшивку из профнастила</li>
+                    <li>Гарантия на обшивку из металлочерепицы</li>
+                </ol>
+                <footer class="mb-5">
+                    <div class="object-header">
+                        <div class="object-title"><h2>Сертификаты</h2></div>
+                    </div>
+                    <div id="garanties_images" class="images-list column-3">
+                        <div class="item portrait"><a href="/static/moszabor/p618540.jpg" data-title="Гарантии и сертификаты"
+                                                      data-gallery="garanties">
+                            <picture>
+                                <source srcset="/static/moszabor/p618540.jpg 1x, /static/moszabor/p618540.jpg 2x"
+                                        media="(min-width: 576px)">
+                                <img src="/static/moszabor/p618540.jpg 1x"
+                                     srcset="/static/moszabor/p618540.jpg 2x" alt="Гарантии и сертификаты"></picture>
+                        </a></div>
+                        <div class="item portrait"><a href="/static/moszabor/p618542.jpg" data-title="Гарантии и сертификаты"
+                                                      data-gallery="garanties">
+                            <picture>
+                                <source srcset="/static/moszabor/p618542.jpg 1x, /images/ci1107193v450x750s0.jpg 2x"
+                                        media="(min-width: 576px)">
+                                <img src="/images/ci1107193v300x500s0.jpg 1x"
+                                     srcset="/images/ci1107193v450x750s0.jpg 2x" alt="Гарантии и сертификаты"></picture>
+                        </a></div>
+                        <div class="item portrait"><a href="/static/moszabor/p618541.jpg" data-title="Гарантии и сертификаты"
+                                                      data-gallery="garanties">
+                            <picture>
+                                <source srcset="/static/moszabor/p618541.jpg 1x, /images/ci1107194v450x750s0.jpg 2x"
+                                        media="(min-width: 576px)">
+                                <img src="/images/ci1107194v300x500s0.jpg 1x"
+                                     srcset="/images/ci1107194v450x750s0.jpg 2x" alt="Гарантии и сертификаты"></picture>
+                        </a></div>
+                    </div>
+                </footer>
+            </artcile>
+        </div>
+    </main>
 
-    <div class="about-area style-two pt-90 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="dreamit-about-thumb">
-                        <img src="{{page.Image.url}}" alt="{{page.Title}}">
-                    </div>
-                </div>	
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="dreamit-section-title text-left">
-                                <h5>О нас</h5>
-                                <h2>Более 7 лет опыт создания заборов <span> и навесов</span></h2>
-                                <!-- <h2> <span> и навесов</span></h2> -->
-                                <div class="mt-20"></div>
-                                {% autoescape off %}
-                                    {{page.Content}}
-                                {% endautoescape %}
-                            </div>
-                        </div>
-  
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    {% endblock mainWrapper %}
+{% endblock mainWrapper %}

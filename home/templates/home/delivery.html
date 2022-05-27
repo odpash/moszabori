@@ -1,53 +1,69 @@
 {% extends 'base.html' %}{% load static %}
-{%block title%}{{SEO.Title}}{%endblock%}
-    {%block mainWrapper %}
-    
-    <div class="breatcumb-area d-flex align-items-center" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breatcumb-content text-center">
-                        <div class="breatcumb-title">
-                            <h2>О нас</h2>
+{% block title %}{{ SEO.Title }}{% endblock %}
+{% block mainWrapper %}
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <main class="site-main">
+        <div class="canvas default">
+            <div class="container">
+                <div class="">
+                    <article>
+                        <header>
+                            <div class="content-caption"><h1>Доставка</h1></div>
+                            <figure class="image-block"><img
+                                    src="static/moszabor/p641588.jpg" alt="Доставка" class="image"></figure>
+                        </header>
+                        <div class="mb-5">
+                            <div class="h2">Преимущества</div>
                         </div>
-                        <div class="breatcumb-content-text">
-                            <ul>
-                                <li><a href="#">Главная</a> <i class="fas fa-angle-right"></i> <span>О нас</span></li>
-                            </ul>
-                        </div>	
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End	softech slider Area -->
-
-    <div class="about-area style-two pt-90 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="dreamit-about-thumb">
-                        <img src="{{page.Image.url}}" alt="{{page.Title}}">
-                    </div>
-                </div>	
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="dreamit-section-title text-left">
-                                <h5>О нас</h5>
-                                <h2>Более 7 лет опыт создания заборов <span> и навесов</span></h2>
-                                <!-- <h2> <span> и навесов</span></h2> -->
-                                <div class="mt-20"></div>
-                                {% autoescape off %}
-                                    {{page.Content}}
-                                {% endautoescape %}
+                        <div class="row mb-5 advantages">
+                            <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                <div class="cardAdvant"><img
+                                        src="static/moszabor/index.png">
+                                    <div>Быстрое выполнение работ</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                <div class="cardAdvant"><img src="static/moszabor/index2.png">
+                                    <div>Все работы под ключ</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                <div class="cardAdvant"><img src="static/moszabor/index3.png">
+                                    <div>Гарантия 5 лет</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                <div class="cardAdvant"><img
+                                        src="static/moszabor/index4.png">
+                                    <div>Качественная сварка конструкции</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                <div class="cardAdvant"><img src="static/moszabor/index5.png">
+                                    <div>Низкие цены</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-xl-4">
+                                <div class="cardAdvant"><img
+                                        src="static/moszabor/index6.png">
+                                    <div>Поликарбонат премиум класса 10мм</div>
+                                </div>
                             </div>
                         </div>
-  
-                    </div>
+                        <div style="transform: translateY(-50px);"></div>
+                        <p>Стоимость доставки навесов, козырьков, лестниц бесплатная и входит в общую стоимость договора
+                            при условии производства и монтажа изделия "под ключ".</p>
+                        <p>В отдельных случаях, если изделие нестандартное или объект на котором устанавливается изделие
+                            находится на значительном расстоянии от МКАД, стоимость доставки оговаривается отдельно.</p>
+                    </article>
+                    <aside>
+
+                    </aside>
                 </div>
             </div>
         </div>
-    </div>
-    
-    {% endblock mainWrapper %}
+    </main>
+
+
+
+{% endblock mainWrapper %}
