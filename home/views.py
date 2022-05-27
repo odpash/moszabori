@@ -62,6 +62,10 @@ def sales(request):
     return render(request, template)
 
 
+def qa(request):
+    template = 'home/qa.html'
+    return render(request, template)
+
 def contacts(request):
 
     if request.method == 'POST':

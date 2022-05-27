@@ -16,6 +16,7 @@ urlpatterns = [
     path('montash', views.montash, name="montash"),
     path('guarantee', views.guarantee, name="guarantee"),
     path('sales', views.sales, name="sales"),
+    path('qa', views.qa, name="qa"),
 
     path('zabory/', views.zaborCategoryList, name="zaborCategoryList"),
     path('zabory/category/<slug:Slug>', views.zaborCategory, name='zaborCategory'),
