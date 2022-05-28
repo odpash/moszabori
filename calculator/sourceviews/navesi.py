@@ -4,20 +4,9 @@ from django.contrib import messages
 from calculator.sourceviews.rasheti import navesi
 from calculator.sourcemodels.navesi import *
 
+
 def main(request):
     template = 'calculator/navesi.html'
-
-    descrs = {
-        "NavesidlinaZabora": "Длина забора",
-        "NavesishirinaZabora": "Ширина забора",
-        "NavesivisotaZabora": "Высота забора",
-        "Navesityp": "Тип фермы",
-        "Navesirazmer": "Размер и толщина столбцов",
-        "Navesimethod": "Метод установки столбов",
-        "Navesikrovlya": "Кровельный материал",
-        "Navesifermi": "Боковые фермы",
-        "NavesikmMkad": "Расстояние от МКАД",
-    }
     args = {
         "NavesidlinaZabora": NavesidlinaZabora.objects.all().values(),
         "NavesishirinaZabora": NavesishirinaZabora.objects.all().values(),
@@ -38,5 +27,5 @@ def main(request):
                 return render(request, template, args)
 
         # here
-        args = navesi.main(args, data, 'Navesi', descrs)
+        args = navesi.main(args, data)
     return render(request, template, args)  # used at first page load
