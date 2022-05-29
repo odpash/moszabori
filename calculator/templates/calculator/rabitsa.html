@@ -106,8 +106,12 @@
                                     <select id="Rabizavisotazabora" name="Rabizavisotazabora"
                                             class="custom-select" required="required">
                                         {% for v in Rabizavisotazabora %}
-                                            <option value="{{ v }}">{{ v }}</option>
+                                            <option value="{{ v }}">{{ v }}<div class="input-group-append">
+                                            <div class="input-group-text">м</div>
+                                        </div></option>
+
                                         {% endfor %}
+
                                     </select>
                                 </div>
 
@@ -120,7 +124,9 @@
                                     <select id="Rabizatolshinastolba" name="Rabizatolshinastolba"
                                             class="custom-select" required="required">
                                         {% for v in Rabizatolshinastolba %}
-                                            <option value="{{ v }}">{{ v }}</option>
+                                            <option value="{{ v }}">{{ v }}<div class="input-group-append">
+                                            <div class="input-group-text">мм</div>
+                                        </div></option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -128,7 +134,9 @@
                                 <div class="col-sm-12 col-md-3">
                                     <select id="Rabizasetka" name="Rabizasetka" class="custom-select" required="required">
                                         {% for v in Rabizasetka %}
-                                            <option value="{{ v }}">{{ v }}</option>
+                                            <option value="{{ v }}">{{ v }}<div class="input-group-append">
+                                            <div class="input-group-text">мм</div>
+                                        </div></option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -139,7 +147,9 @@
                                 <div class="col-sm-12 col-md-3">
                                     <select id="Rabizakolvovorot" name="Rabizakolvovorot" class="custom-select" required="required">
                                         {% for v in Rabizakolvovorot %}
-                                            <option value="{{ v }}">{{ v }}</option>
+                                            <option value="{{ v }}">{{ v }}<div class="input-group-append">
+                                            <div class="input-group-text">шт.</div>
+                                        </div></option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -147,7 +157,9 @@
                                 <div class="col-sm-12 col-md-3">
                                     <select id="Rabizashirinavorot" name="Rabizashirinavorot" class="custom-select" required="required">
                                         {% for v in Rabizashirinavorot %}
-                                            <option value="{{ v }}">{{ v }}</option>
+                                            <option value="{{ v }}">{{ v }}<div class="input-group-append">
+                                            <div class="input-group-text">м</div>
+                                        </div></option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -158,7 +170,9 @@
                                 <div class="col-sm-12 col-md-3">
                                     <select id="Rabizakolvokalitok" name="Rabizakolvokalitok" class="custom-select" required="required">
                                         {% for v in Rabizakolvokalitok %}
-                                            <option value="{{ v }}">{{ v }}</option>
+                                            <option value="{{ v }}">{{ v }}<div class="input-group-append">
+                                            <div class="input-group-text">шт.</div>
+                                        </div></option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -194,7 +208,7 @@
                                                value="{% if visotaZabora %}{{ visotaZabora }}{% else %}2.0{% endif %}"
                                                class="form-control" required="required">
                                         <div class="input-group-append">
-                                            <div class="input-group-text">м</div>
+                                            <div class="input-group-text">км</div>
                                         </div>
                                     </div>
                                 </div>
@@ -208,8 +222,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="submit" method="post" action="/calculator/calc-rabitsa"
+                            <button type="submit" method="POST" action="/calculator/calc-rabitsa"
                                     class="btn btn-success">Рассчитать
+                            </button>
+                        <button
+                                    class="btn btn-primary"><a style="color: white" href="/calculator/calc-rabitsa">Очистить</a>
                             </button>
                         </form>
                     </br>
@@ -220,17 +237,17 @@
                             }
                         </script>
 
-
+<h6>Материалы</h6>
                         <div class="wrapper_table_result" style="overflow-x:auto;">
                             <table class="calcResultMaterial table-bordered"
                                    style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
                                    cellspacing="0" cellpadding="0" border="0">
                                 <thead>
                                 <tr style="text-align: left;">
-                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                         Наименование
                                     </th>
-                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                         Сумма
                                     </th>
 
@@ -261,12 +278,115 @@
                                 </tbody>
                             </table>
                         </div>
+                <br/>
+<h6>Услуги</h6>
+
+                <div class="wrapper_table_result" style="overflow-x:auto;">
+                            <table class="calcResultMaterial table-bordered"
+                                   style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                                   cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                <thead style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                        Наименование
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                        Сумма
+                                    </th>
+                                </thead>
+                            <tbody>
+                                </tr>
+                                {% for v in result_ysl %}
+                                    <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                                        {% endfor %}
+
+                                </tbody>
+                                <tbody>
+
+
+                                <tr class="calcMaterial__summ">
+                                    <td style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;"></td>
+                                    <td class="result-summ"
+                                        style="text-align: right; position: relative; border: solid 1px black; border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;white-space: nowrap;">
+                                        <strong>{{ totalLaborCost|floatformat:0 }}</strong>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+<br/>
+                <h6>Доставка</h6>
+                <div class="wrapper_table_result" style="overflow-x:auto;">
+                            <table class="calcResultMaterial table-bordered"
+                                   style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                                   cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                        Наименование
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                        Сумма
+                                    </th>
+
+                                </tr>
+                                {% for v in result_dos %}
+                                    <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                                        {% endfor %}
+
+                                </thead>
+                                <tbody>
+
+
+                                <tr class="calcMaterial__summ">
+                                    <td style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;"></td>
+                                    <td class="result-summ"
+                                        style="text-align: right; position: relative; border: solid 1px black; border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;white-space: nowrap;">
+                                        <strong>{{ totalLaborCost|floatformat:0 }}</strong>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                <br/>
                         <div class="finish-total-price"
                              style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%;">
                             <span style="display: table-cell; width: 80%; padding-left: 2px;">Итоговая стоимость договора:</span>
                             <span class="stoimost"
                                   style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }} руб.</span>
                         </div>
+<form>
+    <br/>
+    <h6 align="center">Отправить результаты отчета</h6>
+    <br/>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Ваше имя</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Пароль</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+  </div>
+  <div class="form-group form-check">
+  </div>
+  <button type="submit" class="btn btn-success">Отправить</button>
+</form>
                         <div class="col-sm-12"
                              style="font-size: 20px; text-align: center; font-weight: bold;  font-family: 'Oswald', sans-serif !important;;">
                             <br>
@@ -289,7 +409,6 @@
     </div>
     <!-- End dreamit contact form Area -->
 
-    <script src="/static/moszabor/calc.js"></script>
 {% endblock mainWrapper %}
 
 {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}
