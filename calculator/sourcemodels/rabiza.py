@@ -2,184 +2,152 @@ from django.db import models
 from django.contrib import admin
 
 
-class RabizadlinazaboraAdmin(admin.ModelAdmin):
+class RabizadlinastolbovAdmin(admin.ModelAdmin):
+    list_display = (
+        'visota',
+        'tolshina',
+        'price',
+    )
+
+
+class Rabizadlinastolbov(models.Model):
+    visota = models.DecimalField("Высота столба", max_digits=100, decimal_places=2)
+    tolshina = models.DecimalField("Толщина столба", max_digits=100, decimal_places=2)
+    price = models.DecimalField("Цена конфигурации", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Rabiza] Цена столбов'
+        verbose_name_plural = verbose_name
+
+
+class RabizasetkaAdmin(admin.ModelAdmin):
+    list_display = (
+        'tolshina',
+        'visota',
+        'price'
+    )
+
+
+class Rabizasetka(models.Model):
+    tolshina = models.DecimalField("Толщина сетки", max_digits=100, decimal_places=2)
+    visota = models.DecimalField("Высота забора", max_digits=100, decimal_places=2)
+    price = models.DecimalField("Цена", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Rabiza] Сетка'
+        verbose_name_plural = verbose_name
+
+
+class RabizaystanovkavorotAdmin(admin.ModelAdmin):
+    list_display = (
+        'price',
+    )
+
+
+class Rabizaystanovkavorot(models.Model):
+    price = models.DecimalField("Цена за установку ворот", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Rabiza] Цена за установку ворот'
+        verbose_name_plural = verbose_name
+
+
+
+class RabizaystanovkazaboraAdmin(admin.ModelAdmin):
     list_display = (
         'start',
         'end',
         'price',
-        'mnosh'
     )
 
 
-class Rabizadlinazabora(models.Model):
-    start = models.DecimalField("Начало промежутка", max_digits=100, decimal_places=0)
-    end = models.DecimalField("Конец промежутка", max_digits=100, decimal_places=0)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
+class Rabizaystanovkazabora(models.Model):
+    start = models.DecimalField("Начало промежутка", max_digits=100, decimal_places=2)
+    end = models.DecimalField("Конец промежутка", max_digits=100, decimal_places=2)
+    price = models.DecimalField("Цена за установку забора", max_digits=100, decimal_places=2)
 
     class Meta:
-        verbose_name = 'длину забора'
-        verbose_name_plural = '[Rabiza] Длина забора'
+        verbose_name = '[Rabiza] Цена за установку забора'
+        verbose_name_plural = verbose_name
 
 
-class RabizavisotazaboraAdmin(admin.ModelAdmin):
+class RabizavorotaAdmin(admin.ModelAdmin):
     list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-class Rabizavisotazabora(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'высоту забора'
-        verbose_name_plural = '[Rabiza] Высота забора'
-
-
-
-class RabizamethodystanovkistolbovAdmin(admin.ModelAdmin):
-    list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-
-class Rabizamethodystanovkistolbov(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'метод установки столбов'
-        verbose_name_plural = '[Rabiza] Метод установки столбов'
-
-
-class RabizarazmertolshinastolbAdmin(admin.ModelAdmin):
-    list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-
-
-class Rabizarazmertolshinastolb(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'размер и толщину столбов'
-        verbose_name_plural = '[Rabiza] Размер и толщина столбов'
-
-
-class RabizapokraskastolbAdmin(admin.ModelAdmin):
-    list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-
-
-
-class Rabizapokraskastolb(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'покраску столбов и секций'
-        verbose_name_plural = '[Rabiza] Покраска столбов и секций'
-
-
-class RabizaraspashnievorotaAdmin(admin.ModelAdmin):
-    list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-
-class Rabizaraspashnievorota(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'распашные ворота:'
-        verbose_name_plural = '[Rabiza] Распашные ворота:'
-
-
-
-class RabizakalitkastandartAdmin(admin.ModelAdmin):
-    list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-
-
-
-class Rabizakalitkastandart(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'Калитка "Стандарт"'
-        verbose_name_plural = '[Rabiza] Калитка "Стандарт"'
-
-
-class RabizashirinavorotAdmin(admin.ModelAdmin):
-    list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-
-
-class Rabizashirinavorot(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'ширину ворот'
-        verbose_name_plural = '[Rabiza] Ширина ворот'
-
-
-class RabizademontashvorotAdmin(admin.ModelAdmin):
-    list_display = (
-        'value',
-        'mnosh',
-        'price'
-    )
-
-
-class Rabizademontashvorot(models.Model):
-    value = models.CharField("Значение поля", max_length=300)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    class Meta:
-        verbose_name = 'демонтаж старого забора:'
-        verbose_name_plural = '[Rabiza] Демонтаж старого забора:'
-
-
-class RabizakmmkadAdmin(admin.ModelAdmin):
-    list_display = (
-        'start',
-        'end',
+        'visota',
+        'shirina',
         'price',
-        'mnosh'
     )
 
 
-class Rabizakmmkad(models.Model):
-    start = models.DecimalField("Начало промежутка", max_digits=100, decimal_places=0)
-    end = models.DecimalField("Конец промежутка", max_digits=100, decimal_places=0)
-    price = models.DecimalField("Прибавлять за каждый каждый метр", max_digits=100, decimal_places=2)
-    mnosh = models.DecimalField("Умножить результат при выборе на", max_digits=100, decimal_places=5)
+class Rabizavorota(models.Model):
+    visota = models.DecimalField("Высота", max_digits=100, decimal_places=2)
+    shirina = models.DecimalField("Ширина", max_digits=100, decimal_places=2)
+    price = models.DecimalField("Цена", max_digits=100, decimal_places=2)
 
     class Meta:
-        verbose_name = 'расстояние МКАД'
-        verbose_name_plural = '[Rabiza] Количество км от МКАД'
+        verbose_name = '[Rabiza] Ворота'
+        verbose_name_plural = verbose_name
+
+
+class RabizakalitkaAdmin(admin.ModelAdmin):
+    list_display = (
+        'visota',
+        'price',
+    )
+
+
+class Rabizakalitka(models.Model):
+    visota = models.DecimalField("Высота", max_digits=100, decimal_places=2)
+    price = models.DecimalField("Цена", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Rabiza] Калитка'
+        verbose_name_plural = verbose_name
+
+
+class RabizaystanovkakalitkiAdmin(admin.ModelAdmin):
+    list_display = (
+        'price',
+    )
+
+
+class Rabizaystanovkakalitki(models.Model):
+    price = models.DecimalField("Цена", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Rabiza] Установка калитки'
+        verbose_name_plural = verbose_name
+
+
+
+class RabizapokraskaAdmin(admin.ModelAdmin):
+    list_display = (
+        'tip',
+        'price',
+        'kolvo',
+    )
+
+
+class Rabizapokraska(models.Model):
+    tip = models.CharField("Тип краски", max_length=100)
+    price = models.DecimalField("Цена", max_digits=100, decimal_places=2)
+    kolvo = models.DecimalField("Количество краски на метр", max_digits=100, decimal_places=5)
+
+    class Meta:
+        verbose_name = '[Rabiza] Покраска'
+        verbose_name_plural = verbose_name
+
+
+class RabizaarmaturaAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'price',
+    )
+
+
+class Rabizaarmatura(models.Model):
+    price = models.DecimalField("Цена", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Rabiza] Арматура'
+        verbose_name_plural = verbose_name
