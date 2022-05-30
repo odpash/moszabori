@@ -33,6 +33,7 @@ def main(request):
     args['result_items'] = []
     args['result_ysl'] = []
     args['result_dos'] = []
+    args['result_items_a'] = []
     args['result'] = 0
     if request.GET.get('Rabizadlinazabora') is not None:
         visotazabora = float(str(request.GET.get('Rabizavisotazabora')).replace(',', '.'))
@@ -56,10 +57,10 @@ def main(request):
 
         for i in Rabizasetka.objects.all():  # СЕТКА
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinasetki:
-                args['result'] += visotazabora / 10 * float(i.price)
+                args['result'] += shirina_vorot / 10 * float(i.price)
                 args['result_items'].append(
-                    {'text': f'Сетка с высотой {visotazabora} м и толщиной {tolshinasetki} мм ({round(visotazabora / 10, 2)} ед.) - {i.price} рублей за рулон',
-                     'cost': round(visotazabora / 10 * float(i.price), 2)})
+                    {'text': f'Сетка с высотой {visotazabora} м и толщиной {tolshinasetki} мм ({round(shirina_vorot / 10, 2)} ед.) - {i.price} рублей за рулон',
+                     'cost': round(shirina_vorot / 10 * float(i.price), 2)})
 
         for i in Rabizavorota.objects.all():  # ВОРОТА
             if float(i.shirina) == shirina_vorot and float(i.visota) == visotazabora:
@@ -92,7 +93,14 @@ def main(request):
         args['result_items'].append(
             {'text': f'Арматура толщиной 10 мм ({mnosh * dlinazabora} шт.) - {armatura_price} рублей за п.м.',
              'cost': round(dlinazabora * mnosh * float(armatura_price), 2)})
-
+        args['result_items'].append({
+            'text': "Скидка 2% от стоимости материала", 'cost': round(args['result'] * 0.02, 2)
+        })
+        args['result'] *= 0.98
+        args['result_items_a'] = [{
+            'text': "Итого за материалы:", 'cost': round(args['result'], 2)
+        }]
+        materiali_price = args['result']
         ystanovkakalitki_price = float(Rabizaystanovkakalitki.objects.all()[0].price)
         ystanovkavorot_price = float(Rabizaystanovkavorot.objects.all()[0].price)
         args['result'] += ystanovkavorot_price * kolvo_vorot
@@ -105,6 +113,11 @@ def main(request):
         args['result_ysl'].append(
             {'text': f'Установка калитки ({kolvo_kalitok} шт.) - {ystanovkakalitki_price * kolvo_kalitok} рублей за калитку',
              'cost': round(ystanovkakalitki_price * kolvo_kalitok, 2)})
+
+        args['result_ysl_a'] = [{
+            'text': "Итого за услуги:", 'cost': round(args['result'] - materiali_price, 2)
+        }]
+
 
         kmmkad = int(float(request.GET.get('kmMkad')))
         dostavka = kmmkad * 30
