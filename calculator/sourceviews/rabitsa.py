@@ -57,10 +57,10 @@ def main(request):
 
         for i in Rabizasetka.objects.all():  # СЕТКА
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinasetki:
-                args['result'] += shirina_vorot / 10 * float(i.price)
+                args['result'] += dlinazabora / 10 * float(i.price)
                 args['result_items'].append(
-                    {'text': f'Сетка с высотой {visotazabora} м и толщиной {tolshinasetki} мм ({round(shirina_vorot / 10, 2)} ед.) - {i.price} рублей за рулон',
-                     'cost': round(shirina_vorot / 10 * float(i.price), 2)})
+                    {'text': f'Сетка с высотой {visotazabora} м и толщиной {tolshinasetki} мм ({round(dlinazabora / 10, 2)} ед.) - {i.price} рублей за рулон',
+                     'cost': round(dlinazabora / 10 * float(i.price), 2)})
 
         for i in Rabizavorota.objects.all():  # ВОРОТА
             if float(i.shirina) == shirina_vorot and float(i.visota) == visotazabora:
