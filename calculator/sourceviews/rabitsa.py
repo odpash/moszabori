@@ -51,26 +51,26 @@ def main(request):
                 count = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok))
                 print(count)
                 args['result'] += count * float(i.price) / 2.5
-                args['result_items'].append({'text': f'Столбы ({count / 2.5} шт.) - {i.price} рублей за столб',
+                args['result_items'].append({'text': f'Столб 60x30 толщиной {tolshinastolba} мм высотой {visotazabora + 0.8} м ({count / 2.5} шт.) - {i.price} рублей за столб',
                                              'cost': round(count * float(i.price) / 2.5, 2)})
 
         for i in Rabizasetka.objects.all():  # СЕТКА
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinasetki:
                 args['result'] += visotazabora / 10 * float(i.price)
                 args['result_items'].append(
-                    {'text': f'Сетка ({round(visotazabora / 10, 2)} ед.) - {i.price} рублей за рулон',
+                    {'text': f'Сетка с высотой {visotazabora} м и толщиной {tolshinasetki} мм ({round(visotazabora / 10, 2)} ед.) - {i.price} рублей за рулон',
                      'cost': round(visotazabora / 10 * float(i.price), 2)})
 
         for i in Rabizavorota.objects.all():  # ВОРОТА
             if float(i.shirina) == shirina_vorot and float(i.visota) == visotazabora:
                 args['result'] += kolvo_vorot * float(i.price)
-                args['result_items'].append({'text': f'Ворота ({kolvo_vorot} шт.) - {i.price} рублей за штуку',
+                args['result_items'].append({'text': f'Ворота {shirina_vorot}x{visotazabora} мм ({kolvo_vorot} шт.) - {i.price} рублей за штуку',
                                              'cost': round(kolvo_vorot * float(i.price), 2)})
 
         for i in Rabizakalitka.objects.all():  # Калитки
             if float(i.visota) == visotazabora:
                 args['result'] += kolvo_kalitok * float(i.price)
-                args['result_items'].append({'text': f'Калитки ({kolvo_kalitok} шт.) - {i.price} рублей за штуку',
+                args['result_items'].append({'text': f'Калитка {1000}x{visotazabora} мм на 1-м столбе ({kolvo_kalitok} шт.) - {i.price} рублей за штуку',
                                              'cost': round(kolvo_kalitok * float(i.price), 2)})
 
         for i in Rabizapokraska.objects.all():  # Покраска
@@ -90,7 +90,7 @@ def main(request):
         armatura_price = float(Rabizaarmatura.objects.all()[0].price)
         args['result'] += dlinazabora * mnosh * armatura_price
         args['result_items'].append(
-            {'text': f'Арматура ({mnosh * dlinazabora} шт.) - {armatura_price} рублей за п.м.',
+            {'text': f'Арматура толщиной 10 мм ({mnosh * dlinazabora} шт.) - {armatura_price} рублей за п.м.',
              'cost': round(dlinazabora * mnosh * float(armatura_price), 2)})
 
         ystanovkakalitki_price = float(Rabizaystanovkakalitki.objects.all()[0].price)
