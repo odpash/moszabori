@@ -17,8 +17,8 @@ try:
 except:
     pass
 
-sys.path.append('/home/c/ca34297/public_html/moszn.ru')
-sys.path.append('/home/c/ca34297/venv/lib/python3.6/site-packages')
+sys.path.append('/home/c/cf81652/public_html/moszabori')
+sys.path.append('/home/c/cf81652/venv/lib/python3.6/site-packages')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'moszabori.settings')
 
 application = get_wsgi_application()
