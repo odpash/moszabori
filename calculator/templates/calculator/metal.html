@@ -32,7 +32,7 @@
                     <div class="dreamit-section-title section-b text-center">
                         <!-- <h5>Посчитайте сами</h5> -->
 
-                        <h2>Калькулятор стоимости забора из металла Штакетника</h2>
+                        <h2>Калькулятор стоимости забора из метала</h2>
                         <!-- <h2>до гвозди</h2> -->
                         <!-- <div class="mt-20"></div> -->
                         <div class="row" style="padding-top: 30px;">
@@ -48,7 +48,7 @@
                                                 <li class="current_menu_item">Метал штакетник</li>
                                             </a>
                                             <a href="/calculator/calc-rabitsa" style="color: #000000">
-                                                <li >Рабица</li>
+                                                <li>Рабица</li>
                                             </a>
                                             <a href="/calculator/calc-boarder" style="color: #000000">
                                                 <li>Ограждение 3D</li>
@@ -82,15 +82,16 @@
             <div class="d-flex justify-content-center">
 
 
-                <>
+                <div>
                     <br class="contact-form-box">
                     <form action="{% url 'calc:metal' %}" method="GET">
                         <div class="form-group row">
-                            <label for="dlinaZabora" class="col-md-3 col-sm-12 col-form-label">Общая длина забора,
+                            <label for="Metaldlinazabora" class="col-md-3 col-sm-12 col-form-label">Общая длина забора,
                                 включая ворота и калитки, м</label>
                             <div class="col-md-3 col-sm-12">
                                 <div class="input-group">
-                                    <input id="dlinaZabora" name="dlinaZabora" onchange="doubleValidate(this)"
+                                    <input id="Metaldlinazabora" name="Metaldlinazabora"
+                                           onchange="doubleValidate(this)"
                                            onkeypress="doubleValidate(this)" placeholder="Длина забора"
                                            type="number" step="0.01"
                                            value="{% if dlinaZabora %}{{ dlinaZabora }}{% else %}100.0{% endif %}"
@@ -101,15 +102,20 @@
                                 </div>
                             </div>
 
-
-                            <label for="visotaZabora" class="col-md-3 col-sm-12  col-form-label">Высота
+                            <label for="Metalvisotazabora" class="col-md-3 col-sm-12  col-form-label">Высота
                                 забора</label>
                             <div class="col-md-3 col-sm-12">
-                                <select id="visotaZabora" name="visotaZabora"
+                                <select id="Metalvisotazabora" name="Metalvisotazabora"
                                         class="custom-select" required="required">
-                                    {% for v in MetalvisotaZabora %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
+                                    {% for v in Metalvisotazabora %}
+                                        <option value="{{ v }}">{{ v }}
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">м</div>
+                                            </div>
+                                        </option>
+
                                     {% endfor %}
+
                                 </select>
                             </div>
 
@@ -117,175 +123,135 @@
 
 
                         <div class="form-group row">
-                            <label for="tipshtaketnik" class="col-md-3 col-sm-12  col-form-label">Тип штакетника</label>
+                            <label for="Metaltolshinastolba" class="col-md-3 col-sm-12  col-form-label">Выберите
+                                толщину столба</label>
                             <div class="col-md-3 col-sm-12">
-                                <select id="tipshtaketnik" name="tipshtaketnik"
+                                <select id="Metaltolshinastolba" name="Metaltolshinastolba"
                                         class="custom-select" required="required">
-                                    {% for v in Metaltipshtaketnik %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
+                                    {% for v in Metaltolshinastolba %}
+                                        <option value="{{ v }}">{{ v }}
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">мм</div>
+                                            </div>
+                                        </option>
                                     {% endfor %}
                                 </select>
                             </div>
-                            <label for="kreplenieshtaketnik" class="col-md-3 col-sm-12 col-form-label">Крепление
-                                штакетника</label>
+                            <label for="Metalshtaketnik" class="col-md-3 col-sm-12 col-form-label">Выберите вариант штакетника:</label>
                             <div class="col-sm-12 col-md-3">
-                                <select id="kreplenieshtaketnik" name="kreplenieshtaketnik" class="custom-select"
+                                <select id="Metalshtaketnik" name="Metalshtaketnik" class="custom-select"
                                         required="required">
-                                    {% for v in Metalkreplenieshtaketnik %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
+                                    {% for v in Metalshtaketnik %}
+                                        <option value="{{ v }}">{{ v }}
+                                        </option>
                                     {% endfor %}
                                 </select>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="Metalhorizontals" class="col-sm-12 col-md-3 col-form-label">Коричество горизонталей (лаги):</label>
+                            <div class="col-sm-12 col-md-3">
+                                <select id="Metalhorizontals" name="Metalhorizontals" class="custom-select"
+                                        required="required">
+                                    {% for v in Metalhorizontals %}
+                                        <option value="{{ v }}">{{ v }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <label for="Metalpolimers" class="col-sm-12 col-md-3 col-form-label">Полимер:</label>
+                            <div class="col-sm-12 col-md-3">
+                                <select id="Metalpolimers" name="Metalpolimers" class="custom-select"
+                                        required="required">
+                                    {% for v in Metalpolimers %}
+                                        <option value="{{ v }}">{{ v }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+
+
                         <!-- Заглубление столба -->
                         <div class="form-group row">
-                            <label for="zazor" class="col-sm-12 col-md-3 col-form-label">Зазор, см</label>
+                            <label for="Metalkolvovorot" class="col-sm-12 col-md-3 col-form-label">Количество
+                                ворот </label>
                             <div class="col-sm-12 col-md-3">
-                                <select id="zazor" name="zazor" class="custom-select" required="required">
-                                    {% for v in Metalzazor %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <label for="pokritiestaketnik" class="col-sm-12 col-md-3 col-form-label">Покрытие
-                                штакетника</label>
-                            <div class="col-sm-12 col-md-3">
-                                <select id="pokritiestaketnik" name="pokritiestaketnik" class="custom-select"
+                                <select id="Metalkolvovorot" name="Metalkolvovorot" class="custom-select"
                                         required="required">
-                                    {% for v in Metalpokritiestaketnik %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
+                                    {% for v in Metalkolvovorot %}
+                                        <option value="{{ v }}">{{ v }}
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">шт.</div>
+                                            </div>
+                                        </option>
                                     {% endfor %}
                                 </select>
                             </div>
-
-                        </div>
-                        <div class="form-group row">
-                            <label for="kolvoryadlag" class="col-sm-12 col-md-3 col-form-label">Количество рядов
-                                лаг</label>
+                            <label for="Metalshirinavorot" class="col-sm-12 col-md-3 col-form-label">Ширина
+                                ворот</label>
                             <div class="col-sm-12 col-md-3">
-                                <select id="kolvoryadlag" name="kolvoryadlag" class="custom-select" required="required">
-                                    {% for v in Metalkolvoryadlag %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-
-                            <label for="metodystanovki" class="col-sm-12 col-md-3 col-form-label">Метод установки
-                                столбов</label>
-                            <div class="col-sm-12 col-md-3">
-                                <select id="metodystanovki" name="metodystanovki" class="custom-select"
+                                <select id="Metalshirinavorot" name="Metalshirinavorot" class="custom-select"
                                         required="required">
-                                    {% for v in Metalmetodystanovki %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="razmer" class="col-md-3 col-sm-12  col-form-label">Размер и толщина
-                                столбов</label>
-                            <div class="col-md-3 col-sm-12">
-                                <select id="razmer" name="razmer"
-                                        class="custom-select" required="required">
-                                    {% for v in Metalrazmer %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-
-                            <label for="shag" class="col-md-3 col-sm-12  col-form-label">Шаг между столбами, м</label>
-                            <div class="col-md-3 col-sm-12">
-                                <select id="shag" name="shag"
-                                        class="custom-select" required="required">
-                                    {% for v in Metalshag %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="paint" class="col-md-3 col-sm-12  col-form-label">Покраска столбов и лаг</label>
-                            <div class="col-md-3 col-sm-12">
-                                <select id="paint" name="paint"
-                                        class="custom-select" required="required">
-                                    {% for v in Metalpaint %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <label for="standart" class="col-md-3 col-sm-12 col-form-label">Калитка "Стандарт"</label>
-                            <div class="col-sm-12 col-md-3">
-                                <select id="standart" name="standart" class="custom-select" required="required">
-                                    {% for v in Metalstandart %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Заглубление столба -->
-                        <div class="form-group row">
-                            <label for="raspash" class="col-sm-12 col-md-3 col-form-label">Распашные ворота</label>
-                            <div class="col-sm-12 col-md-3">
-                                <select id="raspash" name="raspash" class="custom-select" required="required">
-                                    {% for v in Metalraspash %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <label for="otkat" class="col-sm-12 col-md-3 col-form-label">Откатные (сдвижные)
-                                ворота</label>
-                            <div class="col-sm-12 col-md-3">
-                                <select id="otkat" name="otkat" class="custom-select" required="required">
-                                    {% for v in Metalotkat %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
+                                    {% for v in Metalshirinavorot %}
+                                        <option value="{{ v }}">{{ v }}
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">м</div>
+                                            </div>
+                                        </option>
                                     {% endfor %}
                                 </select>
                             </div>
 
                         </div>
                         <div class="form-group row">
-                            <label for="detektprotekt" class="col-sm-12 col-md-3 col-form-label">Защитная декоративная
-                                планка</label>
+                            <label for="Metalkolvokalitok" class="col-sm-12 col-md-3 col-form-label">Количество
+                                калиток</label>
                             <div class="col-sm-12 col-md-3">
-                                <select id="detektprotekt" name="detektprotekt" class="custom-select"
+                                <select id="Metalkolvokalitok" name="Metalkolvokalitok" class="custom-select"
                                         required="required">
-                                    {% for v in Metaldetektprotekt %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
+                                    {% for v in Metalkolvokalitok %}
+                                        <option value="{{ v }}">{{ v }}
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">шт.</div>
+                                            </div>
+                                        </option>
                                     {% endfor %}
                                 </select>
                             </div>
 
-                            <label for="demontash" class="col-sm-12 col-md-3 col-form-label">Демонтаж старого
-                                забора</label>
+                            <label for="Metalpokraska" class="col-sm-12 col-md-3 col-form-label">Покраска</label>
                             <div class="col-sm-12 col-md-3">
-                                <select id="demontash" name="demontash" class="custom-select" required="required">
-                                    {% for v in Metaldemontash %}
-                                        <option value="{{ v.value }}">{{ v.value }}</option>
+                                <select id="Metalpokraska" name="Metalpokraska" class="custom-select"
+                                        required="required">
+                                    {% for v in Metalpokraska %}
+                                        <option value="{{ v }}">{{ v }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
                         </div>
-                    <div class="form-group row">
+
+
+                        <div class="form-group row">
+
+
                             <label for="kmMkad" onkeypress="doubleValidate(this)"
                                    class="col-md-3 col-sm-12 col-form-label">Количество км от МКАД: </label>
                             <div class="col-md-3 col-sm-12">
                                 <div class="input-group">
                                     <input id="kmMkad" name="kmMkad"
-                                           type="number" step="0.01"
-                                           value="{% if visotaZabora %}{{ visotaZabora }}{% else %}2.0{% endif %}"
+                                           type="number" step="1"
+                                           value="{% if visotaZabora %}{{ visotaZabora }}{% else %}0{% endif %}"
                                            class="form-control" required="required">
                                     <div class="input-group-append">
-                                        <div class="input-group-text">м</div>
+                                        <div class="input-group-text">км</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <div class="form-group row">
+
+                        <div class="form-group row">
                             <div class="col-sm-8">
                                 <p style="font-size: 12px;">
                                     *Все расчёты носят ознакомительный характер, окончательный расчёт производит
@@ -293,13 +259,13 @@
                                 </p>
                             </div>
                         </div>
-                        <button type="submit" method="post" action="/calculator/calc-rabitsa"
+                        <button type="submit" method="POST" action="/calculator/calc-rabitsa"
                                 class="btn btn-success">Рассчитать
                         </button>
-        </form>
-            </div>
-
-
+                        <button
+                                class="btn btn-outline-danger"><a style="color: red" href="/calculator/calc-rabitsa?">Очистить</a>
+                        </button>
+                    </form>
                     </br>
 
                     <script>
@@ -308,22 +274,127 @@
                         }
                     </script>
 
+                    <h6>Материалы</h6>
+                    <div class="wrapper_table_result" style="overflow-x:auto;">
+                        <table class="calcResultMaterial table-bordered"
+                               style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                               cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                            <tr style="text-align: left; color: white;background: green">
+                                <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Наименование
+                                </th>
+                                <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Сумма
+                                </th>
+
+                            </tr>
+                            {% for v in result_items %}
+                                <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                            {% for v in result_items_a %}
+                                <tr style="text-align: left; color: white;background: green">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                            {% endfor %}
+
+                            </thead>
+                            <tbody>
+
+
+                            <tr class="calcMaterial__summ">
+                                <td style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;"></td>
+                                <td class="result-summ"
+                                    style="text-align: right; position: relative; border: solid 1px black; border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;white-space: nowrap;">
+                                    <strong>{{ totalLaborCost|floatformat:0 }}</strong>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    <h6>Услуги</h6>
 
                     <div class="wrapper_table_result" style="overflow-x:auto;">
                         <table class="calcResultMaterial table-bordered"
                                style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
                                cellspacing="0" cellpadding="0" border="0">
                             <thead>
-                            <tr style="text-align: left;">
-                                <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                            <thead style="text-align: left; color: white;background: green">
+                            <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                Наименование
+                            </th>
+                            <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                Сумма
+                            </th>
+                            </thead>
+                            <tbody>
+                            </tr>
+                            {% for v in result_ysl %}
+                                <tr style="text-align: left;">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                            {% for v in result_ysl_a %}
+                                <tr style="text-align: left; color: white;background: green">
+                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tbody>
+
+
+                            <tr class="calcMaterial__summ">
+                                <td style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;"></td>
+                                <td class="result-summ"
+                                    style="text-align: right; position: relative; border: solid 1px black; border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;white-space: nowrap;">
+                                    <strong>{{ totalLaborCost|floatformat:0 }}</strong>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    <h6>Доставка</h6>
+                    <div class="wrapper_table_result" style="overflow-x:auto;">
+                        <table class="calcResultMaterial table-bordered"
+                               style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                               cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                            <tr style="text-align: left; color: white;background: green">
+                                <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Наименование
                                 </th>
-                                <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Сумма
                                 </th>
 
                             </tr>
-                            {% for v in result_items %}
+                            {% for v in result_dos %}
                                 <tr style="text-align: left;">
                                     <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
@@ -349,12 +420,30 @@
                             </tbody>
                         </table>
                     </div>
+                    <br/>
                     <div class="finish-total-price"
-                         style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%;">
+                         style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%; color: white;background: green">
                         <span style="display: table-cell; width: 80%; padding-left: 2px;">Итоговая стоимость договора:</span>
                         <span class="stoimost"
                               style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }} руб.</span>
                     </div>
+                    <form>
+                        <br/>
+                        <h6 align="center">Отправить результаты отчета</h6>
+                        <br/>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ваше имя</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Пароль</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+                        </div>
+                        <div class="form-group form-check">
+                        </div>
+                        <button type="submit" class="btn btn-success">Отправить</button>
+                    </form>
                     <div class="col-sm-12"
                          style="font-size: 20px; text-align: center; font-weight: bold;  font-family: 'Oswald', sans-serif !important;;">
                         <br>
@@ -377,7 +466,6 @@
     </div>
     <!-- End dreamit contact form Area -->
 
-    <script src="/static/moszabor/calc.js"></script>
 {% endblock mainWrapper %}
 
 {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}
