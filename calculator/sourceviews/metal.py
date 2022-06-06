@@ -8,6 +8,9 @@ def default_values():
     tolshina_arr = list(set(float(i[0]) for i in Metaldlinastolbov.objects.all().values_list('tolshina')))
     shirinavorot_arr = list(set(float(i[0]) for i in Metalvorota.objects.all().values_list('shirina')))
     pokraska_arr = list(set(str(i[0]) for i in Metalpokraska.objects.all().values_list('tip')))
+    shtaketnik_arr = list(set(str(i[0]) for i in Metalshtaketnik.objects.all().values_list("title")))
+    horizontals_arr = list(set(str(i[0]) for i in Metallags.objects.all().values_list("title")))
+    polimers_arr = list(set(str(i[0]) for i in Metalshtaketnik.objects.all().values_list("polymer")))
     visota_arr.sort()
     tolshina_arr.sort()
     shirinavorot_arr.sort()
@@ -18,9 +21,9 @@ def default_values():
         'Metalkolvovorot': [0, 1, 2, 3, 4, 5],
         'Metalshirinavorot': shirinavorot_arr,
         'Metalpokraska': pokraska_arr,
-        'Metalshtaketnik': '',
-        'Metalhorizontals': '',
-        'Metalpolimers': ''
+        'Metalshtaketnik': shtaketnik_arr,
+        'Metalhorizontals': horizontals_arr,
+        'Metalpolimers': polimers_arr
     }
 
 
@@ -43,6 +46,20 @@ def main(request):
         shtaketnik = request.GET.get('Metalshtaketnik')
         lagi = request.GET.get('Metalhorizontals')
         polimers = request.GET.get('Metalpolimers')
+
+        for i in Metallags.objects.all():  # ЛАГИ
+            if i.title == lagi:
+                args['result'] += float(i.count_mnsh) * dlinazabora * float(i.price)
+                args['result_items'].append({
+                                                'text': f'Лаги проф.труба 40х20 толщиной 1,5 мм ({float(i.count_mnsh) * dlinazabora} шт.) - {i.price} рублей за штуку',
+                                                'cost': round(float(i.count_mnsh) * dlinazabora * float(i.price), 2)})
+
+        for i in Metalshtaketnik.objects.all():  # ШТАКЕТНИК
+            if i.title == shtaketnik and i.polymer == polimers:
+                args['result'] += visotazabora * dlinazabora * 10 * float(i.price)
+                args['result_items'].append({
+                    'text': f'{i.title} ({visotazabora * dlinazabora * 10} шт.) - {i.price} рублей за штуку',
+                    'cost': round(visotazabora * dlinazabora * 10 * float(i.price), 2)})
 
         count = 0
         for i in Metaldlinastolbov.objects.all():  # ЦЕНА СТОЛБОВ

@@ -28,6 +28,7 @@ class MetalshtaketnikAdmin(admin.ModelAdmin):
     )
 
 
+
 class Metalshtaketnik(models.Model):
     title = models.CharField("Название штакетника", max_length=100)
     polymer = models.CharField('Название полимера', max_length=100)
