@@ -406,24 +406,52 @@ def main(request):
         'shagStolbcov': shagStolbcov,
 
         'zaglushkaObj': zaglushkaObj,
-        'lagObj': lagObj,
-        'result_items': [
-            {'text': 'Цена ворот', 'cost': int(vorotMaterialPrice)},
-        {'text': 'Цена калитки', 'cost': int(kalitokMaterialPrice)},
-        {'text': 'Цена калитки', 'cost': int(vorotMaterialPrice)},
-        {'text': 'Покрытие', 'cost': int(tipPokritiyaMaterialCost)},
-        {'text': 'Бетонирование', 'cost': int(betonirovanieMaterialCost)},
-        {'text': 'Утрамбовка', 'cost': int(utrambovkaMaterialCost)},
-        {'text': 'Столб. материалы', 'cost': int(stolbiMaterialCost)},
-        {'text': 'Лаг материалы', 'cost': int(lagMaterialCost)},
-        {'text': 'Заглушки', 'cost': int(zaglushkaMaterialCost)},
-        {'text': 'Саморез', 'cost': int(samorezMaterialCost)},
-        {'text': 'Грунтовка', 'cost': int(gruntovkaMaterialCost)},
-        {'text': 'Планка', 'cost': int(plankaMaterialCost)},
-        {'text': 'Краска', 'cost': int(kraskaMaterialCost)},
-        ]
-
+        'lagObj': lagObj
         # 'pokritiya_as_json': pokritiya #json.dumps(list(pokritiya)),
 
     }
+    rrr = [{'text': 'Цена ворот', 'cost': int(vorotMaterialPrice)},
+           {'text': 'Цена калитки', 'cost': int(kalitokMaterialPrice)},
+           {'text': 'Цена калитки', 'cost': int(vorotMaterialPrice)},
+           {'text': 'Покрытие', 'cost': int(tipPokritiyaMaterialCost)},
+           {'text': 'Бетонирование', 'cost': int(betonirovanieMaterialCost)},
+           {'text': 'Утрамбовка', 'cost': int(utrambovkaMaterialCost)},
+           {'text': 'Столб. материалы', 'cost': int(stolbiMaterialCost)},
+           {'text': 'Лаг материалы', 'cost': int(lagMaterialCost)},
+           {'text': 'Заглушки', 'cost': int(zaglushkaMaterialCost)},
+           {'text': 'Саморез', 'cost': int(samorezMaterialCost)},
+           {'text': 'Грунтовка', 'cost': int(gruntovkaMaterialCost)},
+           {'text': 'Планка', 'cost': int(plankaMaterialCost)},
+           {'text': 'Краска', 'cost': int(kraskaMaterialCost)}]
+    args['result_items'] = []
+    args['result_ysl'] = []
+    args['result_dos'] = []
+    args['result_items_a'] = [{
+        'text': "Итого за материалы:", 'cost': round(totalMaterialCost, 2)
+    }]
+    args['result'] = totalCost
+    for i in rrr:
+        if int(i['cost']) > 0:
+            args['result_items'].append(i)
+
+    rrr2 = [{'text': 'Установка столбов', 'cost': graviyLaborCost},
+            {'text': 'Устновка калиток', 'cost': kalitokLaborCost},
+            {'text': 'Установка ворот', 'cost': vorotLaborCost},
+            {'text': 'Установка забора', 'cost': ustZaborLaborCost},
+            {'text': 'Бетонирование', 'cost': betonirovanieLaborCost}]
+    args['result_ysl_a'] = [{
+        'text': "Итого за услуги:", 'cost': round(totalLaborCost, 2)
+    }]
+    for i in rrr2:
+        if int(i['cost']) > 0:
+            args['result_ysl'].append(i)
+    kmmkad = int(float(request.GET.get('kmMkad')))
+    dostavka = kmmkad * 30
+    if kmmkad > 30:
+        kmmkad_res = kmmkad - 30
+        dostavka += kmmkad_res * 65
+    args['result'] += dostavka
+    args['result_dos'].append(
+        {'text': f'Доставка ({kmmkad} км)',
+         'cost': round(dostavka, 2)})
     return render(request, template, args)  # last arg: args
