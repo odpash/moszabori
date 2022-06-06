@@ -19,7 +19,8 @@ def default_values():
         'Metalshirinavorot': shirinavorot_arr,
         'Metalpokraska': pokraska_arr,
         'Metalshtaketnik': '',
-        'Metalhorizontals': ''
+        'Metalhorizontals': '',
+        'Metalpolimers': ''
     }
 
 
@@ -41,6 +42,7 @@ def main(request):
         pokraska = request.GET.get('Metalpokraska')
         shtaketnik = request.GET.get('Metalshtaketnik')
         lagi = request.GET.get('Metalhorizontals')
+        polimers = request.GET.get('Metalpolimers')
 
         count = 0
         for i in Metaldlinastolbov.objects.all():  # ЦЕНА СТОЛБОВ

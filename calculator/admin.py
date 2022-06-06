@@ -36,6 +36,8 @@ admin.site.register(Metalvorota, MetalvorotaAdmin)
 admin.site.register(Metalkalitka, MetalkalitkaAdmin)
 admin.site.register(Metalystanovkakalitki, MetalystanovkakalitkiAdmin)
 admin.site.register(Metalpokraska, MetalpokraskaAdmin)
+admin.site.register(Metallags, MetallagsAdmin)
+admin.site.register(Metalshtaketnik, MetalshtaketnikAdmin)
 
 # boarder
 admin.site.register(Boarderkalitka, BoarderkalitkaAdmin)
@@ -46,3 +48,5 @@ admin.site.register(Boardervorota, BoardervorotaAdmin)
 admin.site.register(Boarderystanovkakalitki, BoarderystanovkakalitkiAdmin)
 admin.site.register(Boarderpokraska, BoarderpokraskaAdmin)
 admin.site.register(Boarder3d, Boarder3dAdmin)
+
+

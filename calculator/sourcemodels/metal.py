@@ -20,6 +20,48 @@ class Metaldlinastolbov(models.Model):
         verbose_name_plural = verbose_name
 
 
+class MetalshtaketnikAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'visota',
+        'polymer',
+        'price',
+    )
+
+
+class Metalshtaketnik(models.Model):
+    title = models.CharField("Название штакетника", max_length=100)
+    visota = models.DecimalField("Высота столба", max_digits=100, decimal_places=2)
+    polymer = models.CharField('Название полимера', max_length=100)
+    price = models.DecimalField("Цена конфигурации", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Metal] Штакетник'
+        verbose_name_plural = verbose_name
+
+
+
+class MetallagsAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'price',
+        'count_mnsh'
+    )
+
+
+class Metallags(models.Model):
+    title = models.CharField("Название штакетника", max_length=100)
+    price = models.DecimalField("Цена конфигурации", max_digits=100, decimal_places=2)
+    count_mnsh = models.DecimalField("Множитель количества", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Metal] Лаги'
+        verbose_name_plural = verbose_name
+
+
+
+
+
 class MetalystanovkavorotAdmin(admin.ModelAdmin):
     list_display = (
         'price',
