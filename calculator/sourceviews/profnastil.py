@@ -445,13 +445,16 @@ def main(request):
     for i in rrr2:
         if int(i['cost']) > 0:
             args['result_ysl'].append(i)
-    kmmkad = int(float(request.GET.get('kmMkad')))
-    dostavka = kmmkad * 30
-    if kmmkad > 30:
-        kmmkad_res = kmmkad - 30
-        dostavka += kmmkad_res * 65
-    args['result'] += dostavka
-    args['result_dos'].append(
-        {'text': f'Доставка ({kmmkad} км)',
-         'cost': round(dostavka, 2)})
+    try:
+        kmmkad = int(float(request.GET.get('kmMkad')))
+        dostavka = kmmkad * 30
+        if kmmkad > 30:
+            kmmkad_res = kmmkad - 30
+            dostavka += kmmkad_res * 65
+        args['result'] += dostavka
+        args['result_dos'].append(
+            {'text': f'Доставка ({kmmkad} км)',
+             'cost': round(dostavka, 2)})
+    except:
+        pass
     return render(request, template, args)  # last arg: args
