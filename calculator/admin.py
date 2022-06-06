@@ -1,7 +1,8 @@
 from django.contrib import admin
 from calculator.sourcemodels.profnastil import *
 from calculator.sourcemodels.rabiza import *
-
+from calculator.sourcemodels.metal import *
+from calculator.sourcemodels.boarder import *
 
 # profnastil
 admin.site.register(ProfnastilSechenieStolba)
@@ -27,4 +28,19 @@ admin.site.register(Rabizaarmatura, RabizaarmaturaAdmin)
 
 
 
+# metal
+admin.site.register(Metaldlinastolbov, MetaldlinastolbovAdmin)
+admin.site.register(Metalystanovkavorot)
+admin.site.register(Metalystanovkazabora, MetalystanovkazaboraAdmin)
+admin.site.register(Metalvorota, MetalvorotaAdmin)
+admin.site.register(Metalkalitka, MetalkalitkaAdmin)
+admin.site.register(Metalystanovkakalitki, MetalystanovkakalitkiAdmin)
+admin.site.register(Metalpokraska, MetalpokraskaAdmin)
+
 # boarder
+admin.site.register(Boarderdlinastolbov, BoarderdlinastolbovAdmin)
+admin.site.register(Boarderystanovkavorot, BoarderystanovkavorotAdmin)
+admin.site.register(Boarderystanovkazabora, BoarderystanovkazaboraAdmin)
+admin.site.register(Boardervorota, BoardervorotaAdmin)
+admin.site.register(Boarderystanovkakalitki, BoarderystanovkakalitkiAdmin)
+admin.site.register(Boarderpokraska, BoarderpokraskaAdmin)

@@ -7,7 +7,7 @@ from .sourceviews import profnastil, rabitsa, metal, boarder, navesi
 app_name = 'calc'
 
 urlpatterns = [
-    path('', profnastil.main, name='profnastil'),
+    path('', profnastil.main, name='calculator'),
     path('/calc-profnastil', profnastil.main, name="profnastil"),
     path('/calc-rabitsa', rabitsa.main, name="rabitsa"),
     path('/calc-metal', metal.main, name="metal"),

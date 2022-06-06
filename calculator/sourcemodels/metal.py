@@ -20,6 +20,11 @@ class Metaldlinastolbov(models.Model):
         verbose_name_plural = verbose_name
 
 
+class MetalystanovkavorotAdmin(admin.ModelAdmin):
+    list_display = (
+        'price'
+    )
+
 
 class Metalystanovkavorot(models.Model):
     price = models.DecimalField("Цена за установку ворот", max_digits=100, decimal_places=2)
