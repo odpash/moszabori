@@ -7,6 +7,7 @@ def default_values():
     tolshina_arr = list(set(float(i[0]) for i in Boarderdlinastolbov.objects.all().values_list('tolshina')))
     shirinavorot_arr = list(set(float(i[0]) for i in Boardervorota.objects.all().values_list('shirina')))
     pokraska_arr = list(set(str(i[0]) for i in Boarderpokraska.objects.all().values_list('tip')))
+    panels_arr = list(set(str(i[0]) for i in Boarder3d.objects.all().values_list('title')))
     visota_arr.sort()
     tolshina_arr.sort()
     shirinavorot_arr.sort()
@@ -17,7 +18,7 @@ def default_values():
         'Boarderkolvovorot': [0, 1, 2, 3, 4, 5],
         'Boardershirinavorot': shirinavorot_arr,
         'Boarderpokraska': pokraska_arr,
-        'Boarderpanel': ''
+        'Boarderpanel': panels_arr
     }
 
 
@@ -38,6 +39,13 @@ def main(request):
         shirina_vorot = float(str(request.GET.get('Boardershirinavorot')).replace(',', '.'))
         pokraska = request.GET.get('Boarderpokraska')
         panel = request.GET.get('Boarderpanel')
+        for i in Boarder3d.objects.all():
+            if panel == i.title and float(i.visota) == visotazabora:
+                args['result'] += 0.4 * dlinazabora * float(i.price)
+                args['result_items'].append({
+                                                'text': f'Панель 3D с высотой {visotazabora}м {i.title} ({0.4 * dlinazabora} шт.) - {i.price} рублей за шт.',
+                                                'cost': round(0.4 * dlinazabora * float(i.price), 2)})
+
 
         count = 0
         for i in Boarderdlinastolbov.objects.all():  # ЦЕНА СТОЛБОВ

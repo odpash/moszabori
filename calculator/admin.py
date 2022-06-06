@@ -30,7 +30,7 @@ admin.site.register(Rabizaarmatura, RabizaarmaturaAdmin)
 
 # metal
 admin.site.register(Metaldlinastolbov, MetaldlinastolbovAdmin)
-admin.site.register(Metalystanovkavorot)
+admin.site.register(Metalystanovkavorot, MetalystanovkavorotAdmin)
 admin.site.register(Metalystanovkazabora, MetalystanovkazaboraAdmin)
 admin.site.register(Metalvorota, MetalvorotaAdmin)
 admin.site.register(Metalkalitka, MetalkalitkaAdmin)
@@ -38,9 +38,11 @@ admin.site.register(Metalystanovkakalitki, MetalystanovkakalitkiAdmin)
 admin.site.register(Metalpokraska, MetalpokraskaAdmin)
 
 # boarder
+admin.site.register(Boarderkalitka, BoarderkalitkaAdmin)
 admin.site.register(Boarderdlinastolbov, BoarderdlinastolbovAdmin)
 admin.site.register(Boarderystanovkavorot, BoarderystanovkavorotAdmin)
 admin.site.register(Boarderystanovkazabora, BoarderystanovkazaboraAdmin)
 admin.site.register(Boardervorota, BoardervorotaAdmin)
 admin.site.register(Boarderystanovkakalitki, BoarderystanovkakalitkiAdmin)
 admin.site.register(Boarderpokraska, BoarderpokraskaAdmin)
+admin.site.register(Boarder3d, Boarder3dAdmin)

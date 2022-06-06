@@ -20,6 +20,24 @@ class Boarderdlinastolbov(models.Model):
         verbose_name_plural = verbose_name
 
 
+class Boarder3dAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'visota',
+        'price',
+    )
+
+
+class Boarder3d(models.Model):
+    title = models.CharField("Название", max_length=100)
+    visota = models.DecimalField("Высота", max_digits=100, decimal_places=2)
+    price = models.DecimalField("Цена конфигурации", max_digits=100, decimal_places=2)
+
+    class Meta:
+        verbose_name = '[Boarder] 3d панели'
+        verbose_name_plural = verbose_name
+
+
 class BoarderystanovkavorotAdmin(admin.ModelAdmin):
     list_display = (
         'price',
@@ -74,7 +92,7 @@ class Boardervorota(models.Model):
 class BoarderkalitkaAdmin(admin.ModelAdmin):
     list_display = (
         'visota',
-        'price',
+        'price'
     )
 
 

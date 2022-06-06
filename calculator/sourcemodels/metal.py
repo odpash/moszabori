@@ -22,7 +22,7 @@ class Metaldlinastolbov(models.Model):
 
 class MetalystanovkavorotAdmin(admin.ModelAdmin):
     list_display = (
-        'price'
+        'price',
     )
 
 
