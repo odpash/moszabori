@@ -81,9 +81,9 @@
                             <div class="col-md-3 col-sm-12">
                                 <div class="input-group">
                                     <input id="dlinaZabora" name="dlinaZabora" onchange="doubleValidate(this)"
-                                           onkeypress="doubleValidate(this)" placeholder="Длина забора"
+                                            onkeypress="doubleValidate(this)" placeholder="Длина забора"
                                            type="number" step="1"
-                                           value="0"
+                                           value="100"
                                            min="0"
                                            class="form-control" required="required">
                                     <div class="input-group-append">
@@ -118,7 +118,13 @@
                                     <option value="1.2">1.2</option>
                                     <option value="1.4">1.4</option>
                                     <option value="1.5">1.5</option>
+
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">м</div>
+                                    </div>
                                 </select>
+
+
                             </div>
                         </div>
 
@@ -264,7 +270,7 @@
                                 </select>
                             </div>
 
-                            <div id="scrollToEl" class="form-group row"></div>
+                            <div id="scrollToEl"></div>
                             <div class="col-sm-12 col-md-3">
                                 <select id="shirinaKolitok" name="shirinaKolitok" class="custom-select">
                                     <option value="0">Ширина калиток</option>

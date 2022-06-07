@@ -415,40 +415,119 @@ def main(request):
         # 'pokritiya_as_json': pokritiya #json.dumps(list(pokritiya)),
 
     }
-    rrr = [{'text': 'Цена ворот', 'cost': int(vorotMaterialPrice)},
-           {'text': 'Цена калитки', 'cost': int(kalitokMaterialPrice)},
-           {'text': 'Цена калитки', 'cost': int(vorotMaterialPrice)},
-           {'text': 'Покрытие', 'cost': int(tipPokritiyaMaterialCost)},
-           {'text': 'Бетонирование', 'cost': int(betonirovanieMaterialCost)},
-           {'text': 'Утрамбовка', 'cost': int(utrambovkaMaterialCost)},
-           {'text': 'Столб. материалы', 'cost': int(stolbiMaterialCost)},
-           {'text': 'Лаг материалы', 'cost': int(lagMaterialCost)},
-           {'text': 'Заглушки', 'cost': int(zaglushkaMaterialCost)},
-           {'text': 'Саморез', 'cost': int(samorezMaterialCost)},
-           {'text': 'Грунтовка', 'cost': int(gruntovkaMaterialCost)},
-           {'text': 'Планка', 'cost': int(plankaMaterialCost)},
-           {'text': 'Краска', 'cost': int(kraskaMaterialCost)}]
+    rrr = []
+    try:
+        rrr.append({'text': 'Цена ворот', 'cost': int(vorotMaterialPrice), 'count': int(vorotCounter), 'ed': 'шт.',
+                    'price': round(vorotMaterialPrice / vorotCounter, 2)})
+    except:
+        pass
+    try:
+        rrr.append(
+            {'text': 'Цена калитки', 'cost': int(kalitokMaterialPrice), 'count': int(kalitokCounter), 'ed': 'шт.',
+             'price': round(kalitokMaterialPrice / kalitokCounter, 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Цена калитки', 'cost': int(vorotMaterialPrice), 'count': int(vorotCounter), 'ed': 'шт.',
+                    'price': round(vorotMaterialPrice / vorotCounter, 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Покрытие', 'cost': int(tipPokritiyaMaterialCost), 'count': int(ploshadZabora), 'ed': 'шт.',
+                    'price': round(tipPokritiyaMaterialCost / ploshadZabora, 2)})
+    except:
+        pass
+    try:
+        rrr.append(
+            {'text': 'Бетонирование', 'cost': int(betonirovanieMaterialCost), 'count': int(stolbCounter), 'ed': 'шт.',
+             'price': round(betonirovanieMaterialCost / stolbCounter, 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Утрамбовка', 'cost': int(utrambovkaMaterialCost), 'count': int(stolbCounter), 'ed': 'шт.',
+                    'price': round(utrambovkaMaterialCost / stolbCounter, 2)})
+    except:
+        pass
+    try:
+        rrr.append(
+            {'text': 'Столб. материалы', 'cost': int(stolbiMaterialCost), 'count': int(oneStolbLength * stolbCounter),
+             'ed': 'шт.',
+             'price': round(stolbiMaterialCost / (oneStolbLength * stolbCounter), 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Лаг материалы', 'cost': int(lagMaterialCost),
+                    'count': int(dlinaZabora * Decimal(1.1) * Decimal(lagCounter)), 'ed': 'шт.',
+                    'price': round(lagMaterialCost / (dlinaZabora * Decimal(1.1) * Decimal(lagCounter)), 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Заглушки', 'cost': int(zaglushkaMaterialCost), 'count': int(stolbCounter), 'ed': 'шт.',
+                    'price': round(zaglushkaMaterialCost / stolbCounter, 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Саморез', 'cost': int(samorezMaterialCost), 'count': int(samorezCounter), 'ed': 'шт.',
+                    'price': round(samorezMaterialCost / samorezCounter, 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Грунтовка', 'cost': int(gruntovkaMaterialCost), 'count': int(dlinaZabora), 'ed': 'шт.',
+                    'price': round(gruntovkaMaterialCost / dlinaZabora, 2)})
+    except:
+        pass
+    try:
+        rrr.append(
+            {'text': 'Планка', 'cost': int(plankaMaterialCost), 'count': int(Decimal(dlinaZabora) * Decimal(1.1)),
+             'ed': 'шт.',
+             'price': round(plankaMaterialCost / (Decimal(dlinaZabora) * Decimal(1.1)), 2)})
+    except:
+        pass
+    try:
+        rrr.append({'text': 'Краска', 'cost': int(kraskaMaterialCost), 'count': int(ploshadZabora), 'ed': 'шт.',
+                    'price': round(kraskaMaterialCost / ploshadZabora, 2)})
+    except:
+        pass
+
     args['result_items'] = []
     args['result_ysl'] = []
     args['result_dos'] = []
     args['result_items_a'] = [{
-        'text': "Итого за материалы:", 'cost': round(totalMaterialCost, 2)
+        'text': "Итого за материалы:", 'cost': str(round(totalMaterialCost, 2)) + " руб."
     }]
     args['result'] = totalCost
     for i in rrr:
         if int(i['cost']) > 0:
+            i['cost'] = str(i['cost']) + " руб."
+            i['count'] = str(i['count']) + ' шт.'
+            i['price'] = str(i['price']) + " руб."
             args['result_items'].append(i)
 
-    rrr2 = [{'text': 'Установка столбов', 'cost': graviyLaborCost},
-            {'text': 'Устновка калиток', 'cost': kalitokLaborCost},
-            {'text': 'Установка ворот', 'cost': vorotLaborCost},
-            {'text': 'Установка забора', 'cost': ustZaborLaborCost},
-            {'text': 'Бетонирование', 'cost': betonirovanieLaborCost}]
+    rrr2 = [{'text': 'Установка столбов', 'cost': graviyLaborCost, 'count': int(stolbCounter), 'ed': 'шт.',
+             'price': round(graviyLaborCost, 2)},
+            {'text': 'Устновка калиток', 'cost': kalitokLaborCost, 'count': int(kalitokCounter), 'ed': 'шт.',
+             'price': round(ProfnastilLaborCost.objects.get(Slug='ustKarkasVorotKalit').cena, 2)},
+            {'text': 'Установка ворот', 'cost': vorotLaborCost, 'count': int(vorotCounter), 'ed': 'шт.',
+             'price': round(ProfnastilLaborCost.objects.get(Slug='ustKarkasVorotKalit').cena, 2)}]
+    try:
+        rrr2.append({'text': 'Бетонирование', 'cost': betonirovanieLaborCost, 'count': int(stolbCounter), 'ed': 'шт.',
+                     'price': round(betonirovanieLaborCost / stolbCounter, 2)})
+    except:
+        pass
+    try:
+        rrr2.append({'text': 'Установка забора', 'cost': ustZaborLaborCost, 'count': int(dlinaZabora), 'ed': 'шт.',
+                     'price': round(ustZaborLaborCost / dlinaZabora, 2)})
+    except:
+        pass
     args['result_ysl_a'] = [{
-        'text': "Итого за услуги:", 'cost': round(totalLaborCost, 2)
+        'text': "Итого за услуги:", 'cost': str(round(totalLaborCost, 2)) + " руб."
     }]
     for i in rrr2:
         if int(i['cost']) > 0:
+            i['cost'] = str(i['cost']) + " руб."
+            i['count'] = str(i['count']) + ' шт.'
+            i['price'] = str(i['price']) + " руб."
+            print(i)
             args['result_ysl'].append(i)
     try:
         kmmkad = int(float(request.GET.get('kmMkad')))
@@ -458,8 +537,11 @@ def main(request):
             dostavka += kmmkad_res * 65
         args['result'] += dostavka
         args['result_dos'].append(
-            {'text': f'Доставка ({kmmkad} км)',
-             'cost': round(dostavka, 2)})
+            {'text': f'Доставка до участка',
+             'cost': str(round(dostavka, 2)) + " руб.",
+             'count': str(int(round(kmmkad, 2))) + " км"
+             })
     except:
         pass
+    args['result'] = str(args['result']) + " руб."
     return render(request, template, args)  # last arg: args
