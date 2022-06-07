@@ -22,6 +22,11 @@ def main(request):
     kraskaMaterialCost = 0
 
     messages = ''
+
+    status = 0
+    if request.GET.get('dlinaZabora') is not None:
+        status = 1
+
     if dlinaZabora != None and visotaZabora != None:
         ploshadZabora = dlinaZabora * visotaZabora
 
@@ -338,7 +343,6 @@ def main(request):
     else:  # if no dlinaZabora == ? or no visotaZabora == ?
         ploshadZabora = 0
         betonirovanieMaterialCost = 0
-
     totalCost = int(totalLaborCost + totalMaterialCost)
 
     # These initial data is used to fill the form
@@ -360,6 +364,7 @@ def main(request):
         # 'page': page,
         'SEO': SEO,
         'messages': messages,
+        'status': status,
 
         # LABOR COST
         'graviyLaborCost': graviyLaborCost,

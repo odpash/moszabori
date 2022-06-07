@@ -11,6 +11,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
+
                         <div class="slider-content">
                             <!-- <h4> Добро пожаловать </h4> -->
                             <h1>Изготовление, монтаж заборов и навесов под ключ
@@ -31,21 +32,8 @@
                             <div class="slider-button1">
                                 <a href="{% url 'home:contacts' %}">Контакты</a>
                             </div>
+
                         </div>
-                    </div>
-                    <div>
-
-                        <div class="timer">
-                            <div class="timer__items">
-                                <div class="timer__item timer__days">00</div>
-                                <div class="timer__item timer__hours">00</div>
-                                <div class="timer__item timer__minutes">00</div>
-                                <div class="timer__item timer__seconds">00</div>
-                            </div>
-                        </div>
-
-
-
                     </div>
                 </div>
             </div>
@@ -63,18 +51,31 @@
                             <div class="hero-text">
                                 <i class="fas fa-phone"></i> <span> +7 925 221 3410 </span>
                             </div>
+
                             <div class="slider-button">
                                 <a href="{% url 'home:pricelist' %}">Расценки</a>
                             </div>
                             <div class="slider-button1">
                                 <a href="{% url 'calc:calculator' %}">Калкульятор</a>
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
             </div>
+
         </div>
+
     </div>
+</br>
+                             <div class="hero-text" align="center">
+                                 <span class="rounded border border-danger" style="color: red;font-size:12px;padding: 5px"><div>Успейте получить скидку 50%  на доставку!</div><div>До окончания срока действия акции осталось:</div><div><p id="demonstr" class="demonstr"></p></div></span>
+                            </div>
+
     <!--End dreamit slider Area  / -->
 
     <!-- Start dreamit about Area -->
@@ -201,27 +202,6 @@
                         </div>
                     </div>
                 {% endfor %}
-                {% for naves in zaborCategories %}
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="dreamit-service-box">
-                            <div class="dreamit-service-box-inner">
-                                <div class="dreamit-service-content">
-                                    <div class="dreamit-service-icon">
-                                        <a href="{{ naves.get_absolute_url }}">
-                                            <img src="{{ naves.image_thumbnail.url }}" alt="{{ naves.Title }}">
-                                        </a>
-                                    </div>
-                                    <div class="dreamit-service-title">
-                                        <a href="{{ naves.get_absolute_url }}">
-                                            <h2>{{ naves.Title }}</h2>
-                                        </a>
-                                        <p>{{ naves.ShortDesc }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
             </div>
         </div>
     </div>
@@ -242,7 +222,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 left-why-choose-us">
                     <div class="dreamit-section-title text-left">
-                        <h5>ПОЧЕМУ ВЫБРАТЬ НАС?</h5>
+                        <h5>ПОЧЕМУ ВЫБИРАЮТ НАС?</h5>
                         <h2>Мы - опытные специалисты и </h2>
                         <h2>сделаем <span>качественно</span></h2>
                         <div class="mt-20"></div>
@@ -499,5 +479,35 @@
     <!--==================================================-->
 
 
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jul 5, 2022 15:37:25").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.querySelector('.demonstr').innerHTML =  "<div>" + days + "дн " + hours + "ч "
+                + minutes + "м " + seconds + "с" + "</div>";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".demonstr").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 {% endblock %}
 {% block SMMMetaTags %}{% include 'home/SEO.html' %}{% endblock SMMMetaTags %}

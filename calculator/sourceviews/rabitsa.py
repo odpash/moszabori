@@ -35,7 +35,9 @@ def main(request):
     args['result_dos'] = []
     args['result_items_a'] = []
     args['result'] = 0
+    args['status'] = 0
     if request.GET.get('Rabizadlinazabora') is not None:
+        args['status'] = 1
         visotazabora = float(str(request.GET.get('Rabizavisotazabora')).replace(',', '.'))
         dlinazabora = float(str(request.GET.get('Rabizadlinazabora')).replace(',', '.'))
         tolshinastolba = float(str(request.GET.get('Rabizatolshinastolba')).replace(',', '.'))

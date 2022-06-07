@@ -109,24 +109,6 @@
 
                         </div>
 
-
-                        <div class="form-group row">
-                            <label for="sechenieStolbcov" class="col-md-3 col-sm-12  col-form-label">Сечение
-                                столбов, мм</label>
-                            <div class="col-md-3 col-sm-12">
-                                <select id="sechenieStolbcov" name="sechenieStolbcov" class="custom-select">
-                                    <option value="">Выбрать</option>
-                                </select>
-                            </div>
-                            <label for="tolshinaStolbcov" class="col-md-3 col-sm-12 col-form-label">Толщина столбов,
-                                мм:</label>
-                            <div class="col-md-3 col-sm-12">
-                                <select id="tolshinaStolbcov" name="tolshinaStolbcov" class="custom-select">
-                                    <option value="">Выберите</option>
-
-                                </select>
-                            </div>
-                        </div>
                         <!-- Заглубление столба -->
                         <div class="form-group row">
                             <label for="zaglublenieStolba" class="col-md-3 col-sm-12 col-form-label">Заглубление
@@ -162,8 +144,8 @@
                             <div class="col-md-3 col-sm-12">
                                 <div class="input-group">
                                     <input id="kmMkad" name="kmMkad"
-                                           type="number" step="0.01"
-                                           value="{% if visotaZabora %}{{ visotaZabora }}{% else %}2.0{% endif %}"
+                                           type="number" step="1"
+                                           value="{% if visotaZabora %}{{ visotaZabora }}{% else %}0{% endif %}"
                                            class="form-control" required="required">
                                     <div class="input-group-append">
                                         <div class="input-group-text">км</div>
@@ -282,6 +264,7 @@
                                 </select>
                             </div>
 
+                            <div id="scrollToEl" class="form-group row"></div>
                             <div class="col-sm-12 col-md-3">
                                 <select id="shirinaKolitok" name="shirinaKolitok" class="custom-select">
                                     <option value="0">Ширина калиток</option>
@@ -312,12 +295,12 @@
                                 </p>
                             </div>
                         </div>
-                       <button type="submit" method="POST" action="/calculator/calc-rabitsa"
-                                class="btn btn-success">Рассчитать
+                        <button type="submit"
+                                class="btn btn-outline-success">Рассчитать
                         </button>
-                        <button
-                                class="btn btn-outline-danger"><a style="color: red" href="/calculator/calc-rabitsa?">Очистить</a>
-                        </button>
+                        <a
+                                class="btn btn-outline-danger" href="/calculator/calc-profnastil?">Очистить
+                        </a>
                     </form>
                     </br>
 
@@ -334,31 +317,58 @@
                                cellspacing="0" cellpadding="0" border="0">
                             <thead>
                             <tr style="text-align: left; color: white;background: green">
-                                <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width:50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Наименование
                                 </th>
-                                <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Цена за ед.
+                                </th>
+                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Кол-во
+                                </th>
+                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Ед. изм
+                                </th>
+                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Сумма
                                 </th>
 
                             </tr>
                             {% for v in result_items %}
                                 <tr style="text-align: left;">
-                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }} руб.
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}
                                     </th>
                                 </tr>
                             {% endfor %}
                             {% for v in result_items_a %}
-                                <tr style="text-align: left; color: white;background: green">
-                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                <tr style="text-align: left;color:white;background: green">
+                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }} руб.
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}
                                     </th>
                                 </tr>
                             {% endfor %}
@@ -374,37 +384,62 @@
                                style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
                                cellspacing="0" cellpadding="0" border="0">
                             <thead>
-                            <thead style="text-align: left; color: white;background: green">
-                            <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Наименование
-                            </th>
-                            <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Сумма
-                            </th>
-                            </thead>
-                            <tbody>
+                            <tr style="text-align: left; color: white;background: green">
+                                <th style="width:50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Наименование
+                                </th>
+                                <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Цена за ед.
+                                </th>
+                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Кол-во
+                                </th>
+                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Ед. изм
+                                </th>
+                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Сумма
+                                </th>
+
                             </tr>
                             {% for v in result_ysl %}
                                 <tr style="text-align: left;">
-                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }} руб.
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}
                                     </th>
                                 </tr>
                             {% endfor %}
                             {% for v in result_ysl_a %}
-                                <tr style="text-align: left; color: white;background: green">
-                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                <tr style="text-align: left;color: white;background: green">
+                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }} руб.
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}
                                     </th>
                                 </tr>
                             {% endfor %}
-                            </tbody>
                         </table>
                     </div>
                     <br/>
@@ -415,21 +450,27 @@
                                cellspacing="0" cellpadding="0" border="0">
                             <thead>
                             <tr style="text-align: left; color: white;background: green">
-                                <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width:33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Наименование
                                 </th>
-                                <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Расстояние
+                                </th>
+                                <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Сумма
                                 </th>
 
                             </tr>
                             {% for v in result_dos %}
                                 <tr style="text-align: left;">
-                                    <th style="width: 70%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }} руб.
+                                    <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}
                                     </th>
                                 </tr>
                             {% endfor %}
@@ -442,20 +483,19 @@
                          style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%; color: white;background: green">
                         <span style="display: table-cell; width: 80%; padding-left: 2px;">Итоговая стоимость договора:</span>
                         <span class="stoimost"
-                              style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }} руб.</span>
+                              style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }}</span>
                     </div>
                     <form>
                         <br/>
                         <h6 align="center">Отправить результаты отчета</h6>
                         <br/>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Ваше имя</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp" placeholder="">
+                            <label for="name">Ваше имя</label>
+                            <input class="form-control" id="name" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Телефон</label>
-                            <input class="form-control" id="exampleInputPassword1" placeholder="">
+                            <label for="phone">Телефон</label>
+                            <input class="form-control" id="phone" placeholder="">
                         </div>
                         <div class="form-group form-check">
                         </div>
@@ -480,7 +520,12 @@
             </div>
         </div>
     </div>
-    </div>
+    <script>
+        if ({{ status }} == 1)
+        {
+            document.getElementById("scrollToEl").scrollIntoView();
+        }
+    </script>
     <!-- End dreamit contact form Area -->
 
 {% endblock mainWrapper %}

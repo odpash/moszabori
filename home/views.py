@@ -11,6 +11,8 @@ def homePage(request):
     # tours = Tour.objects.all().order_by('-id')[:4]
     # posts = Post.objects.all().order_by('-id')[:4]
     zaborCategories = ServiceCategory.objects.all() # # used to show other categories
+    print(zaborCategories)
+
     portfolioList = Portfolio.objects.all()[:6]
     SEO = SEO_Optimiser.objects.get(seoid=1)
     args = {

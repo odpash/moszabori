@@ -30,7 +30,9 @@ def main(request):
     args['result_dos'] = []
     args['result_items_a'] = []
     args['result'] = 0
+    args['status'] = 0
     if request.GET.get('Boarderdlinazabora') is not None:
+        args['status'] = 1
         visotazabora = float(str(request.GET.get('Boardervisotazabora')).replace(',', '.'))
         dlinazabora = float(str(request.GET.get('Boarderdlinazabora')).replace(',', '.'))
         tolshinastolba = float(str(request.GET.get('Boardertolshinastolba')).replace(',', '.'))
@@ -44,7 +46,7 @@ def main(request):
                 args['result'] += 0.4 * dlinazabora * float(i.price)
                 args['result_items'].append({
                                                 'text': f'Панель 3D с высотой {visotazabora}м {i.title} ({0.4 * dlinazabora} шт.) - {i.price} рублей за шт.',
-                                                'cost': round(0.4 * dlinazabora * float(i.price), 2)})
+                                                'cost': str(round(0.4 * dlinazabora * float(i.price), 2)) + " руб."})
 
 
         count = 0
@@ -55,35 +57,35 @@ def main(request):
                 args['result'] += count * float(i.price) / 2.5
                 args['result_items'].append({
                                                 'text': f'Столб 60x30 толщиной {tolshinastolba} мм высотой {visotazabora + 0.8} м ({count / 2.5} шт.) - {i.price} рублей за столб',
-                                                'cost': round(count * float(i.price) / 2.5, 2)})
+                                                'cost': str(round(count * float(i.price) / 2.5, 2)) + " руб."})
 
         for i in Boardervorota.objects.all():  # ВОРОТА
             if float(i.shirina) == shirina_vorot and float(i.visota) == visotazabora:
                 args['result'] += kolvo_vorot * float(i.price)
                 args['result_items'].append({
                                                 'text': f'Ворота {shirina_vorot}x{visotazabora} мм ({kolvo_vorot} шт.) - {i.price} рублей за штуку',
-                                                'cost': round(kolvo_vorot * float(i.price), 2)})
+                                                'cost': str(round(kolvo_vorot * float(i.price), 2)) + " руб."})
 
         for i in Boarderkalitka.objects.all():  # Калитки
             if float(i.visota) == visotazabora:
                 args['result'] += kolvo_kalitok * float(i.price)
                 args['result_items'].append({
                                                 'text': f'Калитка {1000}x{visotazabora} мм на 1-м столбе ({kolvo_kalitok} шт.) - {i.price} рублей за штуку',
-                                                'cost': round(kolvo_kalitok * float(i.price), 2)})
+                                                'cost': str(round(kolvo_kalitok * float(i.price), 2)) + " руб."})
 
         for i in Boarderpokraska.objects.all():  # Покраска
             if i.tip == pokraska:
                 args['result'] += count * float(i.kolvo) * float(i.price)
                 args['result_items'].append(
                     {'text': f'{i.tip} ({round(count * float(i.kolvo), 2)} шт.) - {i.price} рублей за штуку',
-                     'cost': round(count * float(i.kolvo) * float(i.price), 2)})
+                     'cost': str(round(count * float(i.kolvo) * float(i.price), 2)) + " руб."})
 
         args['result_items'].append({
-            'text': "Скидка 2% от стоимости материала", 'cost': round(args['result'] * 0.02, 2)
+            'text': "Скидка 2% от стоимости материала", 'cost': str(round(args['result'] * 0.02, 2)) + " руб."
         })
         args['result'] *= 0.98
         args['result_items_a'] = [{
-            'text': "Итого за материалы:", 'cost': round(args['result'], 2)
+            'text': "Итого за материалы:", 'cost': str(round(args['result'], 2)) + " руб."
         }]
         materiali_price = args['result']
         ystanovkakalitki_price = float(Boarderystanovkavorot.objects.all()[0].price)
@@ -92,7 +94,7 @@ def main(request):
 
         args['result_ysl'].append(
             {'text': f'Установка ворот ({kolvo_vorot} шт.) - {ystanovkavorot_price * kolvo_vorot} рублей за ворота',
-             'cost': round(ystanovkavorot_price * kolvo_vorot, 2)})
+             'cost': str(round(ystanovkavorot_price * kolvo_vorot, 2)) + " руб."})
 
         args['result'] += ystanovkakalitki_price * kolvo_kalitok
         args['result_ysl'].append(
@@ -101,7 +103,7 @@ def main(request):
                 'cost': round(ystanovkakalitki_price * kolvo_kalitok, 2)})
 
         args['result_ysl_a'] = [{
-            'text': "Итого за услуги:", 'cost': round(args['result'] - materiali_price, 2)
+            'text': "Итого за услуги:", 'cost': str(round(args['result'] - materiali_price, 2)) + " руб."
         }]
 
         kmmkad = int(float(request.GET.get('kmMkad')))
@@ -112,7 +114,7 @@ def main(request):
         args['result'] += dostavka
         args['result_dos'].append(
             {'text': f'Доставка ({kmmkad} км)',
-             'cost': round(dostavka, 2)})
+             'cost': str(round(dostavka, 2)) + " руб."})
 
-    args['result'] = round(args['result'], 2)
+    args['result'] = str(round(args['result'], 2)) + " руб."
     return render(request, template, args)
