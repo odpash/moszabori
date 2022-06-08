@@ -35,7 +35,6 @@ def main(request):
         dlinazabora = float(request.GET.get('NavesidlinaZabora').replace(',', '.'))
         shirina = float(request.GET.get('NavesishirinaZabora').replace(',', '.'))
         tolshinastolba = request.GET.get('Navesirazmer')
-        razmer = request.GET.get('Navesirazmer')
         method = request.GET.get('Navesimethod')
         krovlya = request.GET.get('Navesikrovlya')
         visota = float(request.GET.get('NavesivisotaZabora').replace(',', '.'))
@@ -151,6 +150,20 @@ def main(request):
         }]
         materiali_price = args['result']
 
+        for i in Navesiystanovka.objects.all():
+            if method == i.name:
+                count = 1
+                cost = count * dlinazabora * shirina * visota * float(i.price)
+                if cost != 0:
+                    args['result'] += cost
+                    args['result_ysl'].append({
+                        'text': f'Установка навеса ({i.name})',
+                        'count': 1,
+                        'ed': 'шт.',
+                        'price': f"{round(cost, 2)} руб.",
+                        'cost': f"{round(cost , 2)} руб."
+                    })
+
         args['result_ysl_a'] = [{
             'text': "Итого за услуги:", 'cost': str(round(args['result'] - materiali_price, 2)) + " руб."
         }]
@@ -182,7 +195,7 @@ def main(request):
 7. Боковая ферма - если выбирают то одно и то же +
 8. Ветровая планка - всегда одна и та же  !! 
 9. Покраска - всегда одинакова !! 
-41500 mnosh = 
+41500 mnosh = 1
 47 900 mnsoh = 
 54 300 mnosh = 
 54 300 mnosh = 
