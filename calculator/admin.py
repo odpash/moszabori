@@ -3,6 +3,8 @@ from calculator.sourcemodels.profnastil import *
 from calculator.sourcemodels.rabiza import *
 from calculator.sourcemodels.metal import *
 from calculator.sourcemodels.boarder import *
+from calculator.sourcemodels.navesi import *
+
 
 # profnastil
 admin.site.register(ProfnastilSechenieStolba)
@@ -50,3 +52,14 @@ admin.site.register(Boarderpokraska, BoarderpokraskaAdmin)
 admin.site.register(Boarder3d, Boarder3dAdmin)
 
 
+# navesi
+admin.site.register(Navesidlinastolbov, NavesidlinastolbovAdmin)
+admin.site.register(Navesibalka, NavesibalkaAdmin)
+admin.site.register(Navesifermi, NavesifermiAdmin)
+admin.site.register(Navesiobrfermi, NavesiobrfermiAdmin)
+admin.site.register(Navesikrov, NavesikrovAdmin)
+admin.site.register(Navesikonek, NavesikonekAdmin)
+admin.site.register(Navesibokferma, NavesibokfermaAdmin)
+admin.site.register(Navesiveter, NavesiveterAdmin)
+admin.site.register(Navesikraska, NavesikraskaAdmin)
+admin.site.register(Navesiystanovka, NavesiystanovkaAdmin)

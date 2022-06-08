@@ -85,12 +85,12 @@
                     <br class="contact-form-box">
                         <form action="{% url 'calc:navesi' %}" method="GET">
                             <div class="form-group row">
-                                <label for="dlinaZabora" class="col-md-3 col-sm-12 col-form-label">Длина навеса по кровле, м</label>
+                                <label for="NavesidlinaZabora" class="col-md-3 col-sm-12 col-form-label">Длина навеса по кровле, м</label>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="input-group">
-                                        <input id="dlinaZabora" name="dlinaZabora" onchange="doubleValidate(this)"
+                                        <input id="NavesidlinaZabora" name="NavesidlinaZabora" onchange="doubleValidate(this)"
                                                onkeypress="doubleValidate(this)" placeholder="Длина навеса"
-                                               type="number" step="1"
+                                               type="number" step="1" value="10"
                                                class="form-control" required="required">
                                         <div class="input-group-append">
                                             <div class="input-group-text">м</div>
@@ -98,12 +98,12 @@
                                     </div>
                                 </div>
 
-                            <label for="shirinaZabora" class="col-md-3 col-sm-12 col-form-label">Ширина навеса по кровле, м</label>
+                            <label for="NavesishirinaZabora" class="col-md-3 col-sm-12 col-form-label">Ширина навеса по кровле, м</label>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="input-group">
-                                        <input id="shirinaZabora" name="shirinaZabora" onchange="doubleValidate(this)"
+                                        <input id="NavesishirinaZabora" name="NavesishirinaZabora" onchange="doubleValidate(this)"
                                                onkeypress="doubleValidate(this)" placeholder="Ширина навеса"
-                                               type="number" step="1"
+                                               type="number" step="1" value="5"
                                                class="form-control" required="required">
                                         <div class="input-group-append">
                                             <div class="input-group-text">м</div>
@@ -117,66 +117,66 @@
 
 
                             <div class="form-group row">
-                                <label for="visotaZabora" class="col-md-3 col-sm-12  col-form-label">Высота навеса по столбам, м</label>
+                                <label for="NavesivisotaZabora" class="col-md-3 col-sm-12  col-form-label">Высота навеса по столбам, м</label>
                                 <div class="col-md-3 col-sm-12">
-                                    <select id="visotaZabora" name="visotaZabora"
+                                    <select id="NavesivisotaZabora" name="NavesivisotaZabora"
                                             class="custom-select" required="required">
                                         {% for v in NavesivisotaZabora %}
-                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                            <option value="{{ v }}">{{ v }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <label for="typ" class="col-md-3 col-sm-12 col-form-label">Тип фермы</label>
+                                <label for="Navesityp" class="col-md-3 col-sm-12 col-form-label">Тип фермы</label>
                                 <div class="col-sm-12 col-md-3">
-                                    <select id="typ" name="typ" class="custom-select" required="required">
+                                    <select id="Navesityp" name="Navesityp" class="custom-select" required="required">
                                         {% for v in Navesityp %}
-                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                            <option value="{{ v }}">{{ v }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
                             </div>
                             <!-- Заглубление столба -->
                             <div class="form-group row">
-                                <label for="razmer" class="col-sm-12 col-md-3 col-form-label">Размер и толщина столбцов</label>
+                                <label for="Navesirazmer" class="col-sm-12 col-md-3 col-form-label">Размер и толщина столбцов</label>
                                 <div class="col-sm-12 col-md-3">
-                                    <select id="razmer" name="razmer" class="custom-select" required="required">
+                                    <select id="Navesirazmer" name="Navesirazmer" class="custom-select" required="required">
                                         {% for v in Navesirazmer %}
-                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                            <option value="{{ v }}">{{ v }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <label for="method" class="col-sm-12 col-md-3 col-form-label">Метод установки столбов</label>
+                                <label for="Navesimethod" class="col-sm-12 col-md-3 col-form-label">Метод установки столбов</label>
                                 <div class="col-sm-12 col-md-3">
-                                    <select id="method" name="method" class="custom-select" required="required">
+                                    <select id="Navesimethod" name="Navesimethod" class="custom-select" required="required">
                                         {% for v in Navesimethod %}
-                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                            <option value="{{ v }}">{{ v }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
 
                             </div>
                             <div class="form-group row">
-                                <label for="krovlya" class="col-sm-12 col-md-3 col-form-label">Кровельный материал</label>
+                                <label for="Navesikrovlya" class="col-sm-12 col-md-3 col-form-label">Кровельный материал</label>
                                 <div class="col-sm-12 col-md-3">
-                                    <select id="krovlya" name="krovlya" class="custom-select" required="required">
+                                    <select id="Navesikrovlya" name="Navesikrovlya" class="custom-select" required="required">
                                         {% for v in Navesikrovlya %}
-                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                            <option value="{{ v }}">{{ v }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
 
-                                <label for="fermi" class="col-sm-12 col-md-3 col-form-label">Боковые фермы</label>
+                                <label for="Navesifermi" class="col-sm-12 col-md-3 col-form-label">Боковые фермы</label>
                                 <div class="col-sm-12 col-md-3">
-                                    <select id="fermi" name="fermi" class="custom-select" required="required">
+                                    <select id="Navesifermi" name="Navesifermi" class="custom-select" required="required">
                                         {% for v in Navesifermi %}
-                                            <option value="{{ v.value }}">{{ v.value }}</option>
+                                            <option value="{{ v }}">{{ v }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
                             </div>
 
 
-                        <div id="scrollToEl" class="form-group row">
+                        <div id="scrollToEl">
                             <div class="form-group row">
 
                                 <label for="kmMkad" onkeypress="doubleValidate(this)"
@@ -185,7 +185,7 @@
                                     <div class="input-group">
                                         <input id="kmMkad" name="kmMkad"
                                                type="number" step="1"
-                                              class="form-control" required="required">
+                                              class="form-control" required="required" value="0">
                                         <div class="input-group-append">
                                             <div class="input-group-text">км</div>
                                         </div>
