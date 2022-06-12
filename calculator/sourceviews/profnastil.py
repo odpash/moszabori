@@ -301,8 +301,8 @@ def main(request):
             if shirinaVorot != '' and visotaVorot != '':
                 # print(shirinaVorot, visotaVorot)
                 try:
-                    vorotObj = ProfnastilServicesAndMaterials.objects.filter(smtip='vorota').get(param2=visotaVorot,
-                                                                                                 param1=shirinaVorot)
+                    vorotObj = ProfnastilServicesAndMaterials.objects.filter(smtip='vorota').get(param2=3000,
+                                                                                                 param1=4000)
                     vorotMaterialPrice = vorotObj.cena * vorotCounter
                     totalMaterialCost += vorotMaterialPrice
                     vorotLaborCost = ProfnastilLaborCost.objects.get(Slug='ustKarkasVorotKalit').cena * vorotCounter
@@ -324,7 +324,7 @@ def main(request):
             if shirinaKolitok != '' and visotaKolitok != '':
                 try:
                     kalitkaObj = ProfnastilServicesAndMaterials.objects.filter(smtip='kalitka').get(
-                        param2=visotaKolitok, param1=shirinaKolitok)
+                        param2=2000, param1=1180)
 
                     # find Kalitok material cost and add to the totalLaborCost
                     kalitokMaterialPrice = kalitkaObj.cena * kalitokCounter
@@ -493,14 +493,14 @@ def main(request):
     args['result_ysl'] = []
     args['result_dos'] = []
     args['result_items_a'] = [{
-        'text': "Итого за материалы:", 'cost': str(round(totalMaterialCost, 2)) + " руб."
+        'text': "Итого за материалы:", 'cost': str(round(totalMaterialCost, 2))
     }]
     args['result'] = totalCost
     for i in rrr:
         if int(i['cost']) > 0:
-            i['cost'] = str(i['cost']) + " руб."
-            i['count'] = str(i['count']) + ' шт.'
-            i['price'] = str(i['price']) + " руб."
+            i['cost'] = str(i['cost'])
+            i['count'] = str(i['count'])
+            i['price'] = str(i['price'])
             args['result_items'].append(i)
 
     rrr2 = [{'text': 'Установка столбов', 'cost': graviyLaborCost, 'count': int(stolbCounter), 'ed': 'шт.',
@@ -520,28 +520,42 @@ def main(request):
     except:
         pass
     args['result_ysl_a'] = [{
-        'text': "Итого за услуги:", 'cost': str(round(totalLaborCost, 2)) + " руб."
+        'text': "Итого за услуги:", 'cost': str(round(totalLaborCost, 2))
     }]
     for i in rrr2:
         if int(i['cost']) > 0:
-            i['cost'] = str(i['cost']) + " руб."
-            i['count'] = str(i['count']) + ' шт.'
-            i['price'] = str(i['price']) + " руб."
+            i['cost'] = str(i['cost'])
+            i['count'] = str(i['count'])
+            i['price'] = str(i['price'])
             print(i)
             args['result_ysl'].append(i)
     try:
         kmmkad = int(float(request.GET.get('kmMkad')))
-        dostavka = kmmkad * 30
-        if kmmkad > 30:
-            kmmkad_res = kmmkad - 30
-            dostavka += kmmkad_res * 65
+        dostavka = 0
+        if 0 < kmmkad <= 5:
+            dostavka += 2000
+        elif 5 < kmmkad <= 25:
+            dostavka += 3000
+        elif kmmkad > 25:
+            dostavka += 3000 + (kmmkad - 25) * 50
+        args['kmMkad'] = kmmkad
+
         args['result'] += dostavka
         args['result_dos'].append(
             {'text': f'Доставка до участка',
-             'cost': str(round(dostavka, 2)) + " руб.",
+             'cost': str(round(dostavka, 2)),
              'count': str(int(round(kmmkad, 2))) + " км"
              })
     except:
         pass
-    args['result'] = str(args['result']) + " руб."
+
+    args['result'] = str(round(args['result'], 2))
+
+    for i in range(len(args['result_items'])):
+        args['result_items'][i]['id'] = i + 1
+
+    for i in range(len(args['result_ysl'])):
+        args['result_ysl'][i]['id'] = i + 1
+
+    args['result'] = str(args['result'])
     return render(request, template, args)  # last arg: args

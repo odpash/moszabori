@@ -52,7 +52,6 @@ class Rabizaystanovkavorot(models.Model):
         verbose_name_plural = verbose_name
 
 
-
 class RabizaystanovkazaboraAdmin(admin.ModelAdmin):
     list_display = (
         'start',
@@ -117,7 +116,6 @@ class Rabizaystanovkakalitki(models.Model):
     class Meta:
         verbose_name = '[Rabiza] Установка калитки'
         verbose_name_plural = verbose_name
-
 
 
 class RabizapokraskaAdmin(admin.ModelAdmin):

@@ -95,7 +95,7 @@
                                            onchange="doubleValidate(this)"
                                            onkeypress="doubleValidate(this)" placeholder="Длина забора"
                                            type="number" step="0.01"
-                                           value="{% if dlinaZabora %}{{ dlinaZabora }}{% else %}100.0{% endif %}"
+                                           value="{{ dlinaZabora }}"
                                            class="form-control" required="required">
                                     <div class="input-group-append">
                                         <div class="input-group-text">м</div>
@@ -122,7 +122,7 @@
 
                         </div>
 
-
+<div id="scrollToEl" class="form-group row"></div>
                         <div class="form-group row">
                             <label for="Boardertolshinastolba" class="col-md-3 col-sm-12  col-form-label">Выберите
                                 толщину столба</label>
@@ -138,6 +138,7 @@
                                     {% endfor %}
                                 </select>
                             </div>
+
                             <label for="Boarderpanel" class="col-md-3 col-sm-12 col-form-label">Панели 3D </label>
                             <div class="col-sm-12 col-md-3">
                                 <select id="Boarderpanel" name="Boarderpanel" class="custom-select" required="required">
@@ -152,6 +153,7 @@
                             </div>
                         </div>
                         <!-- Заглубление столба -->
+
                         <div class="form-group row">
                             <label for="Boarderkolvovorot" class="col-sm-12 col-md-3 col-form-label">Количество
                                 ворот </label>
@@ -183,6 +185,7 @@
                             </div>
 
                         </div>
+
                         <div class="form-group row">
                             <label for="Boarderkolvokalitok" class="col-sm-12 col-md-3 col-form-label">Количество
                                 калиток</label>
@@ -211,7 +214,7 @@
                         </div>
 
 
-                        <div id="scrollToEl" class="form-group row"></div>
+
                         <div class="form-group row">
 
                             <label for="kmMkad" onkeypress="doubleValidate(this)"
@@ -220,7 +223,7 @@
                                 <div class="input-group">
                                     <input id="kmMkad" name="kmMkad"
                                            type="number" step="1"
-                                           value="{% if visotaZabora %}{{ visotaZabora }}{% else %}0{% endif %}"
+                                           value="{{ kmMkad }}"
                                            class="form-control" required="required">
                                     <div class="input-group-append">
                                         <div class="input-group-text">км</div>
@@ -237,15 +240,14 @@
                                 </p>
                             </div>
                         </div>
-                          <button type="submit"
+                        <button type="submit"
                                 class="btn btn-outline-success">Рассчитать
                         </button>
                         <a
                                 class="btn btn-outline-danger" href="/calculator/calc-boarder?">Очистить
                         </a>
                     </form>
-                    </br>
-
+                <br/>
                     <script>
                         function doubleValidate(input) {
                             input.value = input.value.replace(/[,]/g, ".");
@@ -259,7 +261,10 @@
                                cellspacing="0" cellpadding="0" border="0">
                             <thead>
                             <tr style="text-align: left; color: white;background: green">
-                                <th style="width:50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    №
+                                </th>
+                                <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Наименование
                                 </th>
                                 <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
@@ -278,16 +283,19 @@
                             </tr>
                             {% for v in result_items %}
                                 <tr style="text-align: left;">
-                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.id }}
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.price }}
                                     </th>
-                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.count }}
                                     </th>
-                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.ed }}
                                     </th>
                                     <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
@@ -297,7 +305,9 @@
                             {% endfor %}
                             {% for v in result_items_a %}
                                 <tr style="text-align: left;color:white;background: green">
-                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
                                     <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
@@ -310,7 +320,7 @@
                                         {{ v.ed }}
                                     </th>
                                     <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }}
+                                        {{ v.cost }} руб.
                                     </th>
                                 </tr>
                             {% endfor %}
@@ -327,7 +337,10 @@
                                cellspacing="0" cellpadding="0" border="0">
                             <thead>
                             <tr style="text-align: left; color: white;background: green">
-                                <th style="width:50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    №
+                                </th>
+                                <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Наименование
                                 </th>
                                 <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
@@ -346,16 +359,19 @@
                             </tr>
                             {% for v in result_ysl %}
                                 <tr style="text-align: left;">
-                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.id }}
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.price }}
                                     </th>
-                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.count }}
                                     </th>
-                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.ed }}
                                     </th>
                                     <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
@@ -365,7 +381,10 @@
                             {% endfor %}
                             {% for v in result_ysl_a %}
                                 <tr style="text-align: left;color: white;background: green">
-                                    <th style="width: 50%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
                                     <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
@@ -378,7 +397,7 @@
                                         {{ v.ed }}
                                     </th>
                                     <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }}
+                                        {{ v.cost }}  руб.
                                     </th>
                                 </tr>
                             {% endfor %}
@@ -412,7 +431,7 @@
                                         {{ v.count }}
                                     </th>
                                     <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }}
+                                        {{ v.cost }} руб.
                                     </th>
                                 </tr>
                             {% endfor %}
@@ -425,7 +444,7 @@
                          style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%; color: white;background: green">
                         <span style="display: table-cell; width: 80%; padding-left: 2px;">Итоговая стоимость договора:</span>
                         <span class="stoimost"
-                              style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }}</span>
+                              style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }} руб.</span>
                     </div>
                     <form>
                         <br/>
@@ -463,7 +482,8 @@
         </div>
     </div>
     <script>
-        if ({{ status }} == 1)
+        if ({{ status }} == 1
+        )
         {
             document.getElementById("scrollToEl").scrollIntoView();
         }
