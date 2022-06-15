@@ -129,9 +129,11 @@ def main(request):
         count = 0
         for i in Metaldlinastolbov.objects.all():
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinastolba:
-                if count * float(i.price) / 2.5 == 0:
-                    continue
+
                 count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok) / 2.5 + 1)
+                if count_stolb * float(i.price) / 2.5 == 0:
+                    continue
+                print(count_stolb)
                 args['result'] += count_stolb * float(i.price)
                 args['result_items'].append({
                     'text': f'Столб 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
@@ -170,7 +172,7 @@ def main(request):
 
         for i in Metalpokraska.objects.all():  # Покраска
             if i.tip == pokraska:
-                if count * float(i.kolvo) * float(i.price) == 0:
+                if (count_stolb + lagi_count) * float(i.price) == 0:
                     continue
                 kraska_count = count_stolb + lagi_count
                 args['result'] += kraska_count * float(i.price)
