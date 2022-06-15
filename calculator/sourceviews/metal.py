@@ -85,6 +85,7 @@ def main(request):
             if i.title == lagi:
                 if float(i.count_mnsh) * dlinazabora * float(i.price) == 0:
                     continue
+
                 args['result'] += float(i.count_mnsh) * dlinazabora * float(i.price)
                 args['result_items'].append({
                     'text': f'Лаги проф.труба 40х20 толщиной 1,5 мм',
@@ -98,7 +99,10 @@ def main(request):
             if i.title == shtaketnik and i.polymer == polimers:
                 if visotazabora * dlinazabora * 10 * float(i.price) == 0:
                     continue
-                shtaketnik_count = int(dlinazabora / (0.1 + int(zazor) / 10) * visotazabora + 10)
+                if "Finfold" in shtaketnik:
+                    shtaketnik_count = int(dlinazabora / ((0.1 + int(zazor)) / 100) * visotazabora + 5)
+                else:
+                    shtaketnik_count = int(dlinazabora / ((0.1 + int(zazor * 2)) / 100) * visotazabora + 5)
                 args['result'] += shtaketnik_count * float(i.price)
                 args['result_items'].append({
                     'text': f'{i.title}',
