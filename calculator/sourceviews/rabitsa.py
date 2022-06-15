@@ -173,12 +173,22 @@ def main(request):
 
         args['result'] += 150 * dlinazabora / 10  # Установка сетки
         args['result_ysl'].append(
-            {'text': f'Установка забора из сетки рабица',
+            {'text': f'Установка забора из сетки рабицы',
              'cost': str(round(150 * dlinazabora / 10, 2)),
              'count': str(int(dlinazabora / 10)),
-             'ed': 'шт.',
+             'ed': 'п.м.',
              'price': str(round(150, 2))
              })
+
+        if dlinazabora * mnosh != 0:
+            args['result'] += dlinazabora * mnosh * 100
+            args['result_ysl'].append(
+                {'text': f'Протяжка арматуры',
+                 'cost': str(round(dlinazabora * mnosh * 100, 2)),
+                 'count': str(int(dlinazabora * mnosh)),
+                 'ed': 'п.м.',
+                 'price': str(round(100, 2))
+                 })
 
         if kolvo_vorot != 0:
             args['result'] += ystanovkavorot_price * kolvo_vorot
