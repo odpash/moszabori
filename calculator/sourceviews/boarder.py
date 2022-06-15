@@ -88,8 +88,6 @@ def main(request):
                 count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok) / 2.5 + 1)
                 if count_stolb == 0:
                     continue
-
-
                 args['result'] += count_stolb * float(i.price)
                 args['result_items'].append({
                     'text': f'Столб с заглушкой 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м + {pokraska.lower()}',

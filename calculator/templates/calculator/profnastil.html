@@ -286,83 +286,6 @@
                     </script>
 
                     <h6>Материалы</h6>
-                   <div class="wrapper_table_result" style="overflow-x:auto;">
-                        <table class="calcResultMaterial table-bordered"
-                               style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
-                               cellspacing="0" cellpadding="0" border="0">
-                            <thead>
-                            <tr style="text-align: left; color: white;background: green">
-                                <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                    №
-                                </th>
-                                <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                    Наименование
-                                </th>
-                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                    Ед. изм
-                                </th>
-
-                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                    Кол-во
-                                </th>
-                                <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                    Цена за ед.
-                                </th>
-                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                    Сумма
-                                </th>
-
-                            </tr>
-                            {% for v in result_items %}
-                                <tr style="text-align: left;">
-                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                        {{ v.id }}
-                                    </th>
-                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.text }}
-                                    </th>
-                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                        {{ v.ed }}
-                                    </th>
-                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                        {{ v.count }}
-                                    </th>
-                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                        {{ v.price }}
-                                    </th>
-                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }}
-                                    </th>
-                                </tr>
-                            {% endfor %}
-                            {% for v in result_items_a %}
-                                <tr style="text-align: left;color:white;background: green">
-                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    </th>
-                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.text }}
-                                    </th>
-                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.ed }}
-                                    </th>
-                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.count }}
-                                    </th>
-                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.price }}
-                                    </th>
-                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                        {{ v.cost }} руб.
-                                    </th>
-                                </tr>
-                            {% endfor %}
-
-                            </thead>
-                        </table>
-                    </div>
-                    <br/>
-                    <h6>Услуги</h6>
-
                     <div class="wrapper_table_result" style="overflow-x:auto;">
                         <table class="calcResultMaterial table-bordered"
                                style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
@@ -372,20 +295,20 @@
                                 <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     №
                                 </th>
-                                <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width:65%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Наименование
                                 </th>
                                 <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Ед. изм
                                 </th>
 
-                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width: 8%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Кол-во
                                 </th>
-                                <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width:10%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Цена за ед.
                                 </th>
-                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
                                     Сумма
                                 </th>
 
@@ -395,19 +318,19 @@
                                     <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.id }}
                                     </th>
-                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 65%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                    <th style="width: 8%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.ed }}
                                     </th>
-                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                    <th style="width: 8%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.count }}
                                     </th>
-                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                    <th style="width: 10%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
                                         {{ v.price }}
                                     </th>
-                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 8%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.cost }}
                                     </th>
                                 </tr>
@@ -417,19 +340,19 @@
                                     <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
 
                                     </th>
-                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 65%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.text }}
                                     </th>
-                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 8%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.ed }}
                                     </th>
-                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 8%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.count }}
                                     </th>
-                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 10%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.price }}
                                     </th>
-                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    <th style="width: 8%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
                                         {{ v.cost }}  руб.
                                     </th>
                                 </tr>
@@ -472,6 +395,48 @@
                             </thead>
                         </table>
                     </div>
+                    <br/>
+                    <div class="finish-total-price"
+                         style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%; color: white;background: green">
+                        <span style="display: table-cell; width: 80%; padding-left: 2px;">Итоговая стоимость договора:</span>
+                        <span class="stoimost"
+                              style="display: table-cell; width: 20%;  border-left: 1px solid #000; font-size: 15px; text-align: center; line-height: 30px;white-space: nowrap;">{{ result }} руб.</span>
+                    </div>
+                    <form>
+                        <br/>
+                        <h6 align="center">Отправить результаты отчета</h6>
+                        <br/>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input class="form-control" id="name" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input class="form-control" id="phone" placeholder="">
+                        </div>
+                        <div class="form-group form-check">
+                        </div>
+                        <button type="submit" class="btn btn-success">Отправить</button>
+                    </form>
+                    <div class="col-sm-12"
+                         style="font-size: 20px; text-align: center; font-weight: bold;  font-family: 'Oswald', sans-serif !important;;">
+                        <br>
+                        <p style="font-weight: bold;">
+                            Обязательно позвоните нам, Вы будете приятно удивлены!
+                        </p>
+                        <span style="color:#049644; font-size: 30px;">+7 (925) 221-34-10</span>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("body").append("<script async src='/bitrix/js/concept.quiz/scripts.js'><\/script><link rel='stylesheet' href='/bitrix/css/concept.quiz/template_styles.css'>");
+                        });
+                    </script>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
                     <br/>
                     <div class="finish-total-price"
                          style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%; color: white;background: green">
