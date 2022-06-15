@@ -88,9 +88,11 @@ def main(request):
                 count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok))
                 if count_stolb == 0:
                     continue
+
+
                 args['result'] += count_stolb * float(i.price) / 2.5
                 args['result_items'].append({
-                    'text': f'Столб с заглушкой 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
+                    'text': f'Столб с заглушкой 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м + {pokraska.lower()}',
                     'cost': str(round(count_stolb * float(i.price) / 2.5, 2)),
                     'count': f"{int(count_stolb / 2.5)}",
                     'ed': 'шт.',
@@ -122,18 +124,6 @@ def main(request):
                     'count': f"{int(kolvo_kalitok)}",
                     'ed': 'шт.',
                     'price': f'{round(i.price, 2)}'})
-
-        for i in Boarderpokraska.objects.all():  # Покраска
-            if i.tip == pokraska:
-                if count_stolb * float(i.kolvo) == 0:
-                    continue
-                args['result'] += count_stolb * float(i.kolvo) * float(i.price)
-                args['result_items'].append(
-                    {'text': f'{i.tip}',
-                     'cost': str(round(count_stolb * float(i.kolvo) * float(i.price), 2)),
-                     'count': f"{int(count_stolb * float(i.kolvo))}",
-                     'ed': 'п.м.',
-                     'price': f'{round(i.price, 2)}'})
 
         args['result'] += count_stolb * 60 * 3
         args['result_items'].append(
