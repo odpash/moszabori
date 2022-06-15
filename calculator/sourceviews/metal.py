@@ -75,6 +75,11 @@ def main(request):
         pokraska = request.GET.get('Metalpokraska')
         shtaketnik = request.GET.get('Metalshtaketnik')
         lagi = request.GET.get('Metalhorizontals')
+        import re
+        s = [int(s) for s in re.findall(r'-?\d+\.?\d*', lagi)]
+        s = s[0]
+
+
         polimers = request.GET.get('Metalpolimers')
         zazor = int(request.GET.get("Metalzazor"))
         args = default_values(True,
@@ -112,11 +117,11 @@ def main(request):
                     'price': str(round(i.price, 2))
                 })
 
-        args['result'] += shtaketnik_count * 2 * 10
+        args['result'] += shtaketnik_count * 2 * 10 * s
         args['result_items'].append({
-            'text': f'Саморезы',
-            'cost': str(shtaketnik_count * 2 * 10),
-            'count': shtaketnik_count * 2,
+            'text': f'Цветные кровельные саморезы',
+            'cost': str(shtaketnik_count * 2 * 10 * s),
+            'count': shtaketnik_count * 2 * s,
             'ed': 'шт.',
             'price': str(round(10, 2))
         })
