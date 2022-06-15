@@ -174,7 +174,7 @@ def main(request):
             if i.tip == pokraska:
                 if (count_stolb + lagi_count) * float(i.price) == 0:
                     continue
-                kraska_count = count_stolb + lagi_count
+                kraska_count = count_stolb * visotazabora + lagi_count
                 args['result'] += kraska_count * float(i.price)
                 args['result_items'].append(
                     {'text': f'{i.tip}',
