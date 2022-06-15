@@ -133,7 +133,7 @@ def main(request):
                     continue
                 args['result'] += count * float(i.price) / 2.5
                 args['result_items'].append({
-                    'text': f'Столб 60x30 толщиной {tolshinastolba} мм высотой {visotazabora + 0.8} м',
+                    'text': f'Столб 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
                     'cost': str(round(count * float(i.price) / 2.5, 2)),
                     'count': str(int(count / 2.5)),
                     'ed': 'шт.',
