@@ -76,12 +76,12 @@ def main(request):
                 args['result_items'].append({
                     'text': f'Панель 3D с высотой {visotazabora}м {i.title}',
                     'cost': str(round(0.4 * dlinazabora * float(i.price), 2)),
-                    'count': 0.4 * dlinazabora,
+                    'count': int(0.4 * dlinazabora),
                     'ed': 'шт.',
                     'price': f'{round(i.price, 2)}'
                 })
 
-        count = 0
+        count_stolb = 0
         for i in Boarderdlinastolbov.objects.all():
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinastolba:
                 count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok))
@@ -124,22 +124,22 @@ def main(request):
 
         for i in Boarderpokraska.objects.all():  # Покраска
             if i.tip == pokraska:
-                if count * float(i.kolvo) == 0:
+                if count_stolb * float(i.kolvo) == 0:
                     continue
-                args['result'] += count * float(i.kolvo) * float(i.price)
+                args['result'] += count_stolb * float(i.kolvo) * float(i.price)
                 args['result_items'].append(
                     {'text': f'{i.tip}',
-                     'cost': str(round(count * float(i.kolvo) * float(i.price), 2)),
-                     'count': f"{int(count * float(i.kolvo))}",
-                     'ed': 'п.м.',
+                     'cost': str(round(count_stolb * float(i.kolvo) * float(i.price), 2)),
+                     'count': f"{int(count_stolb * float(i.kolvo))}",
+                     'ed': 'шт.',
                      'price': f'{round(i.price, 2)}'})
 
         args['result'] += count_stolb * 60 * 3
         args['result_items'].append(
             {'text': f'Крепление скоба + саморез',
              'cost': str(count_stolb * 3 * 60),
-             'count': f"{count_stolb * 3}",
-             'ed': 'п.м.',
+             'count': f"{int(count_stolb * 3)}",
+             'ed': 'шт.',
              'price': f'{60}'})
 
         args['result_items'].append({
