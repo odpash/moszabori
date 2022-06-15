@@ -86,6 +86,24 @@ def main(request):
                               [visotazabora, dlinazabora, tolshinastolba, kolvo_kalitok, kolvo_vorot, shirina_vorot,
                                pokraska, shtaketnik, lagi, polimers, zazor])
         args['status'] = 1
+
+        for i in Metaldlinastolbov.objects.all():
+            if visotazabora == float(i.visota) and float(i.tolshina) == tolshinastolba:
+
+                count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok) / 2.5 + 1)
+                if count_stolb * float(i.price) / 2.5 == 0:
+                    continue
+                print(count_stolb)
+                args['result'] += count_stolb * float(i.price)
+                args['result_items'].append({
+                    'text': f'Столб 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
+                    'cost': str(round(count_stolb * float(i.price), 2)),
+                    'count': str(int(count_stolb)),
+                    'ed': 'шт.',
+                    'price': str(round(i.price, 2))
+
+                })
+
         for i in Metallags.objects.all():
             if i.title == lagi:
                 if float(i.count_mnsh) * dlinazabora * float(i.price) == 0:
@@ -117,32 +135,9 @@ def main(request):
                     'ed': 'п.м.',
                     'price': str(round(i.price, 2))
                 })
-        args['result'] += shtaketnik_count * 10 * s
-        args['result_items'].append({
-            'text': f'Цветные кровельные саморезы',
-            'cost': str(shtaketnik_count * 10 * s),
-            'count': shtaketnik_count * s,
-            'ed': 'шт.',
-            'price': str(round(10, 2))
-        })
 
         count = 0
-        for i in Metaldlinastolbov.objects.all():
-            if visotazabora == float(i.visota) and float(i.tolshina) == tolshinastolba:
 
-                count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok) / 2.5 + 1)
-                if count_stolb * float(i.price) / 2.5 == 0:
-                    continue
-                print(count_stolb)
-                args['result'] += count_stolb * float(i.price)
-                args['result_items'].append({
-                    'text': f'Столб 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
-                    'cost': str(round(count_stolb * float(i.price), 2)),
-                    'count': str(int(count_stolb)),
-                    'ed': 'шт.',
-                    'price': str(round(i.price, 2))
-
-                })
 
         for i in Metalvorota.objects.all():
             if float(i.shirina) == shirina_vorot and float(i.visota) == visotazabora:
@@ -183,6 +178,15 @@ def main(request):
                      'ed': 'п.м.',
                      'price': str(round(i.price, 2))
                      })
+        args['result'] += shtaketnik_count * 10 * s
+        args['result_items'].append({
+            'text': f'Цветные кровельные саморезы',
+            'cost': str(shtaketnik_count * 10 * s),
+            'count': shtaketnik_count * s,
+            'ed': 'шт.',
+            'price': str(round(10, 2))
+        })
+
 
         args['result_items'].append({
             'text': "Скидка 2% от стоимости материала", 'cost': str(round(args['result'] * 0.02, 2))
@@ -194,6 +198,18 @@ def main(request):
         materiali_price = args['result']
         ystanovkakalitki_price = float(Metalystanovkavorot.objects.all()[0].price)
         ystanovkavorot_price = float(Metalystanovkakalitki.objects.all()[0].price)
+
+        if dlinazabora > 0:
+            args['result'] += 400 * dlinazabora
+            args['result_ysl'].append(
+                {
+                    'text': f"Установочные забора из металического штакетника h={visotazabora}",
+                    'cost': 400 * dlinazabora,
+                    'count': f"{int(dlinazabora)}",
+                    'ed': 'метр забора',
+                    'price': 400
+                }
+            )
         if ystanovkavorot_price * kolvo_vorot != 0:
             args['result'] += ystanovkavorot_price * kolvo_vorot
 
@@ -216,17 +232,6 @@ def main(request):
                     'price': str(round(ystanovkakalitki_price, 2))
                 })
 
-        if dlinazabora > 0:
-            args['result'] += 400 * dlinazabora
-            args['result_ysl'].append(
-                {
-                    'text': "Установочные работы за забор",
-                    'cost': 400 * dlinazabora,
-                    'count': f"{int(dlinazabora)}",
-                    'ed': 'метр забора',
-                    'price': 400
-                }
-            )
 
         args['result_ysl_a'] = [{
             'text': "Итого за услуги:", 'cost': str(round(args['result'] - materiali_price, 2))
