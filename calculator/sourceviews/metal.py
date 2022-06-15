@@ -116,12 +116,11 @@ def main(request):
                     'ed': 'п.м.',
                     'price': str(round(i.price, 2))
                 })
-
-        args['result'] += shtaketnik_count * 2 * 10 * s
+        args['result'] += shtaketnik_count * 10 * s
         args['result_items'].append({
             'text': f'Цветные кровельные саморезы',
-            'cost': str(shtaketnik_count * 2 * 10 * s),
-            'count': shtaketnik_count * 2 * s,
+            'cost': str(shtaketnik_count * 10 * s),
+            'count': shtaketnik_count * s,
             'ed': 'шт.',
             'price': str(round(10, 2))
         })
