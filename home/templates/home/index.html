@@ -89,7 +89,7 @@
                         <div class="col-lg-12">
                             <div class="dreamit-section-title text-left">
                                 <h5>О нас</h5>
-                                <h2>Более 7 лет опыт создания</h2>
+                                <h2>Более 10 лет опыт создания</h2>
                                 <h2>заборов <span>и навесов</span></h2>
                                 <div class="mt-20"></div>
                                 <p>
@@ -111,7 +111,7 @@
                             <div class="elementor-widget-icon-box">
                                 <i class="flaticon-electrician-4"></i>
                                 <div class="elementor-widget-title">
-                                    <h2>Гарантия до 20 лет</h2>
+                                    <h2>Гарантия 3 года на забор, а также гарантия на навесы сроком до 15 лет!</h2>
                                 </div>
                             </div>
                         </div>
@@ -222,6 +222,27 @@
 
             <div class="row">
                 {% for zabor in zaborCategories %}
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="dreamit-service-box">
+                            <div class="dreamit-service-box-inner">
+                                <div class="dreamit-service-content">
+                                    <div class="dreamit-service-icon">
+                                        <a href="{{ zabor.get_absolute_url }}">
+                                            <img src="{{ zabor.image_thumbnail.url }}" alt="{{ zabor.Title }}">
+                                        </a>
+                                    </div>
+                                    <div class="dreamit-service-title">
+                                        <a href="{{ zabor.get_absolute_url }}">
+                                            <h2>{{ zabor.Title }}</h2>
+                                        </a>
+                                        <p>{{ zabor.ShortDesc }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                            {% for zabor in navesCategories %}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="dreamit-service-box">
                             <div class="dreamit-service-box-inner">

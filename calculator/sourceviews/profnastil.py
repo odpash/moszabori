@@ -417,34 +417,34 @@ def main(request):
     }
     rrr = []
     try:
-        rrr.append({'text': 'Цена ворот', 'cost': int(vorotMaterialPrice), 'count': int(vorotCounter), 'ed': 'шт.',
+        rrr.append({'text': vorotObj.Title, 'cost': int(vorotMaterialPrice), 'count': int(vorotCounter), 'ed': 'шт.',
                     'price': round(vorotMaterialPrice / vorotCounter, 2)})
     except:
         pass
     try:
         rrr.append(
-            {'text': 'Цена калитки', 'cost': int(kalitokMaterialPrice), 'count': int(kalitokCounter), 'ed': 'шт.',
+            {'text': kalitkaObj.Title, 'cost': int(kalitokMaterialPrice), 'count': int(kalitokCounter), 'ed': 'шт.',
              'price': round(kalitokMaterialPrice / kalitokCounter, 2)})
     except:
         pass
     try:
-        rrr.append({'text': 'Цена калитки', 'cost': int(vorotMaterialPrice), 'count': int(vorotCounter), 'ed': 'шт.',
+        rrr.append({'text': vorotObj.Title, 'cost': int(vorotMaterialPrice), 'count': int(vorotCounter), 'ed': 'шт.',
                     'price': round(vorotMaterialPrice / vorotCounter, 2)})
     except:
         pass
     try:
-        rrr.append({'text': 'Покрытие', 'cost': int(tipPokritiyaMaterialCost), 'count': int(ploshadZabora), 'ed': 'шт.',
+        rrr.append({'text': tipPokritiyaObj.Title, 'cost': int(tipPokritiyaMaterialCost), 'count': int(ploshadZabora), 'ed': 'шт.',
                     'price': round(tipPokritiyaMaterialCost / ploshadZabora, 2)})
     except:
         pass
     try:
         rrr.append(
-            {'text': 'Бетонирование', 'cost': int(betonirovanieMaterialCost), 'count': int(stolbCounter), 'ed': 'шт.',
+            {'text': betonObj.Title, 'cost': int(betonirovanieMaterialCost), 'count': int(stolbCounter), 'ed': 'шт.',
              'price': round(betonirovanieMaterialCost / stolbCounter, 2)})
     except:
         pass
     try:
-        rrr.append({'text': 'Утрамбовка', 'cost': int(utrambovkaMaterialCost), 'count': int(stolbCounter), 'ed': 'шт.',
+        rrr.append({'text': utrambovkaObj.Title, 'cost': int(utrambovkaMaterialCost), 'count': int(stolbCounter), 'ed': 'шт.',
                     'price': round(utrambovkaMaterialCost / stolbCounter, 2)})
     except:
         pass

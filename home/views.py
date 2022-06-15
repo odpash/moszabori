@@ -2,8 +2,8 @@ from django.shortcuts import render
 from home.models import *
 from .models import Services, ServiceCategory
 
-from django.core.mail import send_mail 
-from django.shortcuts import redirect 
+from django.core.mail import send_mail
+from django.shortcuts import redirect
 # from django.core import mail
 # Create your sourceviews here.
 
@@ -11,12 +11,14 @@ def homePage(request):
     # tours = Tour.objects.all().order_by('-id')[:4]
     # posts = Post.objects.all().order_by('-id')[:4]
     zaborCategories = ServiceCategory.objects.all() # # used to show other categories
+    navesCategories = NavesCategory.objects.all()
     print(zaborCategories)
-
+    print(navesCategories[0])
     portfolioList = Portfolio.objects.all()[:6]
     SEO = SEO_Optimiser.objects.get(seoid=1)
     args = {
             'SEO': SEO,
+            'navesCategories': navesCategories,
             'zaborCategories': zaborCategories,
             # 'posts': posts,
             'portfolioList': portfolioList,
@@ -90,7 +92,7 @@ def contacts(request):
             Пожалуйста ответьте на его сообщение как можно скорее.\n\n\
             С уважением,\n\nМосковские Заборы и Навесы'
 
-        subject = "Новое сообщение от " + str(name) 
+        subject = "Новое сообщение от " + str(name)
         send_mail(subject, finalMessage, fromEmail, (toEmail,), fail_silently=False,)
         # return redirect('home:contacts')
         args = {
@@ -98,8 +100,8 @@ def contacts(request):
             }
         return render(request, 'home/mail-sent-success.html', args)
 
-        
-    page = Page.objects.get(pageid=6) 
+
+    page = Page.objects.get(pageid=6)
     SEO = page.SEO
     template = 'home/contacts.html'
 
@@ -121,11 +123,11 @@ def FAQs(request):
             'page': page,
             'FAQs': FAQs,
             }
-    return render(request, 'home/faq.html', args) 
+    return render(request, 'home/faq.html', args)
 
 
 def pricelist(request):
-    page = Page.objects.get(pageid=5) 
+    page = Page.objects.get(pageid=5)
     template = 'home/pricelist.html'
     SEO = page.SEO
     # SEO = SEO_Optimiser.objects.get(seoid=4)
@@ -140,34 +142,34 @@ def pricelist(request):
 
 
 def zaborCategoryList(request):
-    # page = Page.objects.get(pageid=1) 
+    # page = Page.objects.get(pageid=1)
     template = 'home/zabory_categories_list.html'
     # SEO = page.SEO
     SEO = SEO_Optimiser.objects.get(seoid=2)
     # zabory = Services.objects.filter(status='published')
     zaborCategories = ServiceCategory.objects.all()
-    page = Page.objects.get(pageid=3) 
+    page = Page.objects.get(pageid=3)
 
     args = {
         'page': page,
         'SEO': SEO,
         # 'zabory': zabory,
-        'zaborCategories': zaborCategories, 
+        'zaborCategories': zaborCategories,
     }
-    return render(request, template, args) 
+    return render(request, template, args)
 
 def zaborCategory(request, Slug):
-    # page = Page.objects.get(pageid=1) 
+    # page = Page.objects.get(pageid=1)
     template = 'home/zabor_category.html'
     # SEO = SEO_Optimiser.objects.get(seoid=2)
-    # navesy = Naves.objects.filter(status='published')
+    navesy = Naves.objects.filter(status='published')
     zaborCategory = ServiceCategory.objects.get(Slug=Slug)
     zabory = Services.objects.filter(status='published', Category=zaborCategory.id)
 
-     
     zaborCategories = ServiceCategory.objects.all() # # used to show other categories
 
     args = {
+        'navesy': navesy,
         'zabory': zabory,
         'zaborCategory': zaborCategory,
         'zaborCategories': zaborCategories, # used to show other categories
@@ -191,9 +193,9 @@ def zaborDetails(request, Slug):
         recipient_email = request.POST.get("recipient-email", "")
 
         zakazObj = zabor
-        fromCompany = 'info@moszn.ru' 
-        reciever_list= ('info@moszn.ru',) 
-        subject = 'Новый заказ  - '+ str(zakazObj.Title) + ' от '+ recipient_name 
+        fromCompany = 'info@moszn.ru'
+        reciever_list= ('info@moszn.ru',)
+        subject = 'Новый заказ  - '+ str(zakazObj.Title) + ' от '+ recipient_name
         message = "Новый запрос на ваш товар - "+ str(zakazObj.Title)+ \
             "(https://naves.ru"+str(request.path) + "). \n\n" \
             "Детали товара:\n" \
@@ -209,20 +211,20 @@ def zaborDetails(request, Slug):
         send_mail(subject, message, fromCompany, reciever_list, fail_silently=False, )
         template = 'home/spasibo-za-zakaz.html'
         return render(request, template, args)
-    
+
     return render(request, 'home/zabor-details.html', args)
 
 
 
 
 def navesy(request):
-    # page = Page.objects.get(pageid=1) 
+    # page = Page.objects.get(pageid=1)
     template = 'home/navesy.html'
     # SEO = page.SEO
     SEO = SEO_Optimiser.objects.get(seoid=2)
     navesy = Naves.objects.filter(status='published')
     navesCategories = NavesCategory.objects.all()
-    page = Page.objects.get(pageid=2) 
+    page = Page.objects.get(pageid=2)
 
 
 
@@ -232,20 +234,20 @@ def navesy(request):
         'navesy': navesy,
         'navesCategories': navesCategories,
         'page': page,
-        
+
 
     }
     return render(request, template, args) #
 
 def navesCategory(request, Slug):
-    # page = Page.objects.get(pageid=1) 
+    # page = Page.objects.get(pageid=1)
     template = 'home/navesy-category.html'
     # SEO = SEO_Optimiser.objects.get(seoid=2)
     # navesy = Naves.objects.filter(status='published')
     navesCategory = NavesCategory.objects.get(Slug=Slug)
     navesy = Naves.objects.filter(status='published', Category=navesCategory.id)
 
-     
+
     navesCategories = NavesCategory.objects.all()
 
     args = {
@@ -260,7 +262,7 @@ def navesDetails(request, Slug):
     naves = Naves.objects.get(Slug=Slug)
     navesCategory = NavesCategory.objects.get(id=naves.id)
     # navesy = Naves.objects.filter(status='published', Category=navesCategory.id)
-    
+
     navesCategories = NavesCategory.objects.all()
 
     args = {
@@ -276,9 +278,9 @@ def navesDetails(request, Slug):
         recipient_email = request.POST.get("recipient-email", "")
 
         zakazObj = naves
-        fromCompany = 'info@moszn.ru' 
-        reciever_list= ('info@moszn.ru',) 
-        subject = 'Новый заказ  - '+ str(zakazObj.Title) + ' от '+ recipient_name 
+        fromCompany = 'info@moszn.ru'
+        reciever_list= ('info@moszn.ru',)
+        subject = 'Новый заказ  - '+ str(zakazObj.Title) + ' от '+ recipient_name
         message = "Новый запрос на ваш товар - "+ str(zakazObj.Title)+ \
             "(https://naves.ru"+str(request.path) + "). \n\n" \
             "Детали товара:\n" \
@@ -305,16 +307,16 @@ def obratniyZvonok(request):
     if request.method == 'POST':
         recipient_name = request.POST.get("recipient-name", "")
         recipient_phone = request.POST.get("recipient-phone", "")
-        fromCompany = 'info@moszn.ru' 
-        reciever_list= ('info@moszn.ru',) 
-        subject = 'Заказ звонка от '+ recipient_name 
+        fromCompany = 'info@moszn.ru'
+        reciever_list= ('info@moszn.ru',)
+        subject = 'Заказ звонка от '+ recipient_name
         message = "Посетитель вашего сайта -  "+str(recipient_name)  \
             + " хочет чтобы вы позвонили ему на номер: "+str(recipient_phone) +"\n\n" \
             + "\n\nМосковские Заборы и Навесы"
         # try:
         send_mail(subject, message, fromCompany, reciever_list, fail_silently=False, )
         return render(request, template, args)
-        
+
 
 
     return render(request, template, args) #
@@ -322,7 +324,7 @@ def obratniyZvonok(request):
 
 
 def portfolio(request):
-    # page = Page.objects.get(pageid=1) 
+    # page = Page.objects.get(pageid=1)
     template = 'home/portfolio.html'
     # SEO = page.SEO
     SEO = SEO_Optimiser.objects.get(seoid=3)
@@ -340,7 +342,7 @@ def portfolio(request):
 
 
 def portfolioDetails(request, Slug):
-    
+
     portfolio = Portfolio.objects.get(Slug=Slug)
     context = {
         'portfolio' : portfolio,
