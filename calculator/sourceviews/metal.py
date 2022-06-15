@@ -100,9 +100,9 @@ def main(request):
                 if visotazabora * dlinazabora * 10 * float(i.price) == 0:
                     continue
                 if "Finfold" in shtaketnik:
-                    shtaketnik_count = int(dlinazabora / ((0.1 + int(zazor)) / 100) * visotazabora + 5)
+                    shtaketnik_count = int(dlinazabora / ((0.1 + int(zazor)  / 100)) * visotazabora + 5)
                 else:
-                    shtaketnik_count = int(dlinazabora / ((0.1 + int(zazor * 2)) / 100) * visotazabora + 5)
+                    shtaketnik_count = int(dlinazabora / ((0.1 + int(zazor * 2) / 100)) * visotazabora + 5)
                 args['result'] += shtaketnik_count * float(i.price)
                 args['result_items'].append({
                     'text': f'{i.title}',
