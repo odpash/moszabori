@@ -69,6 +69,7 @@ def main(request):
                                pokraska, panel])
         args['status'] = 1
         for i in Boarder3d.objects.all():
+            print(i.visota)
             if panel == i.title and float(i.visota) == visotazabora:
                 if dlinazabora == 0:
                     continue
@@ -131,7 +132,7 @@ def main(request):
                     {'text': f'{i.tip}',
                      'cost': str(round(count_stolb * float(i.kolvo) * float(i.price), 2)),
                      'count': f"{int(count_stolb * float(i.kolvo))}",
-                     'ed': 'шт.',
+                     'ed': 'п.м.',
                      'price': f'{round(i.price, 2)}'})
 
         args['result'] += count_stolb * 60 * 3
