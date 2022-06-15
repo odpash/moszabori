@@ -92,6 +92,7 @@ def main(request):
                     continue
 
                 args['result'] += float(i.count_mnsh) * dlinazabora * float(i.price)
+                lagi_count = float(i.count_mnsh) * dlinazabora
                 args['result_items'].append({
                     'text': f'Лаги проф.труба 40х20 толщиной 1,5 мм',
                     'cost': str(round(float(i.count_mnsh) * dlinazabora * float(i.price), 2)),
@@ -128,14 +129,14 @@ def main(request):
         count = 0
         for i in Metaldlinastolbov.objects.all():
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinastolba:
-                count = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok))
                 if count * float(i.price) / 2.5 == 0:
                     continue
-                args['result'] += count * float(i.price) / 2.5
+                count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok) / 2.5 + 1)
+                args['result'] += count_stolb * float(i.price)
                 args['result_items'].append({
                     'text': f'Столб 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
-                    'cost': str(round(count * float(i.price) / 2.5, 2)),
-                    'count': str(int(count / 2.5)),
+                    'cost': str(round(count_stolb * float(i.price), 2)),
+                    'count': str(int(count_stolb)),
                     'ed': 'шт.',
                     'price': str(round(i.price, 2))
 
@@ -171,11 +172,12 @@ def main(request):
             if i.tip == pokraska:
                 if count * float(i.kolvo) * float(i.price) == 0:
                     continue
-                args['result'] += count * float(i.kolvo) * float(i.price)
+                kraska_count = count_stolb + lagi_count
+                args['result'] += kraska_count * float(i.price)
                 args['result_items'].append(
                     {'text': f'{i.tip}',
-                     'cost': str(round(count * float(i.kolvo) * float(i.price), 2)),
-                     'count': str(int(round(count * float(i.kolvo), 2))),
+                     'cost': str(round(kraska_count * float(i.price), 2)),
+                     'count': str(int(round(kraska_count, 2))),
                      'ed': 'п.м.',
                      'price': str(round(i.price, 2))
                      })
