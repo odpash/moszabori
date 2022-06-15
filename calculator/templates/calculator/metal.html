@@ -289,190 +289,192 @@
                 </script>
 
                 <h6>Материалы</h6>
-                <div class="wrapper_table_result" style="overflow-x:auto;">
-                    <table class="calcResultMaterial table-bordered"
-                           style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
-                           cellspacing="0" cellpadding="0" border="0">
-                        <thead>
-                        <tr style="text-align: left; color: white;background: green">
-                            <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                №
-                            </th>
-                            <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Наименование
-                            </th>
-                            <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Цена за ед.
-                            </th>
-                            <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Кол-во
-                            </th>
-                            <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Ед. изм
-                            </th>
-                            <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Сумма
-                            </th>
+                   <div class="wrapper_table_result" style="overflow-x:auto;">
+                        <table class="calcResultMaterial table-bordered"
+                               style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                               cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                            <tr style="text-align: left; color: white;background: green">
+                                <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    №
+                                </th>
+                                <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Наименование
+                                </th>
+                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Ед. изм
+                                </th>
 
-                        </tr>
-                        {% for v in result_items %}
-                            <tr style="text-align: left;">
-                                <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.id }}
+                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Кол-во
                                 </th>
-                                <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.text }}
+                                <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Цена за ед.
                                 </th>
-                                <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.price }}
+                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Сумма
                                 </th>
-                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.count }}
-                                </th>
-                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.ed }}
-                                </th>
-                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.cost }}
-                                </th>
+
                             </tr>
-                        {% endfor %}
-                        {% for v in result_items_a %}
-                            <tr style="text-align: left;color:white;background: green">
-                                <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                            {% for v in result_items %}
+                                <tr style="text-align: left;">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.id }}
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                            {% for v in result_items_a %}
+                                <tr style="text-align: left;color:white;background: green">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                            {% endfor %}
+
+                            </thead>
+                        </table>
+                    </div>
+                    <br/>
+                    <h6>Услуги</h6>
+
+                    <div class="wrapper_table_result" style="overflow-x:auto;">
+                        <table class="calcResultMaterial table-bordered"
+                               style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                               cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                            <tr style="text-align: left; color: white;background: green">
+                                <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    №
                                 </th>
-                                <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.text }}
+                                <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Наименование
                                 </th>
-                                <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.price }}
+                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Ед. изм
                                 </th>
-                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.count }}
+
+                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Кол-во
                                 </th>
-                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.ed }}
+                                <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Цена за ед.
                                 </th>
-                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.cost }} руб.
+                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Сумма
                                 </th>
+
                             </tr>
-                        {% endfor %}
+                            {% for v in result_ysl %}
+                                <tr style="text-align: left;">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.id }}
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                            {% for v in result_ysl_a %}
+                                <tr style="text-align: left;color: white;background: green">
+                                    <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
 
-                        </thead>
-                    </table>
-                </div>
-                <br/>
-                <h6>Услуги</h6>
+                                    </th>
+                                    <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.ed }}
+                                    </th>
+                                    <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.price }}
+                                    </th>
+                                    <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }}  руб.
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <br/>
+                    <h6>Доставка</h6>
+                    <div class="wrapper_table_result" style="overflow-x:auto;">
+                        <table class="calcResultMaterial table-bordered"
+                               style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
+                               cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                            <tr style="text-align: left; color: white;background: green">
+                                <th style="width:33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Наименование
+                                </th>
+                                <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Расстояние
+                                </th>
+                                <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
+                                    Сумма
+                                </th>
 
-                <div class="wrapper_table_result" style="overflow-x:auto;">
-                    <table class="calcResultMaterial table-bordered"
-                           style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
-                           cellspacing="0" cellpadding="0" border="0">
-                        <thead>
-                        <tr style="text-align: left; color: white;background: green">
-                            <th style="width:3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                №
-                            </th>
-                            <th style="width:47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Наименование
-                            </th>
-                            <th style="width:14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Цена за ед.
-                            </th>
-                            <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Кол-во
-                            </th>
-                            <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Ед. изм
-                            </th>
-                            <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Сумма
-                            </th>
-
-                        </tr>
-                        {% for v in result_ysl %}
-                            <tr style="text-align: left;">
-                                <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.id }}
-                                </th>
-                                <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.text }}
-                                </th>
-                                <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.price }}
-                                </th>
-                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.count }}
-                                </th>
-                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;text-align: center">
-                                    {{ v.ed }}
-                                </th>
-                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.cost }}
-                                </th>
                             </tr>
-                        {% endfor %}
-                        {% for v in result_ysl_a %}
-                            <tr style="text-align: left;color: white;background: green">
-                                <th style="width: 3%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                            {% for v in result_dos %}
+                                <tr style="text-align: left;">
+                                    <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.text }}
+                                    </th>
+                                    <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.count }}
+                                    </th>
+                                    <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
+                                        {{ v.cost }} руб.
+                                    </th>
+                                </tr>
+                            {% endfor %}
 
-                                </th>
-                                <th style="width: 47%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.text }}
-                                </th>
-                                <th style="width: 14%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.price }}
-                                </th>
-                                <th style="width: 9%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.count }}
-                                </th>
-                                <th style="width: 7%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.ed }}
-                                </th>
-                                <th style="width: 20%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.cost }} руб.
-                                </th>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-                <br/>
-                <h6>Доставка</h6>
-                <div class="wrapper_table_result" style="overflow-x:auto;">
-                    <table class="calcResultMaterial table-bordered"
-                           style="border-collapse: collapse;border-style: solid; border-width: 1px; border-color:black;width: 100%"
-                           cellspacing="0" cellpadding="0" border="0">
-                        <thead>
-                        <tr style="text-align: left; color: white;background: green">
-                            <th style="width:33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Наименование
-                            </th>
-                            <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Расстояние
-                            </th>
-                            <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 14px;">
-                                Сумма
-                            </th>
-
-                        </tr>
-                        {% for v in result_dos %}
-                            <tr style="text-align: left;">
-                                <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.text }}
-                                </th>
-                                <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.count }}
-                                </th>
-                                <th style="width: 33%;border-style: solid; border-width: 1px; border-color:black;padding: 0px 5px;font-size: 12px;">
-                                    {{ v.cost }} руб.
-                                </th>
-                            </tr>
-                        {% endfor %}
-
-                        </thead>
-                    </table>
-                </div>
+                            </thead>
+                        </table>
+                    </div>
                 <br/>
                 <div class="finish-total-price"
                      style="text-transform: uppercase; font-size: 15px; font-weight: bold; border: 1px solid #000; display: table; width: 100%; color: white;background: green">

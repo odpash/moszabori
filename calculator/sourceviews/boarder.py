@@ -2,7 +2,6 @@ from django.shortcuts import render
 from calculator.sourcemodels.boarder import *
 
 
-
 def correct_output(arr, v):
     for i in range(len(arr)):
         if arr[i] == v:
@@ -85,14 +84,14 @@ def main(request):
         count = 0
         for i in Boarderdlinastolbov.objects.all():
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinastolba:
-                count = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok))
-                if count == 0:
+                count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok))
+                if count_stolb == 0:
                     continue
-                args['result'] += count * float(i.price) / 2.5
+                args['result'] += count_stolb * float(i.price) / 2.5
                 args['result_items'].append({
-                    'text': f'Столб 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
-                    'cost': str(round(count * float(i.price) / 2.5, 2)),
-                    'count': f"{int(count / 2.5)}",
+                    'text': f'Столб с заглушкой 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
+                    'cost': str(round(count_stolb * float(i.price) / 2.5, 2)),
+                    'count': f"{int(count_stolb / 2.5)}",
                     'ed': 'шт.',
                     'price': f'{round(i.price, 2)}'
 
@@ -132,8 +131,16 @@ def main(request):
                     {'text': f'{i.tip}',
                      'cost': str(round(count * float(i.kolvo) * float(i.price), 2)),
                      'count': f"{int(count * float(i.kolvo))}",
-                     'ed': 'шт.',
+                     'ed': 'п.м.',
                      'price': f'{round(i.price, 2)}'})
+
+        args['result'] += count_stolb * 60 * 3
+        args['result_items'].append(
+            {'text': f'Крепление скоба + саморез',
+             'cost': str(count_stolb * 3 * 60),
+             'count': f"{count_stolb * 3}",
+             'ed': 'п.м.',
+             'price': f'{60}'})
 
         args['result_items'].append({
             'text': "Скидка 2% от стоимости материала", 'cost': str(round(args['result'] * 0.02, 2))
