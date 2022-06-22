@@ -7,15 +7,16 @@ from calculator.sourcemodels.navesi import *
 
 
 # profnastil
-admin.site.register(ProfnastilSechenieStolba)
-admin.site.register(ProfnastilTipStolba)
-admin.site.register(ProfnastilTolshinaStolba)
-admin.site.register(ProfnastilEdinicaIzmereniya)
-admin.site.register(ProfnastilStolba, StolbaAdmin)
-admin.site.register(ProfnastilPokritie, PokritieAdmin)
-admin.site.register(ProfnastilKraska, KraskaAdmin)
-admin.site.register(ProfnastilServicesAndMaterials, ServicesAndMaterialsAdmin)
-admin.site.register(ProfnastilLaborCost, LaborCostAdmin)
+admin.site.register(Profnastildlinastolbov, ProfnastildlinastolbovAdmin)
+admin.site.register(Profnastilystanovkavorot, ProfnastilystanovkavorotAdmin)
+admin.site.register(Profnastilystanovkazabora, ProfnastilystanovkazaboraAdmin)
+admin.site.register(Profnastilvorota, ProfnastilvorotaAdmin)
+admin.site.register(Profnastilkalitka, ProfnastilkalitkaAdmin)
+admin.site.register(Profnastilystanovkakalitki, ProfnastilystanovkakalitkiAdmin)
+admin.site.register(Profnastilpokraska, ProfnastilpokraskaAdmin)
+admin.site.register(Profnastillags, ProfnastillagsAdmin)
+admin.site.register(Profnastilshtaketnik, ProfnastilshtaketnikAdmin)
+
 
 # rabiza
 admin.site.register(Rabizadlinastolbov, RabizadlinastolbovAdmin)
