@@ -84,7 +84,7 @@
 
                 <div>
                     <br class="contact-form-box">
-                    <form action="{% url 'calc:calculator' %}" method="GET" href="/#resultspoint">
+                    <form action="{% url 'calc:profnastil' %}" method="GET" href="/#resultspoint">
                         <div class="form-group row">
                             <label for="Profnastildlinazabora" class="col-md-3 col-sm-12 col-form-label">Общая длина забора,
                                 включая ворота и калитки, м</label>
@@ -138,7 +138,7 @@
                                     {% endfor %}
                                 </select>
                             </div>
-                            <label for="Profnastilshtaketnik" class="col-md-3 col-sm-12 col-form-label">Выберите вариант
+                            <label for="Profnastilshtaketnik" class="col-md-3 col-sm-12 col-form-label">Выберите толщину
                                 покрытия:</label>
                             <div class="col-sm-12 col-md-3">
                                 <select id="Profnastilshtaketnik" name="Profnastilshtaketnik" class="custom-select"
@@ -277,7 +277,7 @@
                         class="btn btn-outline-success">Рассчитать
                 </button>
                 <a
-                        class="btn btn-outline-danger" href="/calculator/calc-Profnastil?">Очистить
+                        class="btn btn-outline-danger" href="/calculator/calc-profnastil?">Очистить
                 </a>
                 </form>
                 </br>

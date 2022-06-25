@@ -65,22 +65,22 @@ def main(request):
     template = 'calculator/profnastil.html'
     args = default_values(False, [])
     args['status'] = 0
-    if request.GET.get('Metaldlinazabora') is not None:
-        visotazabora = float(str(request.GET.get('Metalvisotazabora')).replace(',', '.'))
-        dlinazabora = float(str(request.GET.get('Metaldlinazabora')).replace(',', '.'))
-        tolshinastolba = float(str(request.GET.get('Metaltolshinastolba')).replace(',', '.'))
-        kolvo_kalitok = float(str(request.GET.get('Metalkolvokalitok')).replace(',', '.'))
-        kolvo_vorot = float(str(request.GET.get('Metalkolvovorot')).replace(',', '.'))
-        shirina_vorot = float(str(request.GET.get('Metalshirinavorot')).replace(',', '.'))
-        pokraska = request.GET.get('Metalpokraska')
-        shtaketnik = request.GET.get('Metalshtaketnik')
-        lagi = request.GET.get('Metalhorizontals')
+    if request.GET.get('Profnastildlinazabora') is not None:
+        visotazabora = float(str(request.GET.get('Profnastilvisotazabora')).replace(',', '.'))
+        dlinazabora = float(str(request.GET.get('Profnastildlinazabora')).replace(',', '.'))
+        tolshinastolba = float(str(request.GET.get('Profnastiltolshinastolba')).replace(',', '.'))
+        kolvo_kalitok = float(str(request.GET.get('Profnastilkolvokalitok')).replace(',', '.'))
+        kolvo_vorot = float(str(request.GET.get('Profnastilkolvovorot')).replace(',', '.'))
+        shirina_vorot = float(str(request.GET.get('Profnastilshirinavorot')).replace(',', '.'))
+        pokraska = request.GET.get('Profnastilpokraska')
+        shtaketnik = request.GET.get('Profnastilshtaketnik')
+        lagi = request.GET.get('Profnastilhorizontals')
         import re
         s = [int(s) for s in re.findall(r'-?\d+\.?\d*', lagi)]
         s = s[0]
 
-        polimers = request.GET.get('Metalpolimers')
-        zazor = int(request.GET.get("Metalzazor"))
+        polimers = request.GET.get('Profnastilpolimers')
+        zazor = int(request.GET.get("Profnastilzazor"))
         args = default_values(True,
                               [visotazabora, dlinazabora, tolshinastolba, kolvo_kalitok, kolvo_vorot, shirina_vorot,
                                pokraska, shtaketnik, lagi, polimers, zazor])
@@ -88,11 +88,9 @@ def main(request):
 
         for i in Profnastildlinastolbov.objects.all():
             if visotazabora == float(i.visota) and float(i.tolshina) == tolshinastolba:
-
                 count_stolb = int((dlinazabora - kolvo_vorot * shirina_vorot - kolvo_kalitok) / 2.5 + 1)
                 if count_stolb * float(i.price) / 2.5 == 0:
                     continue
-                print(count_stolb)
                 args['result'] += count_stolb * float(i.price)
                 args['result_items'].append({
                     'text': f'Столб 60x60 толщиной {tolshinastolba} мм высотой {visotazabora + 1.2} м',
@@ -163,6 +161,7 @@ def main(request):
                     'price': str(round(i.price, 2))
                 })
 
+        count_stolb = 0
         for i in Profnastilpokraska.objects.all():  # Покраска
             if i.tip == pokraska:
                 if (count_stolb + lagi_count) * float(i.price) == 0:

@@ -62,6 +62,7 @@ def default_values(state, arr):
 
 
 def main(request):
+    print("METAL")
     template = 'calculator/metal.html'
     args = default_values(False, [])
     args['status'] = 0
